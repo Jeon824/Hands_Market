@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hands_Market">
-        <activity android:name=".Market_create"></activity>
+        <activity android:name=".Mypage_change"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Market_create" />
         <activity android:name=".Market_mypage" />
         <activity android:name=".MapViewActivity" />
         <activity android:name=".GoodsReviewActivity" />
