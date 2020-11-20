@@ -40,7 +40,6 @@
             android:src="@drawable/ic_baseline_search_24"
             android:id="@+id/searchBtn"/>
     </LinearLayout>
-
     <fragment
         android:name="com.example.hands_market.StoreListFragment"
         android:id="@+id/mainStoreList"

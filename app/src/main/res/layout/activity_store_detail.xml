@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StoreDetailActivity">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_border"
+            android:layout_marginBottom="50px"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="106dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.236"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="59dp"
+                android:layout_marginRight="300px"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/callBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="128dp"
+                    android:layout_height="43dp"
+                    android:background="@drawable/border_bottom"
+                    android:text="직원 call"
+                    android:textColor="#000000"
+                    android:textSize="40px"
+                    android:layout_marginTop="10px"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="248dp"
+                    tools:layout_editor_absoluteY="126dp" />
+
+                <TextView
+                    android:id="@+id/layoutBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="128dp"
+                    android:layout_height="43dp"
+                    android:text="배치도 등록"
+                    android:textColor="#000000"
+                    android:textSize="40px"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="248dp"
+                    tools:layout_editor_absoluteY="169dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/storeUpdateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정"
+            android:textColor="#000000"
+            android:textSize="50px"
+            android:layout_gravity="right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.394" />
+        <TextView
+            android:id="@+id/storeDeleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:textColor="#000000"
+            android:textSize="50px"
+            android:layout_gravity="right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.394" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="세부 가게 정보"
+            android:textColor="#000000"
+            android:textSize="50px"
+            android:layout_marginBottom="40px"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.394" />
+
+        <TextView
+            android:id="@+id/addGoodsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="물품+"
+            android:textColor="#000000"
+            android:textSize="50px"
+            android:layout_gravity="right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.394" />
+
+
+        <fragment
+            android:id="@+id/mainStoreList"
+            android:name="com.example.hands_market.StoreListFragment"
+            android:layout_width="372dp"
+            android:layout_height="384dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="314dp" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

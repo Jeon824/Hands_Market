@@ -18,9 +18,6 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,6 +34,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                     val intent = Intent(this, MapViewActivity::class.java)
                     startActivity(intent)
                 }
+
             }
         }
     }

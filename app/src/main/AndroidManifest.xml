@@ -13,8 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hands_Market">
-        <activity android:name=".Market_create"></activity>
-        <activity android:name=".Market_mypage" />
+        <activity android:name=".StoreDetailActivity"></activity>
+        <activity android:name=".GoodsRegisterActivity" />
+        <activity android:name=".StoreRegistActivity" />
+        <activity android:name=".ManagerActivity" />
         <activity android:name=".MapViewActivity" />
         <activity android:name=".GoodsReviewActivity" />
         <activity android:name=".GoodsDetailActivity" />
