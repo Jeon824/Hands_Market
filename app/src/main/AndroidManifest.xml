@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hands_market">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +18,10 @@
         <activity android:name=".GoodsRegisterActivity" />
         <activity android:name=".StoreRegistActivity" />
         <activity android:name=".ManagerActivity" />
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="f577cb830a51d1e5cecceed9215c38e3" />
+        <activity android:name=".StoreDetailActivity"></activity>
         <activity android:name=".MapViewActivity" />
         <activity android:name=".GoodsReviewActivity" />
         <activity android:name=".GoodsDetailActivity" />
@@ -28,9 +33,7 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="f577cb830a51d1e5cecceed9215c38e3" />
+
     </application>
 
 </manifest>
