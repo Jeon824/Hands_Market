@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Market_mypage">
+
+    <View
+        android:layout_width="372dp"
+        android:layout_height="192dp"
+        android:background="@drawable/input_border"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <ImageView
+        android:layout_width="102dp"
+        android:layout_height="106dp"
+        android:scr="@drawable/profile/profileImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="69dp" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나의 마켓 리스트"
+        android:textColor="#000000"
+        android:textSize="50px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.394" />
+
+    <TextView
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="128dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border_bottom"
+        android:text="회원정보 수정"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="249dp"
+        tools:layout_editor_absoluteY="50dp" />
+
+    <TextView
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="128dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border_bottom"
+        android:text="콜알림 내역"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="249dp"
+        tools:layout_editor_absoluteY="93dp" />
+
+    <TextView
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="128dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border_bottom"
+        android:text="예약 내역"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="249dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <TextView
+        android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="128dp"
+        android:layout_height="43dp"
+        android:text="입고 내역"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="249dp"
+        tools:layout_editor_absoluteY="179dp" />
+
+
+    <fragment
+        android:id="@+id/mainStoreList"
+        android:name="com.example.hands_market.StoreListFragment"
+        android:layout_width="372dp"
+        android:layout_height="384dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="314dp"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
