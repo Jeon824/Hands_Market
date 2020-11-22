@@ -1,9 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GoodsDetailActivity">
+    tools:context=".GoodsDetailActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_border"
+        android:layout_marginBottom="50px"
+        >
+
+        <ImageView
+            android:id="@+id/goods_image"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.236"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="59dp"
+            android:layout_marginRight="150px"
+            />                                      //물품사진
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/button_favorite"
+                />  //즐겨찾기 하트 버튼
+
+            <TextView
+                android:id="@+id/goods_request"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="150dp"
+                android:layout_height="43dp"
+                android:background="@drawable/border_bottom"
+                android:text="입고요청"
+                android:textColor="#000000"
+                android:textSize="40px"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="248dp"
+                tools:layout_editor_absoluteY="83dp"
+                android:layout_marginTop="50px"
+                android:orientation="vertical"
+                />                                      //입고요청 버튼
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+            <Button
+                android:id="@+id/button_modify"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="70dp"
+                android:layout_height="43dp"
+                android:background="@drawable/border_bottom"
+                android:text="수정"
+                android:textColor="#000000"
+                android:textSize="40px"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="248dp"
+                tools:layout_editor_absoluteY="83dp"
+                android:layout_marginTop="10px"
+                />                                           //수정버튼
+
+
+
+            <Button
+                android:id="@+id/button_delete"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="70dp"
+                android:layout_height="43dp"
+                android:background="@drawable/border_bottom"
+                android:text="삭제"
+                android:textColor="#000000"
+                android:textSize="40px"
+                tools:ignore="MissingConstraints" />          //삭제버튼
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+            <TextView
+                android:id="@+id/goods_detail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="물품정보"
+
+                android:layout_marginTop="1dp"
+                android:textSize="25dp"/>       //물품정보
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+    <TextView
+        android:id="@+id/button_shopping_basket"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border_bottom"
+        android:text="장바구니"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="83dp"
+        android:layout_marginTop="50px"
+        android:layout_weight="1"/>     //장바구니 버튼
+
+    <TextView
+        android:id="@+id/button_purchase"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border_bottom"
+        android:text="결제서비스"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="83dp"
+        android:layout_marginTop="50px"
+        android:layout_weight="1"/>         //결제서비스 버튼
+
+    <TextView
+        android:id="@+id/button_reserve"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border_bottom"
+        android:text="예약"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="83dp"
+        android:layout_marginTop="50px"
+        android:layout_weight="1"/>         //예약하기 버튼
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/review"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:text="리뷰"
+
+        android:layout_marginTop="1dp"
+        android:textSize="25dp"/>           //리뷰보기
+
+    <Button
+        android:id="@+id/button_review_write"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="100dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border_bottom"
+        android:text="리뷰쓰기"
+        android:textColor="#000000"
+        android:textSize="40px"
+        tools:ignore="MissingConstraints" />            //리뷰쓰기 버튼
+
+
+
+</LinearLayout>
