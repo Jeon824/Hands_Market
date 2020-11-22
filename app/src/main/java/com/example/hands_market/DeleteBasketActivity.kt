@@ -20,4 +20,5 @@ class DeleteBasketActivity : AppCompatActivity() {
             Toast.makeText(this@DeleteBasketActivity, "삭제 되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
