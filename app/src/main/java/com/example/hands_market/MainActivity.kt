@@ -17,6 +17,12 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -32,13 +38,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var keyWordInput :EditText
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         setAddress = findViewById<TextView>(R.id.setAddress)
         setAddress.setOnClickListener(this)
@@ -52,11 +55,35 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 R.id.navigation_home->
                 R.id.navigation_favorite->
                 R.id.navigation_log->
-
             }
-
-
         }*/
+        val mypage = findViewById<TextView>(R.id.mypage)
+        mypage.setOnClickListener(this)
+    }
+
+    fun basicReadWrite() {
+        // [START write_message]
+        // Write a message to the database
+        val database = Firebase.database
+        val myRef = database.getReference("message")
+
+        myRef.setValue("Hello, World!")
+
+//        myRef.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                val value = dataSnapshot.getValue<String>()
+//                Log.d(TAG, "Value is: $value")
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException())
+//            }
+//        })
+
+
 
     }
 
@@ -65,6 +92,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         if (v != null) {
             when(v.id) {
                 //R.id.searchBtn
+                R.id.mypage ->{
+                    val intent = Intent(this, ManagerActivity::class.java)
+                    startActivity(intent)
+                }
                 R.id.setAddress -> {
                     val intent = Intent(this, MapViewActivity::class.java)
                     startActivity(intent)

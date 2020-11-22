@@ -13,6 +13,8 @@ class ManagerActivity : AppCompatActivity(), View.OnClickListener {
 
         val addStoreBtn = findViewById<TextView>(R.id.addStoreBtn)
         addStoreBtn.setOnClickListener(this)
+
+      
     }
     override fun onClick(v: View?) {
         if (v != null) {

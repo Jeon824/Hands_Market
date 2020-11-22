@@ -21,7 +21,6 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="f577cb830a51d1e5cecceed9215c38e3" />
-        <activity android:name=".StoreDetailActivity"></activity>
         <activity android:name=".MapViewActivity" />
         <activity android:name=".GoodsReviewActivity" />
         <activity android:name=".GoodsDetailActivity" />

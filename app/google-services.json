@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "134614135538",
+    "firebase_url": "https://market-hands.firebaseio.com",
+    "project_id": "market-hands",
+    "storage_bucket": "market-hands.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134614135538:android:8fc79da6f57c4cbfca166b",
+        "android_client_info": {
+          "package_name": "com.example.hands_market"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134614135538-qf4uf7rjhtmpimbe61hon8eqfhi981ul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hands_market",
+            "certificate_hash": "f53df8d424eaa85d1a6212aad689c0ab8e767c8e"
+          }
+        },
+        {
+          "client_id": "134614135538-ap30udevkrshi5440ivilqbr3h8mumhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq9kbKB1eoSEzcyiWiT7pkuDhUjuCFyvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134614135538-ap30udevkrshi5440ivilqbr3h8mumhe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
