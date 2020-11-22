@@ -186,7 +186,8 @@
             android:textSize="40px"
             tools:layout_editor_absoluteX="155dp"
             tools:layout_editor_absoluteY="533dp"
-            android:layout_marginTop="200px"
+            android:layout_marginTop="20px"
             android:layout_marginBottom="200px"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

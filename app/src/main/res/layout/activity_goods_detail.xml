@@ -176,6 +176,13 @@
         android:textSize="40px"
         tools:ignore="MissingConstraints" />            //리뷰쓰기 버튼
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/navigation"
+        android:layout_marginTop="10dp"
+        android:id="@+id/bottom_navigation1"/>
+
 
 
 </LinearLayout>
