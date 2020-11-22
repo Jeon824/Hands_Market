@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 
-// 장바구니 목록 삭제 화면
+//장바구니 목록 삭제 화면
 class DeleteBasketActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,5 +20,4 @@ class DeleteBasketActivity : AppCompatActivity() {
             Toast.makeText(this@DeleteBasketActivity, "삭제 되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
-
 }
