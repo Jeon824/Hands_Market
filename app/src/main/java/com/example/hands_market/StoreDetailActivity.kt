@@ -17,7 +17,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         if (v != null) {
-            when(v.id) {
+            when (v.id) {
                 //R.id.searchBtn
                 R.id.addGoodsBtn -> {
                     val intent = Intent(this, GoodsRegisterActivity::class.java)
@@ -25,12 +25,5 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-
-class StoreDetailActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_store_detail)
     }
 }

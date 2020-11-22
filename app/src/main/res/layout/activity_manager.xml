@@ -23,15 +23,15 @@
             >
 
             <ImageView
+                android:id="@+id/goodsDetailImg"
                 android:layout_width="100dp"
                 android:layout_height="106dp"
+                android:layout_marginRight="300px"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.236"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="59dp"
-                android:layout_marginRight="300px"
-                />
+                tools:layout_editor_absoluteY="59dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
 
 
                 <TextView
-                    android:id="@+id/callList"
+                    android:id="@+id/callListBtn"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="128dp"
                     android:layout_height="43dp"
@@ -83,12 +83,13 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/myStoreListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:text="나의 마켓 리스트"
+            android:layout_gravity="center"
+            android:text="나의 마켓 리스트"
             android:textColor="#000000"
             android:textSize="50px"
-            android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -31,14 +31,9 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var keyWord: String
     private lateinit var keyWordInput :EditText
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         setAddress = findViewById<TextView>(R.id.setAddress)
         setAddress.setOnClickListener(this)
@@ -54,12 +49,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 R.id.navigation_log->
 
             }
-
-
         }*/
-
     }
-
 
     override fun onClick(v: View?) {
         if (v != null) {

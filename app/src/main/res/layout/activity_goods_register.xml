@@ -18,13 +18,13 @@
         >
 
         <TextView
+            android:id="@+id/goodsRegisterText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="100dp"
             android:text="물품 등록하기"
             android:textColor="#000000"
-            android:textSize="50px"
-            android:paddingTop="100dp"
-            />
+            android:textSize="50px" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,6 +44,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
+                    android:id="@+id/goodsNameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -53,6 +54,7 @@
                     android:textSize="20sp" />
 
                 <EditText
+                    android:id="@+id/goodsNameEdit"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
@@ -66,6 +68,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
+                    android:id="@+id/storeImgText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -75,6 +78,7 @@
                     android:textSize="20sp" />
 
                 <Button
+                    android:id="@+id/accretionGoodsBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/click_button"
@@ -95,6 +99,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
+                    android:id="@+id/goodsPriceText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -104,6 +109,7 @@
                     android:textSize="20sp" />
 
                 <EditText
+                    android:id="@+id/goodsPriceEdit"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
@@ -117,6 +123,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
+                    android:id="@+id/goodsSizeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -126,6 +133,7 @@
                     android:textSize="20sp" />
 
                 <EditText
+                    android:id="@+id/goodsSizeEdit"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
@@ -139,6 +147,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
+                    android:id="@+id/goodsColorText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -148,6 +157,7 @@
                     android:textSize="20sp" />
 
                 <EditText
+                    android:id="@+id/goodsColorEdit"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
@@ -161,6 +171,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
+                    android:id="@+id/goodsNumberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -170,6 +181,7 @@
                     android:textSize="20sp" />
 
                 <EditText
+                    android:id="@+id/goodsNumberEdit"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
