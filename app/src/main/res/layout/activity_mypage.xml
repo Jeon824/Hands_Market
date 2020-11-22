@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MypageActivity"
+    android:orientation="vertical">>/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="200dp"
+        android:id="@+id/user_picture"
+        android:src="@drawable/user_picture"
+        />/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="회원정보 수정"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/button_change_memberdata"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="나의 구매내역"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/button_purchaselist"/>
+
+
+
+
+    </LinearLayout>
