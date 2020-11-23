@@ -1,6 +1,9 @@
 package com.example.hands_market
 
 import android.content.Context
+import android.content.res.AssetManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +13,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.io.InputStream
+import java.lang.Exception
 import kotlin.reflect.typeOf
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,9 +36,20 @@ class StoreListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_store_list, container, false)
         fragLayoutManager = GridLayoutManager(activity,2)
         val context : Context = view.context
-
-        for (i in 0 until 10)
-            storeList.add(i,Store("$i 번째 매니저","$i 번째 매장",i*0.1,i*0.1,"$i 번째 주소",null,null))
+        val am : AssetManager = resources.assets;
+        var inS :InputStream? = null
+        var tmpLayout : Bitmap? = null
+        try{
+            inS = am.open("dummy_layout.png")
+            tmpLayout = BitmapFactory.decodeStream(inS)
+        }catch(e: Exception) {
+            e.printStackTrace()
+        }
+        for (i in 0 until 10) {
+            storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
+            if(storeList[i].storeLayout == null)
+                storeList[i].storeLayout = tmpLayout
+        }
 
         viewAdapter = StoreListAdapter(context, storeList)
 

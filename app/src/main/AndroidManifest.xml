@@ -15,7 +15,6 @@
         android:theme="@style/Theme.Hands_Market"
         android:usesCleartextTraffic="true">
         <activity android:name=".PurchasedListActivity"></activity>
-        <activity android:name=".StoreLayoutCallActivity" />
         <activity android:name=".MypageActivity" />
         <activity android:name=".StoreDetailActivity" />
         <activity android:name=".GoodsRegisterActivity" />
