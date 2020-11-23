@@ -33,7 +33,7 @@ class StoreListFragment : Fragment() {
         val context : Context = view.context
 
         for (i in 0 until 10)
-            storeList.add(i,Store("$i 번째 매니저","$i 번째 매장",i*0.1,i*0.1,"$i 번째 주소",null))
+            storeList.add(i,Store("$i 번째 매니저","$i 번째 매장",i*0.1,i*0.1,"$i 번째 주소",null,null))
 
         viewAdapter = StoreListAdapter(context, storeList)
 
