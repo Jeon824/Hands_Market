@@ -2,6 +2,7 @@ package com.example.hands_market
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,13 @@ import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import java.io.ByteArrayOutputStream
 
 class StoreListAdapter(val context: Context, val storeList: List<Store>): RecyclerView.Adapter<StoreListAdapter.ViewHolder>(){
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
+
+
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
         val view = LayoutInflater.from(viewGroup.context)
@@ -38,20 +42,37 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
 
     override fun getItemCount() = storeList.size
 
-    class ViewHolder(view: View) :RecyclerView.ViewHolder(view) ,View.OnClickListener{
+    inner class ViewHolder(view: View) :RecyclerView.ViewHolder(view){
         val storeName: TextView = view.findViewById(R.id.storeName)
         val storeAddress: TextView = view.findViewById(R.id.storeAddress)
         val storeImage: ImageView = view.findViewById(R.id.storeImage)
-        val context = view.context
+        private val intent: Intent =Intent(context,StoreDetailActivity::class.java)
+        val stream : ByteArrayOutputStream = ByteArrayOutputStream()
 
-        override fun onClick(v: View?) {
 
-            val intent : Intent = Intent(context,StoreDetailActivity::class.java)
+        init {
+            view.setOnClickListener {
+                intent.putExtra("managerID", storeList[adapterPosition].managerID)
+                intent.putExtra("storeName",storeList[adapterPosition].storeName)
+                intent.putExtra("storeLat",storeList[adapterPosition].storeLat)
+                intent.putExtra("storeLng",storeList[adapterPosition].storeLng)
+                intent.putExtra("storeAddress",storeList[adapterPosition].storeAddress)
 
+                //val bitmap = (image.getDrawable() as BitmapDrawable).getBitmap()
+
+                storeList[adapterPosition].storeImg?.compress(Bitmap.CompressFormat.PNG,90,stream)
+                val storeImg = stream.toByteArray()
+                intent.putExtra("storeImg",storeImg)
+                storeList[adapterPosition].storeLayout?.compress(Bitmap.CompressFormat.PNG,90,stream)
+                val storeLayout = stream.toByteArray()
+                intent.putExtra("storeLayout",storeLayout)
+                context.startActivity(intent)
+            }
         }
+
+
+
+
+
     }
-
-
-
-
 }

@@ -77,11 +77,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         //StoreFragment start
                         storeListFragment = StoreListFragment();
                         storeListFragment.arguments = bundle
-                        supportFragmentManager.beginTransaction().replace(R.id.mainStoreList, storeListFragment).commit();
+                        supportFragmentManager.beginTransaction().replace(R.id.main_store_fragment, storeListFragment).commit();
                         //GoodsFragment start
                         goodslistFragment = GoodsListFragment();
                         goodslistFragment.arguments = bundle
-                        supportFragmentManager.beginTransaction().replace(R.id.mainGoodsList, goodslistFragment).commit();
+                        supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
                 }
             }
