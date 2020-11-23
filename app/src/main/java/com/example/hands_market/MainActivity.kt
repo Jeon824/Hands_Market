@@ -1,5 +1,6 @@
 package com.example.hands_market
 
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
@@ -46,17 +47,9 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
 
+
         val navigationBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        /*navigationBar.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.navigation_home->
-                R.id.navigation_favorite->
-                R.id.navigation_log->
-
-            }
-
-
-        }*/
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
     }
 
@@ -87,5 +80,22 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
             }
         }
 
+    }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.navigation_home -> {
+
+            }
+            R.id.navigation_favorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_log -> {
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        false
     }
 }

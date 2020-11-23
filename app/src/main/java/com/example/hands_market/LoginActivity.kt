@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.widget.Toast
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
+import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
 
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     lateinit var mOAuthLoginInstance : OAuthLogin
     lateinit var mContext: Context
+    lateinit var buttonOAuthLoginImg : OAuthLoginButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +25,10 @@ class Login : AppCompatActivity() {
 
         mContext = this
 
+
         mOAuthLoginInstance = OAuthLogin.getInstance()
         mOAuthLoginInstance.init(mContext, naver_client_id, naver_client_secret, naver_client_name)
-
+        buttonOAuthLoginImg = findViewById(R.id.buttonOAuthLoginImg)
         buttonOAuthLoginImg.setOAuthLoginHandler(mOAuthLoginHandler)
 
     }

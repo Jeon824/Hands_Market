@@ -36,6 +36,7 @@
         <activity android:name=".GoodsDetailActivity" />
         <activity android:name=".ShoppingBasketActivity" />
         <activity android:name=".DeleteBasketActivity" />
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
