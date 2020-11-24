@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StoreDetailActivity"
     android:orientation="vertical">
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
 
     <LinearLayout
         android:layout_width="330dp"
@@ -29,7 +29,8 @@
             android:layout_marginTop="50px"
             android:layout_marginRight="100px"
             android:orientation="vertical"
-            />                                              //가게명 보기
+            />
+<!--        //가게명 보기-->
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -46,7 +47,8 @@
                 android:text="직원call"
                 android:textColor="#000000"
                 android:textSize="40px"
-                android:layout_marginTop="10px"/>       //직원call 버튼
+                android:layout_marginTop="10px"/>
+<!--            //직원call 버튼-->
 
             <TextView
                 android:id="@+id/button_storeLayout"
@@ -57,7 +59,8 @@
                 android:text="배치도 보기"
                 android:textColor="#000000"
                 android:textSize="40px"
-                />                                  //배치도 보기 버튼
+                />
+<!--            //배치도 보기 버튼-->
 
 
         </LinearLayout>
@@ -76,7 +79,8 @@
         android:textSize="40px"
         android:layout_marginTop="10px"
         android:layout_marginLeft="650px"
-        />                                             //관리자만 보이는 가게정보 수정삭제 버튼
+        />
+<!--    //관리자만 보이는 가게정보 수정삭제 버튼-->
 
     <TextView
         android:id="@+id/button_goodsAdd"
@@ -89,7 +93,8 @@
         android:textSize="40px"
         android:layout_marginTop="10px"
         android:layout_marginLeft="700px"
-        />                                         //관리자만 보이는 물품추가 버튼
+        />
+<!--    //관리자만 보이는 물품추가 버튼-->
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hands_Market"
-        android:usesCleartextTraffic="true">
+        >
         <activity android:name=".PurchasedListActivity"></activity>
         <activity android:name=".StoreLayoutCallActivity" />
         <activity android:name=".MypageActivity" />
@@ -25,8 +25,6 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="f577cb830a51d1e5cecceed9215c38e3" />
-
-        <activity android:name=".StoreDetailActivity" />
         <activity android:name=".MapViewActivity" />
         <activity android:name=".GoodsReviewActivity" />
         <activity android:name=".GoodsDetailActivity" />

@@ -7,6 +7,9 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
 //import com.google.firebase.database.DatabaseReference
 //import com.google.firebase.database.FirebaseDatabase
 
@@ -19,6 +22,11 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_store_regist)
         val storeCreateBtn = findViewById<TextView>(R.id.storeCreateBtn)
         storeCreateBtn.setOnClickListener(this)
+
+        val database = Firebase.database
+        val myRef = database.getReference("message")
+
+        myRef.setValue("Hello, World!")
 
     }
 
@@ -38,7 +46,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 //                    )
 
 //                    println(StoreOne)
-//                    myRef.child("stores").setValue(StoreOne)
+//                    myRef.setValue(StoreOne)
                     //Toast.makeText(StoreDetailActivity.this, "저장을 완료했습니다.", Toast.LENGTH_SHORT).show();
 
                     val intent = Intent(this, StoreDetailActivity::class.java)
