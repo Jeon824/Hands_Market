@@ -63,7 +63,7 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
                 storeList[adapterPosition].storeImg?.compress(Bitmap.CompressFormat.PNG,90,stream)
                 val storeImg = stream.toByteArray()
                 intent.putExtra("storeImg",storeImg)
-                storeList[adapterPosition].storeLayout?.compress(Bitmap.CompressFormat.PNG,90,stream)
+//                storeList[adapterPosition].storeLayout?.compress(Bitmap.CompressFormat.PNG,90,stream)
                 val storeLayout = stream.toByteArray()
                 intent.putExtra("storeLayout",storeLayout)
                 context.startActivity(intent)

@@ -9,13 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.io.InputStream
 import java.lang.Exception
-import kotlin.reflect.typeOf
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 class StoreListFragment : Fragment() {
@@ -45,11 +42,11 @@ class StoreListFragment : Fragment() {
         }catch(e: Exception) {
             e.printStackTrace()
         }
-        for (i in 0 until 10) {
-            storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
-            if(storeList[i].storeLayout == null)
-                storeList[i].storeLayout = tmpLayout
-        }
+//        for (i in 0 until 10) {
+//            storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
+//            if(storeList[i].storeLayout == null)
+//                storeList[i].storeLayout = tmpLayout
+//        }
 
         viewAdapter = StoreListAdapter(context, storeList)
 

@@ -53,11 +53,11 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
 
         thisStore = Store(newIntent.getStringExtra("managerID"),
-                newIntent.getStringExtra("storeName"),
-                newIntent.getDoubleExtra("storeLat",DEFAULT_LAT),
-                newIntent.getDoubleExtra("storeLng",DEFAULT_LNG),
-                newIntent.getStringExtra("storeAddress"),
-                storeImg,storeLayout)
+            newIntent.getStringExtra("storeName"),
+            newIntent.getDoubleExtra("storeLat",DEFAULT_LAT),
+            newIntent.getDoubleExtra("storeLng",DEFAULT_LNG),
+            newIntent.getStringExtra("storeAddress"),
+            storeImg,storeLayout)
 
 
         storeName = findViewById(R.id.store_detail_store_name)
@@ -77,10 +77,10 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         if (v != null) {
             when (v.id) {
                 //R.id.searchBtn
-               /*R.id.addGoodsBtn -> {
-                    val intent = Intent(this, GoodsRegisterActivity::class.java)
-                    startActivity(intent)
-                }*/
+                /*R.id.addGoodsBtn -> {
+                     val intent = Intent(this, GoodsRegisterActivity::class.java)
+                     startActivity(intent)
+                 }*/
                 R.id.button_storeLayout -> {
                     val inflater : LayoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     val pw : View = inflater.inflate(R.layout.pop_up_layout,null)

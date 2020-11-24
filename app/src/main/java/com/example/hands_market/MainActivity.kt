@@ -28,7 +28,6 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
-
     private lateinit var setAddress: TextView
     private lateinit var searchBtn: ImageButton
     private lateinit var storeList: ArrayList<Store>
@@ -37,8 +36,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var goodslistFragment : GoodsListFragment
     private lateinit var keyWord: String
     private lateinit var keyWordInput :EditText
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +51,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         keyWordInput =findViewById(R.id.key_word)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+//        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         /*navigationBar.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.navigation_home->
@@ -61,15 +59,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 R.id.navigation_log->
             }
         }*/
-        val mypage = findViewById<TextView>(R.id.mypage)
-        mypage.setOnClickListener(this)
-
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference()
-
-        myRef.child("message1").setValue("Hell-----World!")
-    }
-        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
     }
 
@@ -99,23 +88,24 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 }
             }
         }
-
-    }
-
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-        when (menuItem.itemId) {
-            R.id.navigation_home -> {
-
-            }
-            R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.navigation_log -> {
-                val intent = Intent(this,LoginActivity::class.java)
-                startActivity(intent)
-            }
-        }
-        false
+//
     }
 }
+//
+//    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+//        when (menuItem.itemId) {
+//            R.id.navigation_home -> {
+//
+//            }
+//            R.id.navigation_favorite -> {
+//                val intent = Intent(this,FavoriteActivity::class.java)
+//                startActivity(intent)
+//            }
+//            R.id.navigation_log -> {
+//                val intent = Intent(this,LoginActivity::class.java)
+//                startActivity(intent)
+//            }
+//        }
+//        false
+//    }
+//}
