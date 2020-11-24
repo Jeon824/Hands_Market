@@ -88,24 +88,26 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 }
             }
         }
-//
+
+
+    }
+
+
+
+   private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+       when (menuItem.itemId) {
+            R.id.navigation_home -> {
+
+            }
+            R.id.navigation_favorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_log -> {
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        false
     }
 }
-//
-//    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-//        when (menuItem.itemId) {
-//            R.id.navigation_home -> {
-//
-//            }
-//            R.id.navigation_favorite -> {
-//                val intent = Intent(this,FavoriteActivity::class.java)
-//                startActivity(intent)
-//            }
-//            R.id.navigation_log -> {
-//                val intent = Intent(this,LoginActivity::class.java)
-//                startActivity(intent)
-//            }
-//        }
-//        false
-//    }
-//}

@@ -15,7 +15,7 @@
         >
 
         <ImageView
-            android:id="@+id/goods_image"
+            android:id="@+id/goods_detail_image"
             android:layout_width="200dp"
             android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,18 +39,16 @@
                 android:id="@+id/button_favorite"
                 />
 
-            <TextView
+            <Button
                 android:id="@+id/goods_request"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="150dp"
-                android:layout_height="43dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:text="입고요청"
                 android:textColor="#000000"
                 android:textSize="40px"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="248dp"
-                tools:layout_editor_absoluteY="83dp"
                 android:layout_marginTop="50px"
                 android:orientation="vertical"
                 />
@@ -65,28 +63,23 @@
                 android:id="@+id/button_modify"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="70dp"
-                android:layout_height="43dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:text="수정"
                 android:textColor="#000000"
-                android:textSize="40px"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="248dp"
-                tools:layout_editor_absoluteY="83dp"
-                android:layout_marginTop="10px"
+                android:textSize="15sp"
                 />
-
-
 
             <Button
                 android:id="@+id/button_delete"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="70dp"
-                android:layout_height="43dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:text="삭제"
                 android:textColor="#000000"
-                android:textSize="40px"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp"
                 tools:ignore="MissingConstraints" />
 
             </LinearLayout>
@@ -95,13 +88,14 @@
     </LinearLayout>
 
             <TextView
-                android:id="@+id/goods_detail"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="물품정보"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"/>
 
-                android:layout_marginTop="1dp"
-                android:textSize="25dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -155,34 +149,41 @@
         android:layout_weight="1"/>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/review"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:text="리뷰"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/review"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="리뷰"
+            android:layout_marginTop="1dp"
+            android:textSize="25dp"/>
+        <Button
+            android:id="@+id/button_review_write"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="100dp"
+            android:layout_height="43dp"
+            android:background="@drawable/border_bottom"
+            android:text="리뷰쓰기"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
-        android:layout_marginTop="1dp"
-        android:textSize="25dp"/>
-
-    <Button
-        android:id="@+id/button_review_write"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="100dp"
-        android:layout_height="43dp"
-        android:background="@drawable/border_bottom"
-        android:text="리뷰쓰기"
-        android:textColor="#000000"
-        android:textSize="40px"
-        tools:ignore="MissingConstraints" />
+    <fragment
+        android:name="com.example.hands_market.ReivewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/goods_review_fragment"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/navigation"
-        android:layout_marginTop="10dp"
         android:id="@+id/bottom_navigation1"/>
-
-
 
 </LinearLayout>

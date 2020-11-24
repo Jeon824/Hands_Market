@@ -9,6 +9,10 @@ import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
 
 class LoginActivity : AppCompatActivity() {
+    companion object{
+        var logStatus : Boolean = false //false:로그인 하지 않음 true:로그인 한 상태
+        var isManager : Boolean = false //false:일반 사용자 true: 관리자
+    }
 
     lateinit var mOAuthLoginInstance : OAuthLogin
     lateinit var mContext: Context
