@@ -13,6 +13,7 @@ import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import java.io.ByteArrayOutputStream
 
 class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): RecyclerView.Adapter<GoodsListAdapter.ViewHolder>(){
 
@@ -45,12 +46,13 @@ class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): Recycl
         val goodsName: TextView = view.findViewById(R.id.goods_name)
         val goodsPrice: TextView = view.findViewById(R.id.goods_price)
         val goodsImage: ImageView = view.findViewById(R.id.goods_image)
-        /*private val intent: Intent =Intent(context,goodsDetailActivity::class.java)
+        val stream : ByteArrayOutputStream = ByteArrayOutputStream()
+        private val intent: Intent =Intent(context,GoodsDetailActivity::class.java)
         init {
             view.setOnClickListener {
                 context.startActivity(intent)
             }
-        }*/
+        }
 
 
 

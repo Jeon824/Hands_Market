@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".StoreListFragment">
+    android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:tools="http://schemas.android.com/tools"
         android:overScrollMode="ifContentScrolls"
-        android:id="@+id/store_recycler_view">
+        android:id="@+id/goods_review_recycler_view">
     </androidx.recyclerview.widget.RecyclerView>
-</FrameLayout>
+</LinearLayout>
