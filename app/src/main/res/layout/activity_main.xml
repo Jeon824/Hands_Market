@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:text="통합 검색: "
             android:textSize="20sp"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:id="@+id/store_detail"/>
 
         <EditText
             android:layout_width="250dp"
@@ -41,6 +42,7 @@
             android:src="@drawable/ic_baseline_search_24"
             android:id="@+id/searchBtn"/>
     </LinearLayout>
+
     <fragment
         android:name="com.example.hands_market.StoreListFragment"
         android:id="@+id/main_store_fragment"
