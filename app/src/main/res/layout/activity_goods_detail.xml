@@ -24,7 +24,7 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="59dp"
             android:layout_marginRight="150px"
-            />                                      //물품사진
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/button_favorite"
-                />  //즐겨찾기 하트 버튼
+                />
 
             <TextView
                 android:id="@+id/goods_request"
@@ -53,7 +53,7 @@
                 tools:layout_editor_absoluteY="83dp"
                 android:layout_marginTop="50px"
                 android:orientation="vertical"
-                />                                      //입고요청 버튼
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                 tools:layout_editor_absoluteX="248dp"
                 tools:layout_editor_absoluteY="83dp"
                 android:layout_marginTop="10px"
-                />                                           //수정버튼
+                />
 
 
 
@@ -87,7 +87,7 @@
                 android:text="삭제"
                 android:textColor="#000000"
                 android:textSize="40px"
-                tools:ignore="MissingConstraints" />          //삭제버튼
+                tools:ignore="MissingConstraints" />
 
             </LinearLayout>
         </LinearLayout>
@@ -101,7 +101,7 @@
                 android:text="물품정보"
 
                 android:layout_marginTop="1dp"
-                android:textSize="25dp"/>       //물품정보
+                android:textSize="25dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,7 +122,7 @@
         tools:layout_editor_absoluteX="248dp"
         tools:layout_editor_absoluteY="83dp"
         android:layout_marginTop="50px"
-        android:layout_weight="1"/>     //장바구니 버튼
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/button_purchase"
@@ -137,7 +137,7 @@
         tools:layout_editor_absoluteX="248dp"
         tools:layout_editor_absoluteY="83dp"
         android:layout_marginTop="50px"
-        android:layout_weight="1"/>         //결제서비스 버튼
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/button_reserve"
@@ -152,7 +152,7 @@
         tools:layout_editor_absoluteX="248dp"
         tools:layout_editor_absoluteY="83dp"
         android:layout_marginTop="50px"
-        android:layout_weight="1"/>         //예약하기 버튼
+        android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -163,7 +163,7 @@
         android:text="리뷰"
 
         android:layout_marginTop="1dp"
-        android:textSize="25dp"/>           //리뷰보기
+        android:textSize="25dp"/>
 
     <Button
         android:id="@+id/button_review_write"
@@ -174,7 +174,7 @@
         android:text="리뷰쓰기"
         android:textColor="#000000"
         android:textSize="40px"
-        tools:ignore="MissingConstraints" />            //리뷰쓰기 버튼
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

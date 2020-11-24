@@ -1,5 +1,6 @@
 package com.example.hands_market
 
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
@@ -38,10 +39,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var keyWordInput :EditText
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         setAddress = findViewById<TextView>(R.id.setAddress)
         setAddress.setOnClickListener(this)
@@ -65,17 +69,15 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
         myRef.child("message1").setValue("Hell-----World!")
     }
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+    }
 
 
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
                 //R.id.searchBtn
-                R.id.mypage ->{
-                    val intent = Intent(this, ManagerActivity::class.java)
-                    startActivity(intent)
-                }
                 R.id.setAddress -> {
                     val intent = Intent(this, MapViewActivity::class.java)
                     startActivity(intent)
@@ -88,15 +90,32 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         //StoreFragment start
                         storeListFragment = StoreListFragment();
                         storeListFragment.arguments = bundle
-                        supportFragmentManager.beginTransaction().replace(R.id.mainStoreList, storeListFragment).commit();
+                        supportFragmentManager.beginTransaction().replace(R.id.main_store_fragment, storeListFragment).commit();
                         //GoodsFragment start
                         goodslistFragment = GoodsListFragment();
                         goodslistFragment.arguments = bundle
-                        supportFragmentManager.beginTransaction().replace(R.id.mainGoodsList, goodslistFragment).commit();
+                        supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
                 }
             }
         }
 
+    }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.navigation_home -> {
+
+            }
+            R.id.navigation_favorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_log -> {
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        false
     }
 }

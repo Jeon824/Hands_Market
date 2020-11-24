@@ -1,182 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StoreDetailActivity"
     android:orientation="vertical">
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/input_border"
         android:layout_marginTop="50px"
         android:layout_marginBottom="50px"
         android:layout_gravity="center"
         >
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/store_detail_store_image"
+            android:src="@drawable/ic_baseline_storefront_24"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <TextView
-            android:id="@+id/storename"
+            android:id="@+id/store_detail_store_name"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_bottom"
-            android:text="가게명"
+            android:text="가게명:"
             android:textColor="#000000"
-            android:textSize="40px"
-            android:layout_marginTop="50px"
-            android:layout_marginRight="100px"
+            android:textAlignment="textStart"
+            android:textSize="12sp"
+            android:layout_marginEnd="10dp"
             android:orientation="vertical"
             />
-<!--        //가게명 보기-->
-
+        <TextView
+            android:id="@+id/store_detail_store_address"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="주소:"
+            android:textColor="#000000"
+            android:textAlignment="textStart"
+            android:textSize="12sp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical"
+            />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-
-            <TextView
+            <Button
                 android:id="@+id/button_call"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/border_bottom"
-                android:text="직원call"
+                android:text="CALL"
                 android:textColor="#000000"
-                android:textSize="40px"
-                android:layout_marginTop="10px"/>
-<!--            //직원call 버튼-->
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"/>
 
-            <TextView
+            <Button
                 android:id="@+id/button_storeLayout"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="100dp"
                 android:layout_height="43dp"
                 android:background="@drawable/border_bottom"
-                android:text="배치도 보기"
+                android:text="배치도"
                 android:textColor="#000000"
-                android:textSize="40px"
+                android:textSize="20sp"
+                android:layout_marginEnd="10dp"
                 />
-<!--            //배치도 보기 버튼-->
-
-
         </LinearLayout>
-
    </LinearLayout>
-
-
-    <TextView
+    <Button
         android:id="@+id/button_storeState_change"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/border_bottom"
         android:text="가게정보 수정/삭제"
         android:textColor="#000000"
-        android:textSize="40px"
-        android:layout_marginTop="10px"
-        android:layout_marginLeft="650px"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="end"
+        android:visibility="invisible"
         />
-<!--    //관리자만 보이는 가게정보 수정삭제 버튼-->
 
-    <TextView
+    <Button
         android:id="@+id/button_goodsAdd"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/border_bottom"
         android:text="물품+"
         android:textColor="#000000"
-        android:textSize="40px"
-        android:layout_marginTop="10px"
-        android:layout_marginLeft="700px"
+        android:textSize="20sp"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="end"
+        android:visibility="invisible"
         />
-<!--    //관리자만 보이는 물품추가 버튼-->
-
-    <LinearLayout
+    <fragment
+        android:name="com.example.hands_market.GoodsListFragment"
+        android:id="@+id/store_detail_goods_fragment"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-    <TextView
-        android:id="@+id/goods1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:text="물품1"
-        android:layout_marginTop="30dp"
-        android:textSize="25dp"/>               //물품1추가
-
-    <TextView
-        android:id="@+id/goods2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:text="물품2"
-        android:layout_marginTop="30dp"
-        android:textSize="25dp"/>               //물품2추가
-
-    <TextView
-        android:id="@+id/goods3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:text="물품3"
-        android:layout_marginTop="30dp"
-        android:textSize="25dp"/>               //물품3추가
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-
-        <TextView
-            android:id="@+id/goods4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="물품4"
-            android:layout_marginTop="20dp"
-            android:textSize="25dp"/>               //물품4추가
-
-                <TextView
-                    android:id="@+id/goods5"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="물품5"
-                    android:layout_marginTop="20dp"
-                    android:textSize="25dp"/>          //물품5추가
-
-                <TextView
-                    android:id="@+id/goods6"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="물품6"
-                    android:layout_marginTop="20dp"
-                    android:textSize="25dp"/>           //물품6추가
-
-
-
-
-            </LinearLayout>
-
-    </LinearLayout>
-
-
-
+        app:menu="@menu/navigation"
+        android:id="@+id/bottom_navigation"/>
 </LinearLayout>

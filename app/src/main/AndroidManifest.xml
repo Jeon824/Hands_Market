@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,20 +13,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hands_Market"
-        >
+        android:usesCleartextTraffic="true">
         <activity android:name=".PurchasedListActivity"></activity>
         <activity android:name=".StoreLayoutCallActivity" />
         <activity android:name=".MypageActivity" />
         <activity android:name=".StoreDetailActivity" />
         <activity android:name=".GoodsRegisterActivity" />
         <activity android:name=".StoreRegistActivity" />
+        <activity android:name=".RequestGoodsListActivity" />
+        <activity android:name=".ReserveListActivity" />
         <activity android:name=".ManagerActivity" />
+
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="f577cb830a51d1e5cecceed9215c38e3" />
+        <activity android:name=".FavoriteActivity" />
+        <activity android:name=".FavoriteStoreActivity" />
+        <activity android:name=".FavoriteGoodsActivity" />
+        <activity android:name=".DeleteFavoriteStoreActivity" />
+        <activity android:name=".DeleteFavoriteGoodsActivity" />
         <activity android:name=".MapViewActivity" />
         <activity android:name=".GoodsReviewActivity" />
         <activity android:name=".GoodsDetailActivity" />
+        <activity android:name=".ShoppingBasketActivity" />
+        <activity android:name=".DeleteBasketActivity" />
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,8 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
