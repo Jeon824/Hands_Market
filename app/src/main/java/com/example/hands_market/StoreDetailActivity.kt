@@ -62,6 +62,12 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
 
+        val button_storeLayout = findViewById<Button>(R.id.button_storeLayout)
+        button_storeLayout.setOnClickListener{
+            val intent = Intent(this, MapViewActivity::class.java)
+            startActivity(intent)
+        }
+
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
