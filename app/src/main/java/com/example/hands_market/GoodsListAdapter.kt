@@ -19,8 +19,6 @@ class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): Recycl
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
         val view = LayoutInflater.from(viewGroup.context)
                 .inflate(R.layout.goods_recycler_view, viewGroup, false)
@@ -38,8 +36,6 @@ class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): Recycl
 
     }
 
-
-
     override fun getItemCount() = goodsList.size
 
     inner class ViewHolder(view: View) :RecyclerView.ViewHolder(view){
@@ -53,10 +49,5 @@ class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): Recycl
                 context.startActivity(intent)
             }
         }
-
-
-
-
-
     }
 }

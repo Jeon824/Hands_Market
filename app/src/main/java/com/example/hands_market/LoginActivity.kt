@@ -1,9 +1,11 @@
 package com.example.hands_market
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
@@ -29,14 +31,15 @@ class LoginActivity : AppCompatActivity() {
 
         mContext = this
 
-
         mOAuthLoginInstance = OAuthLogin.getInstance()
         mOAuthLoginInstance.init(mContext, naver_client_id, naver_client_secret, naver_client_name)
         buttonOAuthLoginImg = findViewById(R.id.buttonOAuthLoginImg)
         buttonOAuthLoginImg.setOAuthLoginHandler(mOAuthLoginHandler)
 
+        // bottom navigation 선언
+        val navigationBar = findViewById<BottomNavigationView>(R.id.login_navigation)
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
-
 
     val mOAuthLoginHandler: OAuthLoginHandler = object : OAuthLoginHandler() {
         override fun run(success: Boolean) {
@@ -56,5 +59,24 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    // bottom navigation 버튼 출력 함수
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.navigation_home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_favorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_log -> {
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        false
     }
 }

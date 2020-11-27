@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,9 +13,7 @@
         android:layout_height="0dp"
         android:paddingTop="40dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
-        >
-
+        android:layout_weight="1" >
 
         <TextView
             android:id="@+id/purchasedList_title"
@@ -22,9 +21,7 @@
             android:layout_height="wrap_content"
             android:text="나의 결제 목록"
             android:textColor="#000000"
-            android:textSize="50px"
-            />
-
+            android:textSize="50px" />
     </LinearLayout>
 
     <fragment
@@ -35,9 +32,9 @@
         android:layout_height="0dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/purchasedList_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/navigation"
-        android:id="@+id/bottom_navigation"/>
+        app:menu="@menu/navigation2" />
 
 </LinearLayout>

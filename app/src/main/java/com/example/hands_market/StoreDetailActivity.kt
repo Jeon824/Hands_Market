@@ -4,20 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import org.w3c.dom.Text
-import java.io.ByteArrayOutputStream
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var storeImage : ImageView
 lateinit var storeUpdateBtn : Button
-
 lateinit var thisStore : Store
 lateinit var storeName : TextView
 lateinit var storeAddress : TextView
@@ -50,17 +46,14 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
             storeLayout = BitmapFactory.decodeByteArray(imgArray, 0, imgArray.size)
         }
 
-
-
         thisStore = Store(newIntent.getStringExtra("managerID"),
             newIntent.getStringExtra("storeName"),
             newIntent.getDoubleExtra("storeLat",DEFAULT_LAT),
             newIntent.getDoubleExtra("storeLng",DEFAULT_LNG),
             newIntent.getStringExtra("storeAddress"),
-            storeImg,storeLayout)
+            storeImg, storeLayout)
 
-
-        storeName = findViewById(R.id.store_detail_store_name)
+        storeName = findViewById(R.id.storeDetailNameText)
         storeName.text = thisStore.storeName
         storeAddress = findViewById(R.id.store_detail_store_address)
         storeAddress.text = thisStore.storeAddress
@@ -69,8 +62,9 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
 
-
-
+        // bottom navigation 선언
+        val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     override fun onClick(v: View?) {
@@ -94,7 +88,6 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                     val layout :ImageView = pw.findViewById(R.id.pop_up_layout_img)
                     layout.setImageBitmap(thisStore.storeLayout)
 
-
                     puW.showAtLocation(v, Gravity.CENTER, 0 , 0)
 
                     /*val intent = Intent(this, StoreLayoutCallActivity::class.java)
@@ -108,4 +101,22 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    // bottom navigation 버튼 출력 함수
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.navigation_home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_favorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_mypage -> {
+                val intent = Intent(this,MypageActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        false
+    }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ManagerActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,9 @@ class ManagerActivity : AppCompatActivity(), View.OnClickListener {
         val addStoreBtn = findViewById<TextView>(R.id.addStoreBtn)
         addStoreBtn.setOnClickListener(this)
 
-      
+        // bottom navigation 선언
+        val navigationBar = findViewById<BottomNavigationView>(R.id.manager_navigation)
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     override fun onClick(v: View?) {
@@ -39,5 +42,24 @@ class ManagerActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    // bottom navigation 버튼 출력 함수
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.navigation_home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_favorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_mypage -> {
+                val intent = Intent(this,MypageActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        false
     }
 }

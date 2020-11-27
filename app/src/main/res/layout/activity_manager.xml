@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ManagerActivity">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,10 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/input_border"
-            android:layout_marginBottom="50px"
-            >
+            android:layout_marginBottom="50px" >
 
             <ImageView
+                android:id="@+id/storeImg"
                 android:layout_width="100dp"
                 android:layout_height="106dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -30,15 +31,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="59dp"
-                android:layout_marginRight="300px"
-                />
+                android:layout_marginRight="300px" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
+                android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/callList"
@@ -52,7 +50,7 @@
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="248dp"
                     tools:layout_editor_absoluteY="83dp"
-                    android:layout_marginTop="10px"/>
+                    android:layout_marginTop="10px" />
 
                 <TextView
                     android:id="@+id/reserveListBtn"
@@ -79,13 +77,13 @@
                     tools:layout_editor_absoluteX="248dp"
                     tools:layout_editor_absoluteY="169dp" />
             </LinearLayout>
-
         </LinearLayout>
 
         <TextView
+            android:id="@+id/managerMyListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:text="나의 마켓 리스트"
+            android:text="나의 마켓 리스트"
             android:textColor="#000000"
             android:textSize="50px"
             android:layout_gravity="center"
@@ -112,7 +110,7 @@
             app:layout_constraintVertical_bias="0.394" />
 
         <fragment
-            android:id="@+id/mainStoreList"
+            android:id="@+id/managerList"
             android:name="com.example.hands_market.StoreListFragment"
             android:layout_width="372dp"
             android:layout_height="384dp"
@@ -122,6 +120,13 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="314dp" />
-
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/manager_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
