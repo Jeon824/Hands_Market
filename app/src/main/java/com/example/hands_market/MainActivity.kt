@@ -37,11 +37,16 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var keyWord: String
     private lateinit var keyWordInput :EditText
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setAddress = findViewById<TextView>(R.id.setAddressMainText)
+        val store_detail = findViewById<TextView>(R.id.store_detail)
+        store_detail.setOnClickListener(this)
+
+
+        setAddress = findViewById<TextView>(R.id.setAddress)
         setAddress.setOnClickListener(this)
         searchBtn = findViewById<ImageButton>(R.id.searchBtn)
         searchBtn.setOnClickListener(this)
@@ -59,9 +64,15 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
     }
 
+
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
+                R.id.store_detail -> {
+                    val intent = Intent(this, ManagerActivity::class.java)
+                    startActivity(intent)
+                }
+
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
                     val intent = Intent(this, MapViewActivity::class.java)
@@ -84,7 +95,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 }
             }
         }
+
+
     }
+
+
 
    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
        when (menuItem.itemId) {
