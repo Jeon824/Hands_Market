@@ -12,7 +12,7 @@ class FavoriteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_favorite)
 
         // 즐겨찾기 조회 (상점) 버튼
-        val favoriteStoreBtn = findViewById<Button>(R.id.favoriteStoreBtn6)
+        val favoriteStoreBtn = findViewById<Button>(R.id.favoriteStoreBtn)
         favoriteStoreBtn.setOnClickListener{
             val intent = Intent(this, FavoriteStoreActivity::class.java)
             startActivity(intent)
@@ -26,8 +26,8 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         // bottom navigation 선언
-        val navigationBar = findViewById<BottomNavigationView>(R.id.favorite_navigation)
-        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        val favorite_navigation = findViewById<BottomNavigationView>(R.id.favorite_navigation)
+        favorite_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     // bottom navigation 버튼 출력 함수

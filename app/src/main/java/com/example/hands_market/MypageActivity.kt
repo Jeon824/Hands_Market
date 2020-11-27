@@ -3,12 +3,25 @@ package com.example.hands_market
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MypageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage)
+
+        val button_change_memberdata = findViewById<Button>(R.id.button_change_memberdata)
+        button_change_memberdata.setOnClickListener{
+            val intent = Intent(this, Mypage_change::class.java)
+            startActivity(intent)
+        }
+
+        val button_purchaselist = findViewById<Button>(R.id.button_purchaselist)
+        button_purchaselist.setOnClickListener{
+            val intent = Intent(this, PurchasedListActivity::class.java)
+            startActivity(intent)
+        }
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.mypage_navigation)

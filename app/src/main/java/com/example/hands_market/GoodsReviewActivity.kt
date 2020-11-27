@@ -24,6 +24,10 @@ class GoodsReviewActivity : AppCompatActivity() {
 
         // '등록하기' 버튼 - 상품 리뷰하기 등록
         val goodsRevCreateBtn = findViewById<Button>(R.id.goodsRevCreateBtn)
+        goodsRevCreateBtn.setOnClickListener{
+            val intent = Intent(this, GoodsDetailActivity::class.java)
+            startActivity(intent)
+        }
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.goodsReview_navigation)
