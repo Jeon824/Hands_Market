@@ -62,6 +62,32 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
             }
         }*/
 
+        val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+
+        val test_array=ArrayList<String>()
+        val test = findViewById<TextView>(R.id.test)
+        test.setOnClickListener(this)
+        val msg= database.getReference().child("Stores")
+        msg.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                    var value = data.getValue(Store::class.java)
+                    test.text = value?.storeName.toString()
+
+//                    val value = data.value
+//                    test.text = storeValue?.equals("storeName").toString()
+//                    test_array.add(value?.storeName.toString())
+                }
+//                test.text=test_array[0]
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+            }
+        })
+
     }
 
 

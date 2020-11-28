@@ -81,11 +81,10 @@
             </LinearLayout>
 
         </LinearLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:text="나의 마켓 리스트"
+            android:text="나의 마켓 리스트"
             android:textColor="#000000"
             android:textSize="50px"
             android:layout_gravity="center"
@@ -95,6 +94,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.394" />
+
 
         <TextView
             android:id="@+id/addStoreBtn"

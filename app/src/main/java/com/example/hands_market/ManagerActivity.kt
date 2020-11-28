@@ -1,10 +1,15 @@
 package com.example.hands_market
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
 
 class ManagerActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +30,9 @@ class ManagerActivity : AppCompatActivity(), View.OnClickListener {
 
         val addStoreBtn = findViewById<TextView>(R.id.addStoreBtn)
         addStoreBtn.setOnClickListener(this)
+
+        
+
 
       
     }
