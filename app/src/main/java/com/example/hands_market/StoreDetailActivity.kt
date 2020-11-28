@@ -105,9 +105,9 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(intent)*/
                 }
 
-//                R.id.buttonStoreDeleteBtn ->{
-//
-//                }
+                R.id.button_storeState_delete ->{
+
+                }
             }
         }
     }

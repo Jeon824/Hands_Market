@@ -13,6 +13,7 @@
             android:id="@+id/storeRegistMainText"
             android:layout_width="wrap_content"
             android:layout_height="76dp"
+
             android:gravity="center"
             android:text="마켓 등록하기"
             android:textColor="#000000"
@@ -20,9 +21,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="516dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/input_border"
             android:gravity="center"
+            android:layout_weight="1"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -30,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingTop="30dp"
+                android:paddingTop="10dp"
                 android:paddingBottom="20dp">
 
                 <TextView
@@ -105,6 +107,11 @@
                     android:text="첨부 파일"
                     android:textColor="#000000"
                     android:textSize="20sp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:id="@+id/showImg"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -135,6 +142,19 @@
                     android:text="첨부 파일"
                     android:textColor="#000000"
                     android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/test33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:paddingRight="10dp"
+                    android:textColor="#FF000000"
+                    android:textSize="20sp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:id="@+id/showLayoutImg"
+                    />
             </LinearLayout>
         </LinearLayout>
 
@@ -142,6 +162,8 @@
             android:id="@+id/storeCreateBtn"
             android:layout_width="100dp"
             android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/click_button"
             android:text="등록"
             android:textColor="#000000"
