@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -35,7 +36,19 @@ class StoreListFragment : Fragment() {
         // Inflate the layout for this fragment
         var searchKeyword : String? = arguments?.getString("keyword")
         val view = inflater.inflate(R.layout.fragment_store_list, container, false)
-        fragLayoutManager = GridLayoutManager(activity,2)
+        if(arguments?.getString("type")=="favorite")
+        {
+            var type: String? = arguments?.getString("type")
+            if (type == "favorite")
+                fragLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            else
+                fragLayoutManager = GridLayoutManager(activity,2)
+        }
+        else
+        {
+            fragLayoutManager = GridLayoutManager(activity,2)
+        }
+
         val context : Context = view.context
         val am : AssetManager = resources.assets;
         var inS :InputStream? = null

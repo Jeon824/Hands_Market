@@ -1,69 +1,35 @@
 package com.example.hands_market
 
-import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import android.widget.TextView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.ImageView
 
-class GoodsDetailActivity : AppCompatActivity() {
+class GoodsDetailActivity : AppCompatActivity(), View.OnClickListener {
 
-    val reserveBtn : Button? = null;
-    val requestGoods : Button? = null;
-    val editBtn : Button? = null;
-    val deleteBtn : Button? = null;
-    val deleteReviewBtn : Button? = null;
-    val addToBasketBtn : Button? = null;
-    val writeReviewBtn : Button? = null;
+    private lateinit var thisGoods : Goods
 
+    var reserveBtn : Button? = null;
+    var requestGoods : Button? = null;
+    var editBtn : Button? = null;
+    var deleteBtn : Button? = null;
+    var deleteReviewBtn : Button? = null;
+    var addToBasketBtn : Button? = null;
+    var writeReviewBtn : Button? = null;
+    var goodsImage : ImageView? = null;
+    var favoriteStatus : ImageView? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_detail)
-
-        val goods_request = findViewById<Button>(R.id.goods_request)
-
-        val button_modify = findViewById<Button>(R.id.button_modify)
-
-        val button_delete = findViewById<Button>(R.id.button_delete)
-
-        val button_shopping_basket = findViewById<TextView>(R.id.button_shopping_basket)
-        button_shopping_basket.setOnClickListener{
-            val intent = Intent(this, ShoppingBasketActivity::class.java)
-            startActivity(intent)
-        }
-
-        val button_purchase = findViewById<TextView>(R.id.button_purchase)
-
-        val button_reserve = findViewById<TextView>(R.id.button_reserve)
-
-        val button_review_write = findViewById<Button>(R.id.button_review_write)
-        button_review_write.setOnClickListener{
-            val intent = Intent(this, GoodsReviewActivity::class.java)
-            startActivity(intent)
-        }
-
-        // bottom navigation 선언
-        val goodsDetail_navigation = findViewById<BottomNavigationView>(R.id.goodsDetail_navigation)
-        goodsDetail_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        favoriteStatus = findViewById(R.id.button_favorite)
+        var imgArray : ByteArray? = intent.getByteArrayExtra("storeImg")
+        goodsImage = findViewById<ImageView>(R.id.goods_detail_image)
 
     }
 
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-        when (menuItem.itemId) {
-            R.id.navigation_home -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.navigation_mypage -> {
-                val intent = Intent(this,MypageActivity::class.java)
-                startActivity(intent)
-            }
-        }
-        false
+    override fun onClick(v: View?) {
+
     }
 }

@@ -4,25 +4,36 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.FrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
+lateinit var storeListFragment: StoreListFragment
+lateinit var goodsListFragment: GoodsListFragment
 
 class FavoriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
 
+        val bundle: Bundle = Bundle()
+        bundle.putString("type","favorite")
+
+
         // 즐겨찾기 조회 (상점) 버튼
         val favoriteStoreBtn = findViewById<Button>(R.id.favoriteStoreBtn)
         favoriteStoreBtn.setOnClickListener{
-            val intent = Intent(this, FavoriteStoreActivity::class.java)
-            startActivity(intent)
+            storeListFragment = StoreListFragment();
+            storeListFragment.arguments = bundle
+            supportFragmentManager.beginTransaction().replace(R.id.favorite_activity_frame_layout, storeListFragment).commit()
+
         }
 
         // 즐겨찾기 조회 (상품) 버튼
         val favoriteGoodsBtn = findViewById<Button>(R.id.favoriteGoodsBtn)
         favoriteGoodsBtn.setOnClickListener{
-            val intent = Intent(this, FavoriteGoodsActivity::class.java)
-            startActivity(intent)
+            goodsListFragment = GoodsListFragment();
+            goodsListFragment.arguments = bundle
+            supportFragmentManager.beginTransaction().replace(R.id.favorite_activity_frame_layout, goodsListFragment).commit()
         }
 
         // bottom navigation 선언

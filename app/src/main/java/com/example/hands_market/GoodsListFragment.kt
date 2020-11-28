@@ -1,6 +1,7 @@
 package com.example.hands_market
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,11 +29,25 @@ class GoodsListFragment : Fragment() {
         // Inflate the layout for this fragment
         var searchKeyword : String? = arguments?.getString("keyword")
         val view = inflater.inflate(R.layout.fragment_goods_list, container, false)
-        fragLayoutManager = GridLayoutManager(activity,2)
+
+        if(arguments?.getString("type")=="favorite")
+        {
+            var type: String? = arguments?.getString("type")
+            if (type == "favorite")
+                fragLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            else
+                fragLayoutManager = GridLayoutManager(activity,2)
+        }
+        else
+        {
+            fragLayoutManager = GridLayoutManager(activity,2)
+        }
+
         val context : Context = view.context
 
+
         for (i in 0 until 10)
-            goodsList.add(i,Goods("관리자1","가게이름","$i 번째 상품",null,10000 ,null,100,"RED",100))
+            goodsList.add(i,Goods("$i 번째 관리자","$i 번째 가게","$i 번째 상품",null,10000 ,null,100,"RED",100,null,null,null))
 
         viewAdapter = GoodsListAdapter(context, goodsList)
 

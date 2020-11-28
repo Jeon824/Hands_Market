@@ -2,23 +2,27 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/goods_image"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:id="@+id/goods_name"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:id="@+id/goods_price"/>
+
 </LinearLayout>

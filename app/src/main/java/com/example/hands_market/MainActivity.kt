@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var goodslistFragment : GoodsListFragment
     private lateinit var keyWord: String
     private lateinit var keyWordInput :EditText
+    val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var test : TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +47,15 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         val store_detail = findViewById<TextView>(R.id.store_detail)
         store_detail.setOnClickListener(this)
 
-        setAddress = findViewById<TextView>(R.id.setAddress)
+
+
+        setAddress = findViewById<TextView>(R.id.setAddressMainText)
         setAddress.setOnClickListener(this)
         searchBtn = findViewById<ImageButton>(R.id.searchBtn)
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
+        test = findViewById(R.id.test)
+        test.setOnClickListener(this)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -67,13 +74,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         msg.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(data in dataSnapshot.children){
-                    var value = data.getValue()
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                    var value = data.getValue(Store::class.java)
+                    test.text = value?.storeName.toString()
 
-                    test.text = value.toString()
-//                    val keyD=data.key
-//                    var value = data.getValue(Store::class.java)
-//                    test.text = value?.storeName.toString()
-//                    test.text =keyD.toString()
                 }
 //                test.text=test_array[0]
             }
@@ -95,7 +100,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 }
 
                 //R.id.searchBtn
-                R.id.setAddress -> {
+                R.id.setAddressMainText -> {
                     val intent = Intent(this, MapViewActivity::class.java)
                     startActivity(intent)
                 }
@@ -113,6 +118,25 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         goodslistFragment.arguments = bundle
                         supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
+                }
+                R.id.test -> {
+                    val msg= database.getReference().child("Stores")
+                    msg.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                                var value = data.getValue(Store::class.java)
+                                test.text = value?.storeName.toString()
+
+                            }
+//                test.text=test_array[0]
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
                 }
             }
         }
