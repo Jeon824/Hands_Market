@@ -12,12 +12,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import org.w3c.dom.Text
-import java.io.ByteArrayOutputStream
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var storeImage : ImageView
 lateinit var storeUpdateBtn : Button
@@ -61,10 +56,9 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
             newIntent.getDoubleExtra("storeLat",DEFAULT_LAT),
             newIntent.getDoubleExtra("storeLng",DEFAULT_LNG),
             newIntent.getStringExtra("storeAddress"),
-            storeImg,storeLayout)
+            storeImg, storeLayout)
 
-
-        storeName = findViewById(R.id.store_detail_store_name)
+        storeName = findViewById(R.id.storeDetailNameText)
         storeName.text = thisStore.storeName
         storeAddress = findViewById(R.id.store_detail_store_address)
         storeAddress.text = thisStore.storeAddress
@@ -73,8 +67,15 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
 
+        val button_storeLayout = findViewById<Button>(R.id.button_storeLayout)
+        button_storeLayout.setOnClickListener{
+            val intent = Intent(this, MapViewActivity::class.java)
+            startActivity(intent)
+        }
 
-
+        // bottom navigation 선언
+        val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     override fun onClick(v: View?) {
@@ -112,4 +113,22 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    // bottom navigation 버튼 출력 함수
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.navigation_home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_favorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_mypage -> {
+                val intent = Intent(this,MypageActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        false
+    }
 }

@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var keyWord: String
     private lateinit var keyWordInput :EditText
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,15 +44,14 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         val store_detail = findViewById<TextView>(R.id.store_detail)
         store_detail.setOnClickListener(this)
 
-
         setAddress = findViewById<TextView>(R.id.setAddress)
         setAddress.setOnClickListener(this)
         searchBtn = findViewById<ImageButton>(R.id.searchBtn)
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
 
-        val navigationBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-//        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         /*navigationBar.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.navigation_home->
@@ -125,7 +123,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
        when (menuItem.itemId) {
             R.id.navigation_home -> {
-
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             R.id.navigation_favorite -> {
                 val intent = Intent(this,FavoriteActivity::class.java)

@@ -19,8 +19,6 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
         val view = LayoutInflater.from(viewGroup.context)
                 .inflate(R.layout.store_recycler_view, viewGroup, false)
@@ -38,8 +36,6 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
 
     }
 
-
-
     override fun getItemCount() = storeList.size
 
     inner class ViewHolder(view: View) :RecyclerView.ViewHolder(view){
@@ -48,7 +44,6 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
         val storeImage: ImageView = view.findViewById(R.id.storeImage)
         private val intent: Intent =Intent(context,StoreDetailActivity::class.java)
         val stream : ByteArrayOutputStream = ByteArrayOutputStream()
-
 
         init {
             view.setOnClickListener {
@@ -69,10 +64,5 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
                 context.startActivity(intent)
             }
         }
-
-
-
-
-
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     tools:context=".FavoriteGoodsActivity">
 
     <TextView
-        android:id="@+id/favoriteText"
+        android:id="@+id/favoriteGoodsMainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="즐겨찾기 조회"
@@ -16,10 +17,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <Button
-        android:id="@+id/favoriteStoreBtn"
+        android:id="@+id/favoriteStoreBtn2"
         android:layout_width="100dp"
         android:layout_height="45dp"
         android:text="상점"
@@ -33,7 +34,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <Button
-        android:id="@+id/favoriteGoodsBtn"
+        android:id="@+id/favoriteGoodsBtn2"
         android:layout_width="100dp"
         android:layout_height="45dp"
         android:text="상품"
@@ -46,7 +47,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <Button
-        android:id="@+id/deleteFavorite2Btn"
+        android:id="@+id/favoriteGoodsDelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="삭제"
@@ -56,17 +57,24 @@
         app:layout_constraintHorizontal_bias="0.829"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintVertical_bias="0.86" />
 
     <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.favoriteactivity.GoodsListFragment"
+        android:id="@+id/favoriteGoodsfragment"
+        android:name="com.example.hands_market.GoodsListFragment"
         android:layout_width="300dp"
-        android:layout_height="360dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.52" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/favoriteGoods_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

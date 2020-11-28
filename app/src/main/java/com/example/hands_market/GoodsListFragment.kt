@@ -19,7 +19,6 @@ class GoodsListFragment : Fragment() {
     private val goodsList : MutableList<Goods> = ArrayList()
     private lateinit var recyclerView : RecyclerView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -43,10 +42,8 @@ class GoodsListFragment : Fragment() {
             layoutManager = fragLayoutManager
             adapter = viewAdapter
         }
-
         return view
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

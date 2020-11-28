@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     tools:context=".ShoppingBasketActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/basketMainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="장바구니"
@@ -29,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.16" />
 
     <Button
         android:id="@+id/basketPayBtn"
@@ -42,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.189"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90" />
+        app:layout_constraintVertical_bias="0.86" />
 
     <Button
         android:id="@+id/basketDeleteBtn"
@@ -55,17 +56,29 @@
         app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90" />
+        app:layout_constraintVertical_bias="0.86" />
 
     <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.shoppingbasketactivity.GoodsListFragment"
+        android:id="@+id/shoppingBasketfragment"
+        android:name="com.example.hands_market.GoodsListFragment"
         android:layout_width="300dp"
-        android:layout_height="320dp"
+        android:layout_height="310dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintVertical_bias="0.52" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/basket_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/navigation2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

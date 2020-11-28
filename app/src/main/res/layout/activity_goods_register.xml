@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GoodsRegisterActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,37 +15,34 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        >
+        app:layout_constraintTop_toTopOf="parent" >
 
         <TextView
+            android:id="@+id/goodsRegistMainText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="물품 등록하기"
             android:textColor="#000000"
-            android:textSize="50px"
-            android:paddingTop="100dp"
-            />
+            android:gravity="center"
+            android:textSize="25dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            >
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingTop="30dp"
-                android:paddingBottom="20dp">
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" >
 
                 <TextView
+                    android:id="@+id/goodsRegGoodsNamText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -57,15 +56,17 @@
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="319dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="20dp">
+                android:paddingBottom="10dp" >
 
                 <TextView
+                    android:id="@+id/goodsRegStoreImgText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -75,6 +76,7 @@
                     android:textSize="20sp" />
 
                 <Button
+                    android:id="@+id/goodsRegStoreImgBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/click_button"
@@ -85,16 +87,16 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingTop="30dp"
-                android:paddingBottom="20dp">
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
+                    android:id="@+id/goodsRegPriceText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -108,15 +110,17 @@
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingTop="30dp"
-                android:paddingBottom="20dp">
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp" >
 
                 <TextView
+                    android:id="@+id/goodsRegSizeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -130,15 +134,17 @@
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingTop="30dp"
-                android:paddingBottom="20dp">
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" >
 
                 <TextView
+                    android:id="@+id/goodsRegColorText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -152,15 +158,17 @@
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingTop="30dp"
-                android:paddingBottom="20dp">
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
+                    android:id="@+id/goodsRegaQuaText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -174,22 +182,27 @@
                     android:layout_height="50dp"
                     android:background="@drawable/input_border" />
             </LinearLayout>
-
         </LinearLayout>
+
         <Button
             android:id="@+id/goodsCreateBtn"
             android:layout_width="100dp"
             android:layout_height="50dp"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="200px"
             android:background="@drawable/click_button"
             android:text="등록"
             android:textColor="#000000"
             android:textSize="40px"
             tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="533dp"
-            android:layout_marginTop="20px"
-            android:layout_marginBottom="200px"/>
-
-
-
+            tools:layout_editor_absoluteY="533dp" />
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/goodsRegister_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

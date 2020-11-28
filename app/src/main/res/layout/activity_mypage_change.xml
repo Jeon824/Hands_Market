@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Mypage_change"
-    android:orientation="vertical">>
-
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
@@ -14,7 +13,7 @@
         android:layout_marginTop="150dp"
         android:id="@+id/user_image"
         android:src="@drawable/user_picture"
-        />/>
+        />
     
     <TextView
         android:layout_width="match_parent"
@@ -36,13 +35,11 @@
         android:textSize="25dp"/>
 
     <CheckBox
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="관리자 서비스를 이용하시겠습니까?"
         android:layout_margin="30dp"
         android:id="@+id/admin_check"/>
-
 
     <Button
         android:layout_width="wrap_content"
@@ -53,4 +50,10 @@
         android:layout_margin="30dp"
         android:id="@+id/button_modify"/>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mypageChange_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation2" />
 </LinearLayout>
