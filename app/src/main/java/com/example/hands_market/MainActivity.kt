@@ -67,11 +67,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         msg.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(data in dataSnapshot.children){
-//                    var value = data.getValue()
-//                    test.text = value.toString()
-                    var value = data.getValue(Store::class.java)
-                    test.text = value?.storeName.toString()
+                    var value = data.getValue()
 
+                    test.text = value.toString()
+//                    val keyD=data.key
+//                    var value = data.getValue(Store::class.java)
+//                    test.text = value?.storeName.toString()
+//                    test.text =keyD.toString()
                 }
 //                test.text=test_array[0]
             }
