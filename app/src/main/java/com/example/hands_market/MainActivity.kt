@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //        test = findViewById<TextView>(R.id.test)
 //        test.setOnClickListener(this)
 //
-        var test22 = findViewById<TextView>(R.id.test22)
-        test22.setOnClickListener(this)
+//        var test22 = findViewById<TextView>(R.id.test22)
+//        test22.setOnClickListener(this)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -99,10 +99,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
-                R.id.test22 -> {
-                    val intent = Intent(this, ManagerActivity::class.java)
-                    startActivity(intent)
-                }
+//                R.id.test22 -> {
+//                    val intent = Intent(this, ManagerActivity::class.java)
+//                    startActivity(intent)
+//                }
 
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {

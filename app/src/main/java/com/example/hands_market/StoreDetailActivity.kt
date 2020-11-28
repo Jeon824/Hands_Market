@@ -68,16 +68,14 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val buttonGoodsAdd = findViewById<TextView>(R.id.button_goodsAdd)
+        buttonGoodsAdd.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         if (v != null) {
             when (v.id) {
-                //R.id.searchBtn
-                /*R.id.addGoodsBtn -> {
-                     val intent = Intent(this, GoodsRegisterActivity::class.java)
-                     startActivity(intent)
-                 }*/
                 R.id.button_storeLayout -> {
                     val inflater : LayoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     val pw : View = inflater.inflate(R.layout.pop_up_layout,null)
@@ -102,8 +100,12 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(intent)*/
                 }
 
-                R.id.button_storeState_delete ->{
-
+//                R.id.button_storeState_delete ->{
+//
+//                }
+                R.id.button_goodsAdd -> {
+                    val intent = Intent(this, GoodsRegisterActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }

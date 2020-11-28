@@ -107,7 +107,7 @@
         android:textSize="20sp"
         android:layout_marginEnd="10dp"
         android:layout_gravity="end"
-        android:visibility="invisible" />
+        />
 
     <fragment
         android:name="com.example.hands_market.GoodsListFragment"
