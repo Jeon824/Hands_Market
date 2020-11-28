@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.util.FusedLocationSource
 import net.daum.mf.map.api.CameraPosition
@@ -31,7 +32,7 @@ class MapViewActivity : AppCompatActivity(), OnMapReadyCallback{
     private lateinit var addressIn : EditText
     private val queryUrl :String = "http://openapi.epost.go.kr/postal/retrieve"
     private var isRunning : Boolean=true
-    private lateinit var ll : com.google.android.gms.maps.model.LatLng
+    //private lateinit var ll : com.google.android.gms.maps.model.LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +82,7 @@ class MapViewActivity : AppCompatActivity(), OnMapReadyCallback{
         uiSettings.isLocationButtonEnabled = true
         uiSettings.isZoomControlEnabled = true
         uiSettings.isZoomGesturesEnabled = true
-        var camp : CameraPosition = CameraPosition(position,10.0)
+        var camp : com.naver.maps.map.CameraPosition = CameraPosition(position,10.0)
         naverMap.cameraPosition = camp
     }
 

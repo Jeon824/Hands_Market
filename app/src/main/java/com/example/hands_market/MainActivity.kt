@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Base64.NO_WRAP
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBar
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener
 //import com.google.firebase.database.ktx.database
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var setAddress: TextView
@@ -105,7 +107,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //                    var value = data.getValue()
 //                    test.text = value.toString()
                                 var value = data.getValue(Store::class.java)
-                                test.text = value?.storeName.toString()
+                                Log.d("firebase",value?.storeName)
+                                test.text = value?.storeName
 
                             }
 //                test.text=test_array[0]
