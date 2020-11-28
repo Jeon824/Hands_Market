@@ -1,104 +1,134 @@
 package com.example.hands_market
 
+import android.content.ClipData
+import android.content.Context
 import android.content.Intent
-import android.os.AsyncTask
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.media.Image
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
+import android.util.Base64
+import android.util.Base64.NO_WRAP
 import android.util.Log
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import com.google.android.gms.maps.model.LatLng
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.ActionBar
+import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.naver.maps.map.*
-import com.naver.maps.map.util.FusedLocationSource
-import net.daum.mf.map.api.CameraPosition
-import net.daum.mf.map.api.MapView
-import net.daum.mf.map.api.MapPoint
-import net.daum.mf.map.api.MapReverseGeoCoder
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLEncoder
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+//import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+//import com.google.firebase.database.ktx.database
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+import kotlin.math.log
 
-class MapViewActivity : AppCompatActivity(), OnMapReadyCallback{
+class MainActivity : AppCompatActivity() , View.OnClickListener{
+    private lateinit var setAddress: TextView
+    private lateinit var searchBtn: ImageButton
+    private lateinit var storeList: ArrayList<Store>
+    private lateinit var goodsList: ArrayList<Goods>
+    private lateinit var storeListFragment : StoreListFragment
+    private lateinit var goodslistFragment : GoodsListFragment
+    private lateinit var keyWord: String
+    private lateinit var keyWordInput :EditText
+    val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var test : TextView
 
-    private lateinit var mapView: MapView
-    private lateinit var  mapViewContainer : ViewGroup
-    private lateinit var locationSource: FusedLocationSource
-    private lateinit var mapFragment: MapFragment
-    private lateinit var naverMap: NaverMap
-    private lateinit var setBtn : Button
-    private lateinit var addressIn : EditText
-    private val queryUrl :String = "http://openapi.epost.go.kr/postal/retrieve"
-    private var isRunning : Boolean=true
-    private lateinit var ll : com.google.android.gms.maps.model.LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_map_view)
+        setContentView(R.layout.activity_main)
+        val store_detail = findViewById<TextView>(R.id.store_detail)
+        store_detail.setOnClickListener(this)
 
-        setBtn = findViewById(R.id.lat_lng_set_btn)
-        addressIn = findViewById(R.id.address_input)
 
-        val fm = supportFragmentManager
-        val mapFragment = fm.findFragmentById(R.id.map) as MapFragment?
-            ?: MapFragment.newInstance().also {
-                fm.beginTransaction().add(R.id.map, it).commit()
+
+        setAddress = findViewById<TextView>(R.id.setAddressMainText)
+        setAddress.setOnClickListener(this)
+        searchBtn = findViewById<ImageButton>(R.id.searchBtn)
+        searchBtn.setOnClickListener(this)
+        keyWordInput =findViewById(R.id.key_word)
+        test = findViewById(R.id.test)
+        test.setOnClickListener(this)
+
+        val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
+        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        /*navigationBar.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.navigation_home->
+                R.id.navigation_favorite->
+                R.id.navigation_log->
             }
-        mapFragment.getMapAsync(this)
+        }*/
 
-        locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
+    }
 
-        setBtn.setOnClickListener {
-            val address :String = addressIn.text.toString()
+
+    override fun onClick(v: View?) {
+        if (v != null) {
+            when(v.id) {
+                R.id.store_detail -> {
+                    val intent = Intent(this, ManagerActivity::class.java)
+                    startActivity(intent)
+                }
+
+                //R.id.searchBtn
+                R.id.setAddressMainText -> {
+                    val intent = Intent(this, MapViewActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.searchBtn -> {
+                    keyWord = keyWordInput.text.toString()
+                    if(keyWord!=null) {
+                        val bundle: Bundle = Bundle()
+                        bundle.putString("keyword", keyWord)
+                        //StoreFragment start
+                        storeListFragment = StoreListFragment();
+                        storeListFragment.arguments = bundle
+                        supportFragmentManager.beginTransaction().replace(R.id.main_store_fragment, storeListFragment).commit();
+                        //GoodsFragment start
+                        goodslistFragment = GoodsListFragment();
+                        goodslistFragment.arguments = bundle
+                        supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
+                    }
+                }
+                R.id.test -> {
+                    val msg= database.getReference().child("Stores")
+                    msg.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                                var value = data.getValue(Store::class.java)
+                                Log.d("firebase",value?.storeName)
+                                test.text = value?.storeName
+
+                            }
+//                test.text=test_array[0]
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
+                }
+            }
         }
 
-        // bottom navigation 선언
-        val mapView_navigation = findViewById<BottomNavigationView>(R.id.mapView_navigation)
-        mapView_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (locationSource.onRequestPermissionsResult(requestCode, permissions,
-                grantResults)) {
-            if (!locationSource.isActivated) { // 권한 거부됨
-                naverMap.locationTrackingMode = LocationTrackingMode.None
-            }
-            return
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
 
-    override fun onMapReady(naverMap: NaverMap) {
 
-        this.naverMap = naverMap
-        naverMap.locationSource = locationSource
-        val uiSettings = naverMap.uiSettings
-        uiSettings.isLocationButtonEnabled = true
-        uiSettings.isZoomControlEnabled = true
-        uiSettings.isZoomGesturesEnabled = true
-        var camp : CameraPosition = CameraPosition(position,10.0)
-        naverMap.cameraPosition = camp
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        isRunning=false
-    }
-
-    companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
-        var position : LatLng = LatLng(37.570975,126.977759)
-    }
-
-    // bottom navigation 버튼 출력 함수
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-        when (menuItem.itemId) {
+   private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+       when (menuItem.itemId) {
             R.id.navigation_home -> {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -107,8 +137,8 @@ class MapViewActivity : AppCompatActivity(), OnMapReadyCallback{
                 val intent = Intent(this,FavoriteActivity::class.java)
                 startActivity(intent)
             }
-            R.id.navigation_mypage -> {
-                val intent = Intent(this,MypageActivity::class.java)
+            R.id.navigation_log -> {
+                val intent = Intent(this,LoginActivity::class.java)
                 startActivity(intent)
             }
         }

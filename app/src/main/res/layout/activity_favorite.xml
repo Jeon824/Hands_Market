@@ -24,7 +24,7 @@
         android:layout_below="@+id/favoriteMainText"
         android:gravity="center_horizontal">
         <Button
-            android:id="@+id/favoriteStoreBtn6"
+            android:id="@+id/favoriteStoreBtn"
             android:layout_width="100dp"
             android:layout_height="45dp"
             android:text="상점"
