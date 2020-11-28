@@ -49,8 +49,6 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
             storeLayout = BitmapFactory.decodeByteArray(imgArray, 0, imgArray.size)
         }
 
-
-
         thisStore = Store(newIntent.getStringExtra("managerID"),
             newIntent.getStringExtra("storeName"),
             newIntent.getDoubleExtra("storeLat",DEFAULT_LAT),
@@ -66,7 +64,6 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         addGoodsBtn  = findViewById<Button>(R.id.button_goodsAdd)
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
-
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
