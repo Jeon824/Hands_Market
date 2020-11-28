@@ -49,11 +49,11 @@ class FavoriteActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_mypage -> {
-                val intent = Intent(this,MypageActivity::class.java)
+                val intent = Intent(this, MypageActivity::class.java)
                 startActivity(intent)
             }
         }
