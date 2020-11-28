@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -14,10 +16,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var storeImage : ImageView
 lateinit var storeUpdateBtn : Button
+
 lateinit var thisStore : Store
 lateinit var storeName : TextView
 lateinit var storeAddress : TextView
-lateinit var storeStateCngBtn : Button
+lateinit var buttonStoreDeleteBtn : Button
 lateinit var addGoodsBtn : Button
 lateinit var storeLayoutBtn : Button
 
@@ -57,16 +60,10 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         storeName.text = thisStore.storeName
         storeAddress = findViewById(R.id.store_detail_store_address)
         storeAddress.text = thisStore.storeAddress
-        storeStateCngBtn = findViewById<Button>(R.id.button_storeState_change)
+        buttonStoreDeleteBtn = findViewById<Button>(R.id.button_storeState_delete)
         addGoodsBtn  = findViewById<Button>(R.id.button_goodsAdd)
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
-
-        val button_storeLayout = findViewById<Button>(R.id.button_storeLayout)
-        button_storeLayout.setOnClickListener{
-            val intent = Intent(this, MapViewActivity::class.java)
-            startActivity(intent)
-        }
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
@@ -94,6 +91,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                     val layout :ImageView = pw.findViewById(R.id.pop_up_layout_img)
                     layout.setImageBitmap(thisStore.storeLayout)
 
+
                     puW.showAtLocation(v, Gravity.CENTER, 0 , 0)
 
                     /*val intent = Intent(this, StoreLayoutCallActivity::class.java)
@@ -103,6 +101,10 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                     intent.putExtra("storeLayout",storeLayout)
                     startActivity(intent)*/
                 }
+
+//                R.id.buttonStoreDeleteBtn ->{
+//
+//                }
             }
         }
     }

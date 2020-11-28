@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Base64.NO_WRAP
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBar
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener
 //import com.google.firebase.database.ktx.database
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var setAddress: TextView
@@ -36,19 +38,24 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var goodslistFragment : GoodsListFragment
     private lateinit var keyWord: String
     private lateinit var keyWordInput :EditText
+    val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var test : TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val store_detail = findViewById<TextView>(R.id.store_detail)
         store_detail.setOnClickListener(this)
 
-        setAddress = findViewById<TextView>(R.id.setAddress)
+
+
+        setAddress = findViewById<TextView>(R.id.setAddressMainText)
         setAddress.setOnClickListener(this)
         searchBtn = findViewById<ImageButton>(R.id.searchBtn)
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
+
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -59,6 +66,26 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 R.id.navigation_log->
             }
         }*/
+
+        // Store 목록 조회
+//        val database : FirebaseDatabase = FirebaseDatabase.getInstance() //데이터베이스 부르기
+//        val Stores = database.getReference().child("Stores") //Store 테이블에 접근
+//        Stores.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                var i=0
+//                for(data in dataSnapshot.children){
+//                    var map =data.value as Map<String,Any>
+//                    var storeN=map["storeName"].toString()
+//                    storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
+//                    if(storeList[i].storeLayout == null)
+//                        storeList[i].storeLayout = tmpLayout
+//                    i=i+1
+//                }
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//        })
+
 
     }
 
@@ -72,7 +99,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 }
 
                 //R.id.searchBtn
-                R.id.setAddress -> {
+                R.id.setAddressMainText -> {
                     val intent = Intent(this, MapViewActivity::class.java)
                     startActivity(intent)
                 }
@@ -91,6 +118,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
                 }
+
             }
         }
 
@@ -99,8 +127,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
 
 
-   private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-       when (menuItem.itemId) {
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
             R.id.navigation_home -> {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

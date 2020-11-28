@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hands_Market"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        >
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="3dr066pa65" />
         <activity android:name=".PurchasedListActivity" />
         <activity android:name= ".User" />
         <activity android:name=".GoodsReview" />

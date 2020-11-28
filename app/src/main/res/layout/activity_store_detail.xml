@@ -83,12 +83,12 @@
    </LinearLayout>
 
     <Button
-        android:id="@+id/button_storeState_change"
+        android:id="@+id/button_storeState_delete"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/border_bottom"
-        android:text="가게정보 수정/삭제"
+        android:text="가게 삭제"
         android:textColor="#000000"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
@@ -96,6 +96,8 @@
         android:layout_gravity="end"
         android:visibility="invisible" />
 
+        />
+<!--    android:visibility="invisible"-->
     <Button
         android:id="@+id/button_goodsAdd"
         style="@style/Widget.AppCompat.Button.Borderless"

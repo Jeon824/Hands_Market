@@ -1,43 +1,59 @@
 package com.example.hands_market
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class GoodsDetailActivity : AppCompatActivity() {
+class GoodsDetailActivity : AppCompatActivity(), View.OnClickListener {
 
-    val reserveBtn : Button? = null;
-    val requestGoods : Button? = null;
-    val editBtn : Button? = null;
-    val deleteBtn : Button? = null;
-    val deleteReviewBtn : Button? = null;
-    val addToBasketBtn : Button? = null;
-    val writeReviewBtn : Button? = null;
+    private lateinit var thisGoods : Goods
+
+    var reserveBtn : Button? = null;
+    var requestGoods : Button? = null;
+    var editBtn : Button? = null;
+    var deleteBtn : Button? = null;
+    var deleteReviewBtn : Button? = null;
+    var addToBasketBtn : Button? = null;
+    var writeReviewBtn : Button? = null;
+    var goodsImage : ImageView? = null;
+    var favoriteStatus : ImageView? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_detail)
 
-        val goods_request = findViewById<Button>(R.id.goods_request)
+        favoriteStatus = findViewById(R.id.button_favorite)
 
-        val button_modify = findViewById<Button>(R.id.button_modify)
+        var imgArray : ByteArray? = intent.getByteArrayExtra("storeImg")
+        goodsImage = findViewById<ImageView>(R.id.goods_detail_image)
 
-        val button_delete = findViewById<Button>(R.id.button_delete)
+        // '입고하기' 버튼
+        val goods_request : Button = findViewById(R.id.goods_request)
 
-        val button_shopping_basket = findViewById<TextView>(R.id.button_shopping_basket)
-        button_shopping_basket.setOnClickListener{
-            val intent = Intent(this, ShoppingBasketActivity::class.java)
-            startActivity(intent)
-        }
+        // 수정
+        val button_modify : Button = findViewById(R.id.button_modify)
 
-        val button_purchase = findViewById<TextView>(R.id.button_purchase)
+        // 삭제
+        val button_delete : Button = findViewById(R.id.button_delete)
 
-        val button_reserve = findViewById<TextView>(R.id.button_reserve)
+        // '장바구니' 버튼
+        val button_shopping_basket : TextView = findViewById(R.id.button_shopping_basket)
 
-        val button_review_write = findViewById<Button>(R.id.button_review_write)
+        // '결제 서비스' 버튼
+        val button_purchase : TextView = findViewById(R.id.button_purchase)
+
+        // '예약하기' 버튼
+        val button_reserve :TextView = findViewById(R.id.button_reserve)
+
+        // '리뷰 쓰기' 버튼 - 리뷰 쓰기 화면으로 이동
+        val button_review_write : Button = findViewById(R.id.button_review_write)
         button_review_write.setOnClickListener{
             val intent = Intent(this, GoodsReviewActivity::class.java)
             startActivity(intent)
@@ -46,9 +62,12 @@ class GoodsDetailActivity : AppCompatActivity() {
         // bottom navigation 선언
         val goodsDetail_navigation = findViewById<BottomNavigationView>(R.id.goodsDetail_navigation)
         goodsDetail_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
     }
 
+    override fun onClick(v: View?) {
+    }
+
+    // bottom navigation 버튼 출력 함수
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
         when (menuItem.itemId) {
             R.id.navigation_home -> {
@@ -56,11 +75,11 @@ class GoodsDetailActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_mypage -> {
-                val intent = Intent(this,MypageActivity::class.java)
+                val intent = Intent(this, MypageActivity::class.java)
                 startActivity(intent)
             }
         }

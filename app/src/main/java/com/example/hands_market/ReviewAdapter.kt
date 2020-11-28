@@ -35,9 +35,9 @@ class ReviewAdapter(val context: Context, val storeList: List<Review>): Recycler
     override fun getItemCount() = storeList.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val storeName: TextView = view.findViewById(R.id.storeName)
-        val storeAddress: TextView = view.findViewById(R.id.storeAddress)
-        val storeImage: ImageView = view.findViewById(R.id.storeImage)
+        val storeName: TextView = view.findViewById(R.id.store_name)
+        val storeAddress: TextView = view.findViewById(R.id.store_address)
+        val storeImage: ImageView = view.findViewById(R.id.store_image)
         private val intent: Intent = Intent(context, StoreDetailActivity::class.java)
         val stream: ByteArrayOutputStream = ByteArrayOutputStream()
 

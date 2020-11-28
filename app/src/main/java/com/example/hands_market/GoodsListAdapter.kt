@@ -44,7 +44,25 @@ class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): Recycl
         val goodsImage: ImageView = view.findViewById(R.id.goods_image)
         val stream : ByteArrayOutputStream = ByteArrayOutputStream()
         private val intent: Intent =Intent(context,GoodsDetailActivity::class.java)
-        init {
+
+        init {/*
+            intent.putExtra("managerID",goodsList[adapterPosition].managerID)
+            intent.putExtra("storeName",goodsList[adapterPosition].storeName)
+            intent.putExtra("name",goodsList[adapterPosition].name)
+            intent.putExtra("price",goodsList[adapterPosition].price)
+            intent.putExtra("location",goodsList[adapterPosition].location)
+            intent.putExtra("size",goodsList[adapterPosition].size)
+            intent.putExtra("color",goodsList[adapterPosition].color)
+            intent.putExtra("count",goodsList[adapterPosition].count)
+            intent.putExtra("favoriteGoods",goodsList[adapterPosition].favoriteGoods)
+            intent.putExtra("reserve",goodsList[adapterPosition].reserve)
+            intent.putExtra("request",goodsList[adapterPosition].request)
+
+            goodsList[adapterPosition].image?.compress(Bitmap.CompressFormat.PNG,90,stream)
+            val image = stream.toByteArray()
+            intent.putExtra("image", image)*/
+
+
             view.setOnClickListener {
                 context.startActivity(intent)
             }
