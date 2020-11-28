@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -14,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var storeImage : ImageView
 lateinit var storeUpdateBtn : Button
+
 lateinit var thisStore : Store
 lateinit var storeName : TextView
 lateinit var storeAddress : TextView
@@ -46,6 +49,8 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
             storeLayout = BitmapFactory.decodeByteArray(imgArray, 0, imgArray.size)
         }
 
+
+
         thisStore = Store(newIntent.getStringExtra("managerID"),
             newIntent.getStringExtra("storeName"),
             newIntent.getDoubleExtra("storeLat",DEFAULT_LAT),
@@ -61,6 +66,12 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         addGoodsBtn  = findViewById<Button>(R.id.button_goodsAdd)
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
+
+        val button_storeLayout = findViewById<Button>(R.id.button_storeLayout)
+        button_storeLayout.setOnClickListener{
+            val intent = Intent(this, MapViewActivity::class.java)
+            startActivity(intent)
+        }
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
@@ -87,6 +98,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
                     val layout :ImageView = pw.findViewById(R.id.pop_up_layout_img)
                     layout.setImageBitmap(thisStore.storeLayout)
+
 
                     puW.showAtLocation(v, Gravity.CENTER, 0 , 0)
 

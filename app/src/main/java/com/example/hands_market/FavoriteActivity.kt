@@ -20,7 +20,7 @@ class FavoriteActivity : AppCompatActivity() {
 
 
         // 즐겨찾기 조회 (상점) 버튼
-        val favoriteStoreBtn = findViewById<Button>(R.id.favoriteStoreBtn6)
+        val favoriteStoreBtn = findViewById<Button>(R.id.favoriteStoreBtn)
         favoriteStoreBtn.setOnClickListener{
             storeListFragment = StoreListFragment();
             storeListFragment.arguments = bundle
@@ -37,8 +37,8 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         // bottom navigation 선언
-        val navigationBar = findViewById<BottomNavigationView>(R.id.favorite_navigation)
-        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        val favorite_navigation = findViewById<BottomNavigationView>(R.id.favorite_navigation)
+        favorite_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     // bottom navigation 버튼 출력 함수

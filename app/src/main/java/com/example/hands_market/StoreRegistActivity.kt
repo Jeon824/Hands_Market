@@ -67,11 +67,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                         storeLat = DEFAULT_LAT_r,
                         storeLng =DEFAULT_LNG_r
                     )
-
-                    println(StoreOne)
-                   // myRef.child("Stores").push().setValue("hi")
                     myRef.child("Stores").push().setValue(StoreOne)
-//                    Toast.makeText(StoreDetailActivity.this, "저장을 완료했습니다.", Toast.LENGTH_SHORT).show();
 
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)

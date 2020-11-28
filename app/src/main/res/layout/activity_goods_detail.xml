@@ -174,7 +174,7 @@
         android:id="@+id/goods_review_fragment"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/goodsDetail_navigation1"
+        android:id="@+id/goodsDetail_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/navigation2" />

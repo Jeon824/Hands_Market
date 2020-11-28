@@ -56,24 +56,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         test = findViewById(R.id.test)
         test.setOnClickListener(this)
 
-        val msg= database.getReference().child("Stores")
-        msg.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for(data in dataSnapshot.children){
-//                    var value = data.getValue()
-//                    test.text = value.toString()
-                    var value = data.getValue(Store::class.java)
-                    test.text = value?.storeName.toString()
-
-                }
-//                test.text=test_array[0]
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-            }
-        })
-
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         /*navigationBar.setOnNavigationItemSelectedListener {
