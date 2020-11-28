@@ -25,8 +25,8 @@ class ShoppingBasketActivity : AppCompatActivity() {
         }
 
         // bottom navigation 선언
-        val navigationBar = findViewById<BottomNavigationView>(R.id.basket_navigation)
-        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        val basket_navigation = findViewById<BottomNavigationView>(R.id.basket_navigation)
+        basket_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     // bottom navigation 버튼 출력 함수

@@ -25,7 +25,6 @@ class FavoriteActivity : AppCompatActivity() {
             storeListFragment = StoreListFragment();
             storeListFragment.arguments = bundle
             supportFragmentManager.beginTransaction().replace(R.id.favorite_activity_frame_layout, storeListFragment).commit()
-
         }
 
         // 즐겨찾기 조회 (상품) 버튼
@@ -49,11 +48,11 @@ class FavoriteActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_mypage -> {
-                val intent = Intent(this,MypageActivity::class.java)
+                val intent = Intent(this, MypageActivity::class.java)
                 startActivity(intent)
             }
         }

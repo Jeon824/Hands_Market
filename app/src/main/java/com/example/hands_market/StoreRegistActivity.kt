@@ -59,8 +59,8 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
         storeRegStoreLayoutImgBtn.setOnClickListener{storeRegStoreLayoutImg(showLayoutImg)}
 
         // bottom navigation 선언
-        val navigationBar = findViewById<BottomNavigationView>(R.id.storeRegist_navigation)
-        navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        val storeRegist_navigation = findViewById<BottomNavigationView>(R.id.storeRegist_navigation)
+        storeRegist_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     override fun onClick(v: View?) {

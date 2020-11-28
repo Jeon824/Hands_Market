@@ -1,32 +1,31 @@
 {
   "project_info": {
-<<<<<<< Updated upstream
+
     "project_number": "134614135538",
     "firebase_url": "https://market-hands.firebaseio.com",
     "project_id": "market-hands",
-    "storage_bucket": "market-hands.appspot.com"
-=======
+    "storage_bucket": "market-hands.appspot.com",
+
     "project_number": "16177829298",
     "firebase_url": "https://handsmarket-96d5e.firebaseio.com",
     "project_id": "handsmarket-96d5e",
     "storage_bucket": "handsmarket-96d5e.appspot.com"
->>>>>>> Stashed changes
   },
   "client": [
     {
       "client_info": {
-<<<<<<< Updated upstream
+
         "mobilesdk_app_id": "1:134614135538:android:8fc79da6f57c4cbfca166b",
-=======
+
         "mobilesdk_app_id": "1:16177829298:android:30d3e4e4f60a20ff26c0ab",
->>>>>>> Stashed changes
+
         "android_client_info": {
           "package_name": "com.example.hands_market"
         }
       },
       "oauth_client": [
         {
-<<<<<<< Updated upstream
+
           "client_id": "134614135538-qf4uf7rjhtmpimbe61hon8eqfhi981ul.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -36,7 +35,7 @@
         },
         {
           "client_id": "134614135538-ap30udevkrshi5440ivilqbr3h8mumhe.apps.googleusercontent.com",
-=======
+
           "client_id": "16177829298-264vsote1s2983e1q8b0j7s66r4vik6n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -46,28 +45,28 @@
         },
         {
           "client_id": "16177829298-fm7qpgmph58vuq0ad9vqmkd7h2f2275v.apps.googleusercontent.com",
->>>>>>> Stashed changes
+
           "client_type": 3
         }
       ],
       "api_key": [
         {
-<<<<<<< Updated upstream
-          "current_key": "AIzaSyBq9kbKB1eoSEzcyiWiT7pkuDhUjuCFyvM"
-=======
+
+          "current_key": "AIzaSyBq9kbKB1eoSEzcyiWiT7pkuDhUjuCFyvM",
+
           "current_key": "AIzaSyCtJ0pi41vHt4fm9eOw2Io9UCWCmao7J2U"
->>>>>>> Stashed changes
+
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-<<<<<<< Updated upstream
+
               "client_id": "134614135538-ap30udevkrshi5440ivilqbr3h8mumhe.apps.googleusercontent.com",
-=======
+
               "client_id": "16177829298-fm7qpgmph58vuq0ad9vqmkd7h2f2275v.apps.googleusercontent.com",
->>>>>>> Stashed changes
+
               "client_type": 3
             }
           ]
