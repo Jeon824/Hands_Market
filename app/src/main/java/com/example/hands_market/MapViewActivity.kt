@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.naver.maps.map.*
 import com.naver.maps.map.util.FusedLocationSource
@@ -20,7 +22,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-class MapViewActivity : AppCompatActivity(), OnMapReadyCallback{
+class MapViewActivity : AppCompatActivity() , OnMapReadyCallback{
     
     private lateinit var mapView: MapView
     private lateinit var  mapViewContainer : ViewGroup
@@ -81,7 +83,7 @@ class MapViewActivity : AppCompatActivity(), OnMapReadyCallback{
         uiSettings.isLocationButtonEnabled = true
         uiSettings.isZoomControlEnabled = true
         uiSettings.isZoomGesturesEnabled = true
-        var camp : CameraPosition = CameraPosition(position,10.0)
+        var camp : com.naver.maps.map.CameraPosition = CameraPosition(position,10.0)
         naverMap.cameraPosition = camp
     }
 
