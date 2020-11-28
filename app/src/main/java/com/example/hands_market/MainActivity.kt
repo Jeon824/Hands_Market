@@ -55,8 +55,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         searchBtn = findViewById<ImageButton>(R.id.searchBtn)
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
-        test = findViewById(R.id.test)
-        test.setOnClickListener(this)
+
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -67,6 +66,26 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 R.id.navigation_log->
             }
         }*/
+
+        // Store 목록 조회
+//        val database : FirebaseDatabase = FirebaseDatabase.getInstance() //데이터베이스 부르기
+//        val Stores = database.getReference().child("Stores") //Store 테이블에 접근
+//        Stores.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                var i=0
+//                for(data in dataSnapshot.children){
+//                    var map =data.value as Map<String,Any>
+//                    var storeN=map["storeName"].toString()
+//                    storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
+//                    if(storeList[i].storeLayout == null)
+//                        storeList[i].storeLayout = tmpLayout
+//                    i=i+1
+//                }
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//        })
+
 
     }
 
@@ -99,26 +118,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
                 }
-                R.id.test -> {
-                    val msg= database.getReference().child("Stores")
-                    msg.addValueEventListener(object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            for(data in dataSnapshot.children){
-//                    var value = data.getValue()
-//                    test.text = value.toString()
-                                var value = data.getValue(Store::class.java)
-                                Log.d("firebase",value?.storeName)
-                                test.text = value?.storeName
 
-                            }
-//                test.text=test_array[0]
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
-                        }
-                    })
-                }
             }
         }
 
@@ -127,8 +127,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
 
 
-   private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-       when (menuItem.itemId) {
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
             R.id.navigation_home -> {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

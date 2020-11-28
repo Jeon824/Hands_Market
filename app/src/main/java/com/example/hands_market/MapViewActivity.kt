@@ -9,8 +9,6 @@ import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
@@ -23,8 +21,8 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-class MapViewActivity : AppCompatActivity() , OnMapReadyCallback{
-    
+class MapViewActivity : AppCompatActivity(), OnMapReadyCallback{
+
     private lateinit var mapView: MapView
     private lateinit var  mapViewContainer : ViewGroup
     private lateinit var locationSource: FusedLocationSource
@@ -45,9 +43,9 @@ class MapViewActivity : AppCompatActivity() , OnMapReadyCallback{
 
         val fm = supportFragmentManager
         val mapFragment = fm.findFragmentById(R.id.map) as MapFragment?
-            ?: MapFragment.newInstance().also {
-                fm.beginTransaction().add(R.id.map, it).commit()
-            }
+                ?: MapFragment.newInstance().also {
+                    fm.beginTransaction().add(R.id.map, it).commit()
+                }
         mapFragment.getMapAsync(this)
 
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
@@ -62,12 +60,12 @@ class MapViewActivity : AppCompatActivity() , OnMapReadyCallback{
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
         if (locationSource.onRequestPermissionsResult(requestCode, permissions,
-                grantResults)) {
+                        grantResults)) {
             if (!locationSource.isActivated) { // 권한 거부됨
                 naverMap.locationTrackingMode = LocationTrackingMode.None
             }

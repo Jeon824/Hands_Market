@@ -20,7 +20,7 @@ lateinit var storeUpdateBtn : Button
 lateinit var thisStore : Store
 lateinit var storeName : TextView
 lateinit var storeAddress : TextView
-lateinit var storeStateCngBtn : Button
+lateinit var buttonStoreDeleteBtn : Button
 lateinit var addGoodsBtn : Button
 lateinit var storeLayoutBtn : Button
 
@@ -62,7 +62,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         storeName.text = thisStore.storeName
         storeAddress = findViewById(R.id.store_detail_store_address)
         storeAddress.text = thisStore.storeAddress
-        storeStateCngBtn = findViewById<Button>(R.id.button_storeState_change)
+        buttonStoreDeleteBtn = findViewById<Button>(R.id.button_storeState_delete)
         addGoodsBtn  = findViewById<Button>(R.id.button_goodsAdd)
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
@@ -104,6 +104,10 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                     intent.putExtra("storeLayout",storeLayout)
                     startActivity(intent)*/
                 }
+
+//                R.id.buttonStoreDeleteBtn ->{
+//
+//                }
             }
         }
     }
