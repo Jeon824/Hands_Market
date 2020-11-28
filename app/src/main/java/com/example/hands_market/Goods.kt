@@ -5,7 +5,7 @@ import java.net.IDN
 
 class Goods(var managerID: String, //관리자id            
             var storeName:String, //가게이름
-            var name:String,//가게이름
+            var name:String,//상품이름
             var image:Bitmap?,//가게 이미지
             var price:Int,//가격
             var location: String?, //물건 위치

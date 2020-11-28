@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         store_detail.setOnClickListener(this)
 
 
-        setAddress = findViewById<TextView>(R.id.setAddress)
+        setAddress = findViewById<TextView>(R.id.setAddressMainText)
         setAddress.setOnClickListener(this)
         searchBtn = findViewById<ImageButton>(R.id.searchBtn)
         searchBtn.setOnClickListener(this)
