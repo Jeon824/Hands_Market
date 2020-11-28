@@ -8,6 +8,13 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AAAAA"
+        android:textSize="20sp"
+        android:id="@+id/test"/>
+
+    <TextView
         android:id="@+id/setAddressMainText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

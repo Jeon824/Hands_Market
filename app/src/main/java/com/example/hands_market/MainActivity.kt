@@ -36,14 +36,16 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var goodslistFragment : GoodsListFragment
     private lateinit var keyWord: String
     private lateinit var keyWordInput :EditText
+    val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var test : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val store_detail = findViewById<TextView>(R.id.store_detail)
         store_detail.setOnClickListener(this)
+
 
 
         setAddress = findViewById<TextView>(R.id.setAddressMainText)
@@ -51,6 +53,26 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         searchBtn = findViewById<ImageButton>(R.id.searchBtn)
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
+        test = findViewById(R.id.test)
+        test.setOnClickListener(this)
+
+        val msg= database.getReference().child("Stores")
+        msg.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                    var value = data.getValue(Store::class.java)
+                    test.text = value?.storeName.toString()
+
+                }
+//                test.text=test_array[0]
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+            }
+        })
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -92,6 +114,25 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         goodslistFragment.arguments = bundle
                         supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
+                }
+                R.id.test -> {
+                    val msg= database.getReference().child("Stores")
+                    msg.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                                var value = data.getValue(Store::class.java)
+                                test.text = value?.storeName.toString()
+
+                            }
+//                test.text=test_array[0]
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
                 }
             }
         }

@@ -16,5 +16,8 @@ class Goods(var managerID: String, //관리자id
             var reserve:Array<String>?=null,//예약한 사람의 목록
             var request:Array<String>?=null//입고요청한 사람의 목록
             ){
-    
+
+    override fun toString(): String {
+        return super.toString()
+    }
 }
