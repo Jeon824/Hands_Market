@@ -77,6 +77,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                             storeLat = DEFAULT_LAT_r,
                             storeLng = DEFAULT_LNG_r,
                             storeImgurl=url,
+                            SID = "0"
                     )
                     myRef.child("Stores").push().setValue(StoreOne)
 

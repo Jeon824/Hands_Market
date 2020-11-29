@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -12,13 +13,17 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.FirebaseDatabase
 
+
+//lateinit var sIdOfGoods : String
+
 class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
-
     val Gallery = 0
-
+    val newIntent : Intent = intent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_register)
+
+        Log.d("GOODSRegister", "11111111")
 
         val goodsCreateBtn = findViewById<TextView>(R.id.goodsCreateBtn)
         goodsCreateBtn.setOnClickListener(this)
@@ -27,8 +32,13 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
         goodsRegStoreImgBtn.setOnClickListener{goodsRegStoreImg()}
 
         // bottom navigation 선언
-        val navigationBar = findViewById<BottomNavigationView>(R.id.favoriteGoods_navigation)
+        val navigationBar = findViewById<BottomNavigationView>(R.id.goodsRegister_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+
+        val intent = intent
+        val myData = intent.getStringExtra("storeKey")
+        Log.d("storedetail", "$myData")
     }
 
     override fun onClick(v: View?) {
@@ -36,7 +46,21 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
             when (v.id) {
                 //R.id.searchBtn
                 R.id.goodsCreateBtn -> {
-                    val intent = Intent(this, GoodsDetailActivity::class.java)
+                    val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+                    val myRef = database.getReference()
+                    val GoodsOne = Goods(
+                            storeName = "1",
+                            managerID = "1",
+                            name = "2",
+                            imageUrl = "1",
+                            price = 1,
+                            location = "1",
+                            size = 1,
+                            count = 1
+                    )
+                    myRef.child("Stores").child("Goods").push().setValue(GoodsOne)
+
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -60,8 +84,8 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
             try {
                 var bitmap: Bitmap =
                     MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
-            }catch (e:Exception) {
-                Toast.makeText(this,"$e", Toast.LENGTH_SHORT).show()
+            }catch (e: Exception) {
+                Toast.makeText(this, "$e", Toast.LENGTH_SHORT).show()
             }
         } else {}
         Toast.makeText(this, "성공적으로 업로드", Toast.LENGTH_SHORT).show()
@@ -75,11 +99,11 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_mypage -> {
-                val intent = Intent(this,MypageActivity::class.java)
+                val intent = Intent(this, MypageActivity::class.java)
                 startActivity(intent)
             }
         }
