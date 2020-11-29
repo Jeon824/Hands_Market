@@ -1,7 +1,5 @@
 package com.example.hands_market
 
-//import com.naver.maps.map.*
-
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -23,12 +21,15 @@ import android.widget.PopupWindow
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.naver.maps.map.util.FusedLocationSource
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapReverseGeoCoder
 import net.daum.mf.map.api.MapView
 import kotlin.properties.Delegates
 
 
-class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.OpenAPIKeyAuthenticationResultListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, View.OnClickListener {
+class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.OpenAPIKeyAuthenticationResultListener,MapView.MapViewEventListener,
+    MapView.POIItemEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, View.OnClickListener {
 
     private lateinit var  mapViewContainer : ViewGroup
     private lateinit var locationSource: FusedLocationSource
@@ -60,11 +61,14 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_view)
 
-
-
         map = MapView(this);
+        //
         val mapViewContainer :ViewGroup = findViewById(R.id.map)
         mapViewContainer.addView(map)
+        map.setMapViewEventListener(this)
+        map.setPOIItemEventListener(this)
+        map.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(userLat, userLng),3,true)
+
 
         handler = Handler();
 
@@ -279,6 +283,62 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
             view?.loadUrl(url)
             return true
         }
+    }
+
+    override fun onMapViewInitialized(p0: MapView?) {
+
+    }
+
+    override fun onMapViewCenterPointMoved(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewZoomLevelChanged(p0: MapView?, p1: Int) {
+
+    }
+
+    override fun onMapViewSingleTapped(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewDoubleTapped(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewLongPressed(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewDragStarted(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewDragEnded(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+
+    }
+
+    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
+
+    }
+
+    override fun onCalloutBalloonOfPOIItemTouched(
+        p0: MapView?,
+        p1: MapPOIItem?,
+        p2: MapPOIItem.CalloutBalloonButtonType?
+    ) {
+
+    }
+
+    override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
+
     }
 
 }

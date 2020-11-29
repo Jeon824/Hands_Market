@@ -5,19 +5,26 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.media.Image
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Base64
 import android.util.Base64.NO_WRAP
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
+import com.example.hands_market.MapViewActivity.Companion.userLat
+import com.example.hands_market.MapViewActivity.Companion.userLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -28,6 +35,7 @@ import java.net.URL
 //import com.google.firebase.database.ktx.database
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.util.jar.Manifest
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
@@ -42,10 +50,37 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     val database : FirebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var test : TextView
 
+    companion object{
+       const val PERMISION_REQUEST_CODE = 1001
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val lm = getSystemService(Context.LOCATION_SERVICE)as LocationManager
+
+        if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
+        {
+            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),PERMISION_REQUEST_CODE)
+            if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
+            {
+                MapViewActivity.userLat = DEFAULT_LAT
+                MapViewActivity.userLng = DEFAULT_LNG
+            }
+            else
+            {
+                val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                userLat = location.latitude
+                userLng = location.longitude
+            }
+        }
+        else{
+            val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            userLat = location.latitude
+            userLng = location.longitude
+        }
+
 
         val store_detail = findViewById<TextView>(R.id.store_detail)
         store_detail.setOnClickListener(this)
