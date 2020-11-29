@@ -7,20 +7,44 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.location.LocationManager
+import android.media.Image
+import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Base64
+import android.util.Base64.NO_WRAP
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
+import com.example.hands_market.MapViewActivity.Companion.userLat
+import com.example.hands_market.MapViewActivity.Companion.userLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+//import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.io.BufferedInputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
+//import com.google.firebase.database.ktx.database
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+import java.util.jar.Manifest
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var setAddress: TextView
@@ -38,12 +62,68 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var input : BufferedInputStream
     lateinit var setImage:ImageView
 
+    companion object{
+       const val PERMISION_REQUEST_CODE = 1001
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val lm = getSystemService(Context.LOCATION_SERVICE)as LocationManager
+
+        if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
+        {
+            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),PERMISION_REQUEST_CODE)
+            if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
+            {
+                MapViewActivity.userLat = DEFAULT_LAT
+                MapViewActivity.userLng = DEFAULT_LNG
+            }
+            else
+            {
+                val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                userLat = location.latitude
+                userLng = location.longitude
+            }
+        }
+        else{
+            val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            userLat = location.latitude
+            userLng = location.longitude
+        }
+
+
         val store_detail = findViewById<TextView>(R.id.store_detail)
         store_detail.setOnClickListener(this)
 
+        val storeDetail = findViewById<TextView>(R.id.store_detail)
+        storeDetail.setOnClickListener(this)
+        /*
+        val myRef = database.getReference()
+        myRef.child("message").push().setValue("hi")
+
+        val msg = database.reference.child("Stores")
+
+        test = findViewById(R.id.test)
+        test.setOnClickListener(this)
+
+        msg.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                    var value = data.value
+                    test.text = value.toString()
+
+                }
+//                test.text=test_array[0]
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })*/
 
 
         setAddress = findViewById<TextView>(R.id.setAddressMainText)
@@ -132,10 +212,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //                    val intent = Intent(this, GoodsRegisterActivity::class.java)
 //                    startActivity(intent)
 //                }
-                R.id.test22 -> {
-                    val intent = Intent(this, ManagerActivity::class.java)
-                    startActivity(intent)
-                }
 
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
@@ -173,11 +249,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this, FavoriteActivity::class.java)
+                val intent = Intent(this,FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_log -> {
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this,LoginActivity::class.java)
                 startActivity(intent)
             }
         }

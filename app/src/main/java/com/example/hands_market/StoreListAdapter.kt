@@ -62,6 +62,12 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
         override fun onPreExecute() {
             super.onPreExecute()
 
+    override fun getItemId(position: Int): Long {
+        return super.getItemId(position)
+    }
+
+
+
         }
         override fun onPostExecute(result: Bitmap) {
             super.onPostExecute(result)

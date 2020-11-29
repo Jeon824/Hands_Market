@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.io.InputStream
 import java.lang.Exception
+import java.util.*
+import kotlin.collections.ArrayList
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 class StoreListFragment : Fragment() {
@@ -93,6 +96,8 @@ class StoreListFragment : Fragment() {
         viewAdapter = StoreListAdapter(context, storeList)
 
         recyclerView = view.findViewById(R.id.store_recycler_view)
+        recyclerView.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT/2
+        recyclerView.layoutParams.height = LinearLayout.LayoutParams.MATCH_PARENT/2
         recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = fragLayoutManager
@@ -105,4 +110,6 @@ class StoreListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
+
 }

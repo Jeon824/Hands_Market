@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.FirebaseDatabase
 import java.net.URL
@@ -26,8 +28,7 @@ lateinit var addGoodsBtn : Button
 lateinit var storeLayoutBtn : Button
 lateinit var sId : String
 
-const val DEFAULT_LAT :Double = 37.5740381
-const val DEFAULT_LNG :Double = 126.97458
+
 
 class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -36,6 +37,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_detail)
+
         val newIntent : Intent = intent
         var imgArray : ByteArray? = intent.getByteArrayExtra("storeImg")
         var storeImg: Bitmap? = null

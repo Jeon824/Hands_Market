@@ -29,7 +29,10 @@ class GoodsDetailActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_detail)
 
-        favoriteStatus = findViewById(R.id.button_favorite)
+        val button_favorite : ImageView = findViewById(R.id.button_favorite)
+        button_favorite.setOnClickListener{
+            button_favorite.isSelected = true
+        }
 
         var imgArray : ByteArray? = intent.getByteArrayExtra("storeImg")
         goodsImage = findViewById<ImageView>(R.id.goods_detail_image)

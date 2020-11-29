@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -17,8 +19,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-const val DEFAULT_LAT_r :Double = 37.5740381
-const val DEFAULT_LNG_r :Double = 126.97458
+
 //import com.google.firebase.database.ktx.database
 //import com.google.firebase.ktx.Firebase
 
@@ -77,8 +78,8 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                             storeName = marketNameInput.text.toString(),
                             managerID = "1",
                             storeAddress = "2",
-                            storeLat = DEFAULT_LAT_r,
-                            storeLng = DEFAULT_LNG_r,
+                            storeLat = DEFAULT_LAT,
+                            storeLng = DEFAULT_LNG,
                             storeImgurl=url,
                             SID = "0"
                     )
