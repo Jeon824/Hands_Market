@@ -33,11 +33,16 @@
         android:textSize="20dp"
         android:layout_marginTop="20dp" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/mypage_navigation"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/navigation2" />
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal" >
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/mypage_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/navigation2" />
+    </LinearLayout>
 </LinearLayout>

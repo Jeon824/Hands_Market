@@ -18,16 +18,17 @@ import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hands_market.LoginActivity.Companion.logStatus
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 //import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.net.URL
 //import com.google.firebase.database.ktx.database
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var setAddress: TextView
@@ -45,33 +46,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val storeDetail = findViewById<TextView>(R.id.store_detail)
-        storeDetail.setOnClickListener(this)
+        val store_detail = findViewById<TextView>(R.id.store_detail)
+        store_detail.setOnClickListener(this)
 
-        val myRef = database.getReference()
-        myRef.child("message").push().setValue("hi")
 
-        val msg = database.reference.child("Stores")
-
-        test = findViewById(R.id.test)
-        test.setOnClickListener(this)
-
-        msg.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for(data in dataSnapshot.children){
-//                    var value = data.getValue()
-//                    test.text = value.toString()
-                    var value = data.value
-                    test.text = value.toString()
-
-                }
-//                test.text=test_array[0]
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
 
         setAddress = findViewById<TextView>(R.id.setAddressMainText)
         setAddress.setOnClickListener(this)
@@ -79,10 +57,14 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
 
+//        test = findViewById<TextView>(R.id.test)
+//        test.setOnClickListener(this)
+//
+//        var test22 = findViewById<TextView>(R.id.test22)
+//        test22.setOnClickListener(this)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
         /*navigationBar.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.navigation_home->
@@ -91,32 +73,36 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
             }
         }*/
 
-    }
+        // Store 목록 조회
+//        val database : FirebaseDatabase = FirebaseDatabase.getInstance() //데이터베이스 부르기
+//        val Stores = database.getReference().child("Stores") //Store 테이블에 접근
+//        Stores.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                var i=0
+//                var storeN: String
+//                var storeImg :String
+//                for(data in dataSnapshot.children){
+//                    var map =data.value as Map<String,Any>
+//                    storeN = map["storeName"].toString()
+//                    storeImg = map["storeImgurl"].toString()
+//                    var url = URL(storeImg)
+//                }
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//        })
 
-    fun getAppKeyHash() {
-        try {
-            val info = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
-            for(i in info.signatures) {
-                val md: MessageDigest = MessageDigest.getInstance("SHA")
-                md.update(i.toByteArray())
 
-                val something = String(Base64.encode(md.digest(), 0)!!)
-
-                Log.e("Debug key", something)
-            }
-        } catch(e: Exception) {
-            Log.e("Not found", e.toString())
-        }
     }
 
 
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
-                R.id.store_detail -> {
-                    val intent = Intent(this, ManagerActivity::class.java)
-                    startActivity(intent)
-                }
+//                R.id.test22 -> {
+//                    val intent = Intent(this, ManagerActivity::class.java)
+//                    startActivity(intent)
+//                }
 
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
@@ -139,7 +125,24 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                     }
                 }
                 R.id.test -> {
+                    val msg= database.getReference().child("Stores")
+                    msg.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                                var value = data.getValue(Store::class.java)
+                                Log.d("firebase",value?.storeName)
+                                test.text = value?.storeName
 
+                            }
+//                test.text=test_array[0]
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
                 }
             }
         }
@@ -149,8 +152,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
 
 
-   private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-       when (menuItem.itemId) {
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
             R.id.navigation_home -> {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

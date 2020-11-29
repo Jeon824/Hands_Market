@@ -9,46 +9,66 @@
 
     <TextView
         android:id="@+id/favoriteMainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
         android:text="즐겨찾기"
-        android:textSize="25dp"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="30dp" />
+        android:textSize="25dp" />
 
     <LinearLayout
+        android:id="@+id/favorite_btns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/favorite_btns"
         android:layout_below="@+id/favoriteMainText"
-        android:gravity="center_horizontal">
-        <Button
-            android:id="@+id/favoriteStoreBtn"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:text="상점"
-            android:textSize="18dp" />
+        android:gravity="center"
+        android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/favoriteGoodsBtn"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:text="상품"
-            android:textSize="18dp" />
+        <LinearLayout
+            android:id="@+id/favorite_btns1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/favoriteMainText"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/favoriteStoreBtn"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:text="상점"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/favorite_btns3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/favoriteMainText"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/favoriteGoodsBtn"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:text="상품"
+                android:textSize="18dp" />
+        </LinearLayout>
     </LinearLayout>
+
     <FrameLayout
+        android:layout_below="@+id/favorite_btns"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/favorite_activity_frame_layout"
-        android:layout_below="@+id/favorite_btns"/>
+        android:id="@+id/favorite_activity_frame_layout" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/favorite_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/navigation1"
-        android:layout_alignParentBottom="true"
-        />
+        app:menu="@menu/navigation2"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

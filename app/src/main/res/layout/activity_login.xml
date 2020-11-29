@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LoginActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/login_activity">
 
     <TextView
         android:id="@+id/loginMainText"
@@ -17,11 +18,12 @@
         android:layout_marginTop="120dp"
         android:textSize="50dp"/>
 
-    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-        android:id="@+id/buttonOAuthLoginImg"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_google_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"/>
+        android:layout_marginTop="170dp">
+    </com.google.android.gms.common.SignInButton>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/login_navigation"
