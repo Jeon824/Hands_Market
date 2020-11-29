@@ -103,6 +103,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 //                R.id.button_storeState_delete ->{
 //
 //                }
+
                 R.id.button_goodsAdd -> {
                     val intent = Intent(this, GoodsRegisterActivity::class.java)
                     startActivity(intent)
