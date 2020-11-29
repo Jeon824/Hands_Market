@@ -119,7 +119,6 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
 
                     puW.showAtLocation(v, Gravity.CENTER, 0, 0)
-                    puW.showAtLocation(v, Gravity.CENTER, 0 , 0)
 
                     /*val intent = Intent(this, StoreLayoutCallActivity::class.java)
                     val stream : ByteArrayOutputStream = ByteArrayOutputStream()
@@ -139,15 +138,16 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.button_GoodsAdd -> {
+//                    val a = sId.toString()
                     val intent = Intent(this, GoodsRegisterActivity::class.java)
-                    val a = sId.toString()
-                    intent.putExtra("storeKey", a)
-                    Log.d("storedetail", "22222222222")
+                    Log.d("storeDe","1111111111")
+                    intent.putExtra("storeKey", sId)
                     startActivity(intent)
-                    Log.d("storedetail", "333333333333")
+                    Log.d("storeDe","1111111111")
                 }
 //                R.id.test->{
 //                    val intent = Intent(this, GoodsRegisterActivity::class.java)
+//                    intent.putExtra("storeKey", "111111")
 //                    startActivity(intent)
 //                }
             }

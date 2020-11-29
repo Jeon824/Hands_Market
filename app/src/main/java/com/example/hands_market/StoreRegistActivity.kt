@@ -50,6 +50,9 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
         showImgInput = findViewById<ImageView>(R.id.showImg)
         showLayoutImg = findViewById<ImageView>(R.id.showLayoutImg)
 
+
+
+
         val storeRegSearchAddressBtn = findViewById<TextView>(R.id.storeRegSearchAddressBtn)
 
         val storeRegImgBtn : Button = findViewById(R.id.storeRegImgBtn)

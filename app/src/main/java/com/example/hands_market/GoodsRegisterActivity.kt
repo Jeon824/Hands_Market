@@ -7,6 +7,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +19,12 @@ import com.google.firebase.database.FirebaseDatabase
 
 class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
     val Gallery = 0
-    val newIntent : Intent = intent
+    private lateinit var goodsNameInput :EditText
+    private lateinit var goodsPriceInput :EditText
+    private lateinit var goodsSizeInput :EditText
+    private lateinit var goodsColorInput :EditText
+    private lateinit var goodsCountInput :EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_register)
@@ -35,7 +41,11 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
         val navigationBar = findViewById<BottomNavigationView>(R.id.goodsRegister_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-
+        goodsNameInput=findViewById<EditText>(R.id.goodsName)
+        goodsPriceInput=findViewById<EditText>(R.id.goodsPrice)
+        goodsSizeInput=findViewById<EditText>(R.id.goodsSize)
+        goodsColorInput=findViewById<EditText>(R.id.goodsColor)
+        goodsCountInput=findViewById<EditText>(R.id.goodsCount)
         val intent = intent
         val myData = intent.getStringExtra("storeKey")
         Log.d("storedetail", "$myData")
