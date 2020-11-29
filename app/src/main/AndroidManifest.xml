@@ -15,15 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hands_Market"
-        android:usesCleartextTraffic="true"
-        >
+        android:usesCleartextTraffic="true">
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="3dr066pa65" />
         <activity android:name=".PurchasedListActivity" />
-        <activity android:name= ".User" />
-        <activity android:name=".GoodsReview" />
-        <activity android:name= ".PurchasedListActivity" />
         <activity android:name=".MypageActivity" />
         <activity android:name=".StoreDetailActivity" />
         <activity android:name=".GoodsRegisterActivity" />
@@ -31,8 +27,6 @@
         <activity android:name=".RequestGoodsListActivity" />
         <activity android:name=".ReserveListActivity" />
         <activity android:name=".ManagerActivity" />
-
-
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".FavoriteStoreActivity" />
         <activity android:name=".FavoriteGoodsActivity" />
@@ -40,8 +34,8 @@
         <activity android:name=".GoodsReviewActivity" />
         <activity android:name=".GoodsDetailActivity" />
         <activity android:name=".ShoppingBasketActivity" />
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

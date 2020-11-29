@@ -38,7 +38,6 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dataLayoutUri : Uri
     lateinit var url :String
 
-
     //private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +46,10 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
         val storeCreateBtn = findViewById<TextView>(R.id.storeCreateBtn)
         storeCreateBtn.setOnClickListener(this)
 
-        marketNameInput =findViewById(R.id.market_name)
+        marketNameInput = findViewById(R.id.market_name)
         showImgInput = findViewById<ImageView>(R.id.showImg)
         showLayoutImg = findViewById<ImageView>(R.id.showLayoutImg)
+
         val storeRegSearchAddressBtn = findViewById<TextView>(R.id.storeRegSearchAddressBtn)
 
         val storeRegImgBtn : Button = findViewById(R.id.storeRegImgBtn)
@@ -158,15 +158,12 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                             }.addOnFailureListener {
 //
                             }
-
                     }
                         .addOnFailureListener {
                             // Handle unsuccessful uploads
                             // ...
                             Toast.makeText(this, "저장 실패.", Toast.LENGTH_SHORT).show()
                         }
-
-
                 }
                 else{
                     Toast.makeText(this, "저장 실패22", Toast.LENGTH_SHORT).show()
@@ -201,7 +198,4 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
         }
         false
     }
-
-
-
 }
