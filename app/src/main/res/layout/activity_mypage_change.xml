@@ -50,10 +50,17 @@
         android:layout_margin="30dp"
         android:id="@+id/button_modify"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/mypageChange_navigation"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/navigation2" />
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal" >
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/mypageChange_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/navigation2" />
+    </LinearLayout>
+
 </LinearLayout>

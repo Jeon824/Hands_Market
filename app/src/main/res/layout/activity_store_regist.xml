@@ -5,175 +5,171 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StoreRegistActivity"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    tools:context=".StoreRegistActivity">
 
-        <TextView
-            android:id="@+id/storeRegistMainText"
-            android:layout_width="wrap_content"
-            android:layout_height="76dp"
+    <TextView
+        android:id="@+id/storeRegistMainText"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:gravity="center"
+        android:text="마켓 등록하기"
+        android:textColor="#000000"
+        android:textSize="25dp" />
 
-            android:gravity="center"
-            android:text="마켓 등록하기"
-            android:textColor="#000000"
-            android:textSize="25dp" />
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="380dp"
+        android:background="@drawable/input_border"
+        android:gravity="center"
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/input_border"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical" >
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="4dp"
+            android:orientation="horizontal" >
 
-            <LinearLayout
-                android:layout_width="340dp"
+            <TextView
+                android:id="@+id/storeRegNameText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="20dp">
+                android:clickable="true"
+                android:paddingRight="10dp"
+                android:text="마켓 이름 "
+                android:textColor="#FF000000"
+                android:textSize="18dp" />
 
-                <TextView
-                    android:id="@+id/storeRegNameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:paddingRight="10dp"
-                    android:text="마켓 이름 "
-                    android:textColor="#FF000000"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/market_name"
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/input_border" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="20dp">
-
-                <EditText
-                    android:id="@+id/address"
-                    android:layout_width="180dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/input_border" />
-
-                <Button
-                    android:id="@+id/storeRegSearchAddressBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/click_button"
-                    android:clickable="true"
-                    android:paddingRight="10dp"
-                    android:text="주소 검색 "
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="319dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="20dp">
-
-                <TextView
-                    android:id="@+id/storeRegImgText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:paddingRight="10dp"
-                    android:text="매장 이미지 "
-                    android:textColor="#FF000000"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/storeRegImgBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/click_button"
-                    android:clickable="true"
-                    android:paddingRight="10dp"
-                    android:text="첨부 파일"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:id="@+id/showImg"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="317dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="30dp">
-
-                <TextView
-                    android:id="@+id/storeRegStoreLayoutText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:paddingRight="10dp"
-                    android:text="배치도 등록 "
-                    android:textColor="#FF000000"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/storeRegStoreLayoutImgBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/click_button"
-                    android:clickable="true"
-                    android:paddingRight="10dp"
-                    android:text="첨부 파일"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/test33"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:paddingRight="10dp"
-                    android:textColor="#FF000000"
-                    android:textSize="20sp" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:id="@+id/showLayoutImg"
-                    />
-            </LinearLayout>
+            <EditText
+                android:id="@+id/market_name"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="@drawable/input_border" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="4dp"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/input_border" />
+
+            <Button
+                android:id="@+id/storeRegSearchAddressBtn"
+                android:layout_width="115dp"
+                android:layout_height="45dp"
+                android:background="@drawable/click_button"
+                android:clickable="true"
+                android:text="주소 검색"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="4dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/storeRegImgText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingRight="10dp"
+                android:text="매장 이미지 "
+                android:textColor="#FF000000"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/storeRegImgBtn"
+                android:layout_width="115dp"
+                android:layout_height="45dp"
+                android:background="@drawable/click_button"
+                android:clickable="true"
+                android:paddingRight="10dp"
+                android:text="첨부 파일"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/showImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="4dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/storeRegStoreLayoutText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingRight="10dp"
+                android:text="배치도 등록 "
+                android:textColor="#FF000000"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/storeRegStoreLayoutImgBtn"
+                android:layout_width="115dp"
+                android:layout_height="45dp"
+                android:background="@drawable/click_button"
+                android:clickable="true"
+                android:paddingRight="10dp"
+                android:text="첨부 파일"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/showLayoutImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/storeCreateBtn"
             android:layout_width="100dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
+            android:layout_height="45dp"
             android:background="@drawable/click_button"
             android:text="등록"
-            android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="18dp" />
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/storeRegist_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_weight="1"
         app:menu="@menu/navigation2" />
 
-    </LinearLayout>
+</LinearLayout>
