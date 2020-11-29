@@ -2,17 +2,19 @@ package com.example.hands_market
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 //lateinit var sIdOfGoods : String
@@ -24,7 +26,9 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var goodsSizeInput :EditText
     private lateinit var goodsColorInput :EditText
     private lateinit var goodsCountInput :EditText
-
+    private lateinit var dataUri : Uri
+    lateinit var GoodsUrl :String
+    private lateinit var showGoodsImg :ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_register)
@@ -46,9 +50,13 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
         goodsSizeInput=findViewById<EditText>(R.id.goodsSize)
         goodsColorInput=findViewById<EditText>(R.id.goodsColor)
         goodsCountInput=findViewById<EditText>(R.id.goodsCount)
-        val intent = intent
-        val myData = intent.getStringExtra("storeKey")
-        Log.d("storedetail", "$myData")
+
+        showGoodsImg = findViewById<ImageView>(R.id.showGoodsImg)
+
+
+//        val intent = intent
+//        val myData = intent.getStringExtra("storeKey")
+//        Log.d("storedetail", "$myData")
     }
 
     override fun onClick(v: View?) {
@@ -90,10 +98,44 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == Gallery) {
-            var dataUri = data?.data
+            dataUri = data?.data!!
             try {
                 var bitmap: Bitmap =
                     MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
+                    showGoodsImg.setImageBitmap(bitmap)
+                if (dataUri != null) {
+                    //storage
+                    var Storage = FirebaseStorage.getInstance()
+//                    var storeRef = Storage.reference
+
+                    //Unique한 파일명을 만들자.
+                    val formatter = SimpleDateFormat("yyyyMMHH_mmss")
+                    val now = Date()
+                    val filename: String = formatter.format(now).toString() + ".png"
+
+                    //storage 주소와 폴더 파일명을 지정해 준다.
+                    val GoodsRef: StorageReference = Storage.getReference().child("GoodsImages").child(filename)
+
+                    //로컬 파일에서 업로드
+                    GoodsRef!!.putFile(dataUri!!)
+                            .addOnSuccessListener {
+                                GoodsRef!!.downloadUrl.addOnSuccessListener{
+                                    Log.d("StoreRegistActivity","$it")
+                                    GoodsUrl=it.toString()
+                                }.addOnFailureListener {
+//
+                                }
+                            }
+                            .addOnFailureListener {
+                                // Handle unsuccessful uploads
+                                // ...
+                                Toast.makeText(this, "저장 실패.", Toast.LENGTH_SHORT).show()
+                            }
+                }
+                else{
+                    Toast.makeText(this, "저장 실패22", Toast.LENGTH_SHORT).show()
+                }
+
             }catch (e: Exception) {
                 Toast.makeText(this, "$e", Toast.LENGTH_SHORT).show()
             }

@@ -3,6 +3,7 @@ package com.example.hands_market
 //import com.google.firebase.ktx.Firebase
 //import com.google.firebase.database.ktx.database
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -20,7 +21,7 @@ import android.util.Base64.NO_WRAP
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
+//import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
@@ -212,7 +213,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //                    val intent = Intent(this, GoodsRegisterActivity::class.java)
 //                    startActivity(intent)
 //                }
-
+                R.id.test22->{
+                    val intent = Intent(this, GoodsRegisterActivity::class.java)
+                    startActivity(intent)
+                }
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
                     val intent = Intent(this, MapViewActivity::class.java)

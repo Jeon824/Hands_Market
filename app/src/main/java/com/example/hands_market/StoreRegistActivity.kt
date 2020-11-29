@@ -181,9 +181,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 //        Toast.makeText(this, "업로드 되었습니다.", Toast.LENGTH_SHORT).show()
     }
 
-//    private fun saveToFirebase(storeImgurl:String){
-//
-//    }
+
 
     // bottom navigation 버튼 출력 함수
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->

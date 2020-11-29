@@ -75,19 +75,19 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         buttonStoreDeleteBtn = findViewById<Button>(R.id.button_storeState_delete)
         buttonStoreDeleteBtn.setOnClickListener(this)
 
-//        addGoodsBtn  = findViewById<Button>(R.id.button_goodsAdd)
+
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
-        var storeImageUrl = thisStore.storeImgurl
-        var image_task: StoreListAdapter.URLtoBitmapTask = StoreListAdapter.URLtoBitmapTask()
-        image_task = StoreListAdapter.URLtoBitmapTask().apply {
-            url = URL("$storeImageUrl")
-        }
-        Log.d("StoreDetailActivity", "4s")
-        var bitmap: Bitmap = image_task.execute().get()
-        bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
-        storeImage=findViewById<ImageView>(R.id.store_detail_store_image)
-        storeImage.setImageBitmap(bitmap)
+//        var storeImageUrl = thisStore.storeImgurl
+//        var image_task: StoreListAdapter.URLtoBitmapTask = StoreListAdapter.URLtoBitmapTask()
+//        image_task = StoreListAdapter.URLtoBitmapTask().apply {
+//            url = URL("$storeImageUrl")
+//        }
+//        Log.d("StoreDetailActivity", "4s")
+//        var bitmap: Bitmap = image_task.execute().get()
+//        bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+//        storeImage=findViewById<ImageView>(R.id.store_detail_store_image)
+//        storeImage.setImageBitmap(bitmap)
 
         sId= thisStore.SID.toString()
 

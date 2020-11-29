@@ -33,46 +33,40 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
         viewHolder.storeName.text = storeList[position].storeName
         viewHolder.storeAddress.text = storeList[position].storeAddress
 
-        if(storeList[position].storeImgurl == null)
+        if(storeList[position].storeImg == null)
             viewHolder.storeImage.setImageResource(R.drawable.ic_baseline_storefront_24)
         else{
 //            var storeImgUrlChange = URL(storeList[position].storeImgurl) //url
 //            var storeImgBitmap=BitmapFactory.decodeStream(storeImgUrlChange.openStream())//url을 bitmap으로 바꿔주기
 //            viewHolder.storeImage.setImageBitmap(storeImgBitmap)
 
-            var storeImg = storeList[position].storeImgurl
-            var image_task: URLtoBitmapTask = URLtoBitmapTask()
-            image_task = URLtoBitmapTask().apply {
-                url = URL("$storeImg")
-            }
-            var bitmap: Bitmap = image_task.execute().get()
-            bitmap = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
-            viewHolder.storeImage.setImageBitmap(bitmap)
+//            var storeImg = storeList[position].storeImgurl
+//            var image_task: URLtoBitmapTask = URLtoBitmapTask()
+//            image_task = URLtoBitmapTask().apply {
+//                url = URL("$storeImg")
+//            }
+//            var bitmap: Bitmap = image_task.execute().get()
+//            bitmap = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
+//            viewHolder.storeImage.setImageBitmap(bitmap)
 
-//            viewHolder.storeImage.setImageBitmap(storeList[position].storeImg)
+            viewHolder.storeImage.setImageBitmap(storeList[position].storeImg)
         }
     }
-    class URLtoBitmapTask() : AsyncTask<Void, Void, Bitmap>() {
-        //액티비티에서 설정해줌
-        lateinit var url:URL
-        override fun doInBackground(vararg params: Void?): Bitmap {
-            val bitmap = BitmapFactory.decodeStream(url.openStream())
-            return bitmap
-        }
-        override fun onPreExecute() {
-            super.onPreExecute()
+//    class URLtoBitmapTask() : AsyncTask<Void, Void, Bitmap>() {
+//        //액티비티에서 설정해줌
+//        lateinit var url:URL
+//        override fun doInBackground(vararg params: Void?): Bitmap {
+//            val bitmap = BitmapFactory.decodeStream(url.openStream())
+//            return bitmap
+//        }
+//        override fun onPreExecute() {
+//            super.onPreExecute()
+//        }
+//        override fun onPostExecute(result: Bitmap) {
+//            super.onPostExecute(result)
+//        }
+//    }
 
-    override fun getItemId(position: Int): Long {
-        return super.getItemId(position)
-    }
-
-
-
-        }
-        override fun onPostExecute(result: Bitmap) {
-            super.onPostExecute(result)
-        }
-    }
     override fun getItemCount() = storeList.size
 
     inner class ViewHolder(view: View) :RecyclerView.ViewHolder(view){
@@ -81,7 +75,6 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
         val storeImage: ImageView = view.findViewById(R.id.store_image)
         private val intent: Intent =Intent(context, StoreDetailActivity::class.java)
         val stream : ByteArrayOutputStream = ByteArrayOutputStream()
-
         init {
             view.setOnClickListener {
                 intent.putExtra("managerID", storeList[adapterPosition].managerID)
