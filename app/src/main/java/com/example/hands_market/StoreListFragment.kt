@@ -27,7 +27,6 @@ class StoreListFragment : Fragment() {
     private val storeList : MutableList<Store> = ArrayList()
     private lateinit var recyclerView : RecyclerView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -60,8 +59,6 @@ class StoreListFragment : Fragment() {
         }catch(e: Exception) {
             e.printStackTrace()
         }
-
-
 
         // Store 목록 조회
         val database : FirebaseDatabase = FirebaseDatabase.getInstance() //데이터베이스 부르기
