@@ -71,6 +71,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         // '물품+' 버튼 - 매장 관리자가 상점 내 상품을 추가하는 버튼
         addGoodsBtn  = findViewById<Button>(R.id.button_goodsAdd)
+        addGoodsBtn.setOnClickListener(this)
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.storeDetail_navigation)
