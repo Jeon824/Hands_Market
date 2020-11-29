@@ -20,6 +20,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -38,8 +39,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_login)
         loginLayout = findViewById(R.id.login_activity)
 
-        //btn_googleSignIn.setOnClickListener (this) // 구글 로그인 버튼
-        signIn()
+        //btn_google_login.setOnClickListener (this) // 구글 로그인 버튼
+
+        btn_google_login.setOnClickListener() {signIn() }
 
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -49,7 +51,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 .requestEmail()
                 .build()
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+            googleSignInClient = GoogleSignIn.getClient(this, gso)
+
 
         //firebase auth 객체
         firebaseAuth = FirebaseAuth.getInstance()
@@ -112,9 +116,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     // signIn
     private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
+
+            val signInIntent = googleSignInClient.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
+        }
+
     // signIn End
 
     override fun onClick(p0: View?) {
