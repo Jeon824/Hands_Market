@@ -1,34 +1,23 @@
 package com.example.hands_market
 
-import android.content.ClipData
-import android.content.Context
+//import com.google.firebase.ktx.Firebase
+//import com.google.firebase.database.ktx.database
+
+import android.R.attr.src
 import android.content.Intent
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import android.media.Image
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Base64
-import android.util.Base64.NO_WRAP
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.ActionBar
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-//import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import java.io.BufferedInputStream
+import java.io.InputStream
+import java.net.HttpURLConnection
 import java.net.URL
-//import com.google.firebase.database.ktx.database
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
-import kotlin.math.log
+
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var setAddress: TextView
@@ -57,11 +46,14 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
 
+
+        val setImage = findViewById<ImageView>(R.id.imagetest)
+
 //        test = findViewById<TextView>(R.id.test)
 //        test.setOnClickListener(this)
 //
-//        var test22 = findViewById<TextView>(R.id.test22)
-//        test22.setOnClickListener(this)
+        var test22 = findViewById<TextView>(R.id.test22)
+        test22.setOnClickListener(this)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -92,6 +84,24 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //            }
 //        })
 
+        //이미지 확인
+//        try{
+//            Log.d("MainActivity","in!!!!!!!!!!!!!!!!!!!!!!!!")
+//            val url = URL("https://img.khan.co.kr/news/2019/11/29/l_2019112901003607500286631.jpg")
+//            val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+//            connection.connect()
+//            val input : BufferedInputStream = BufferedInputStream(connection.getInputStream())
+//            Log.d("MainActivity","$input")
+//            val myBitmap = BitmapFactory.decodeStream(input)
+//            Log.d("MainActivity","$myBitmap")
+//            input.close()
+//            setImage.setImageBitmap(myBitmap)
+//            Toast.makeText(this, "저장 ", Toast.LENGTH_SHORT).show()
+//
+//        }
+//        catch (e : Exception ) {
+//            Toast.makeText(this, "저장 실패.", Toast.LENGTH_SHORT).show()
+//        }
 
     }
 
@@ -99,10 +109,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
-//                R.id.test22 -> {
-//                    val intent = Intent(this, ManagerActivity::class.java)
-//                    startActivity(intent)
-//                }
+                R.id.test22 -> {
+                    val intent = Intent(this, ManagerActivity::class.java)
+                    startActivity(intent)
+                }
 
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
@@ -111,7 +121,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 }
                 R.id.searchBtn -> {
                     keyWord = keyWordInput.text.toString()
-                    if(keyWord!=null) {
+                    if (keyWord != null) {
                         val bundle: Bundle = Bundle()
                         bundle.putString("keyword", keyWord)
                         //StoreFragment start
@@ -140,11 +150,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_log -> {
-                val intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
         }
