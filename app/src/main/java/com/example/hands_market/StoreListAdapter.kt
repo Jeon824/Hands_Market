@@ -36,6 +36,12 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
 
     }
 
+    override fun getItemId(position: Int): Long {
+        return super.getItemId(position)
+    }
+
+
+
     override fun getItemCount() = storeList.size
 
     inner class ViewHolder(view: View) :RecyclerView.ViewHolder(view){

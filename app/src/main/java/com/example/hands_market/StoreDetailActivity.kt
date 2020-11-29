@@ -12,6 +12,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var storeImage : ImageView
@@ -24,8 +26,7 @@ lateinit var storeStateCngBtn : Button
 lateinit var addGoodsBtn : Button
 lateinit var storeLayoutBtn : Button
 
-const val DEFAULT_LAT :Double = 37.5740381
-const val DEFAULT_LNG :Double = 126.97458
+
 
 class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 

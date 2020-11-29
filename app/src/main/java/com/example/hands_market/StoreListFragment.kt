@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.io.InputStream
 import java.lang.Exception
+import java.util.*
+import kotlin.collections.ArrayList
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 class StoreListFragment : Fragment() {
@@ -106,4 +108,6 @@ class StoreListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
+
 }

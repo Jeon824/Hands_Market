@@ -55,11 +55,12 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
     implementation 'com.google.firebase:firebase-database:19.5.1'
-    implementation files('src\\main\\jniLibs\\libDaumMapAndroid.jar')
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation files('libs/libDaumMapAndroid.jar')
 
 
     testImplementation 'junit:junit:4.+'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //kakao map

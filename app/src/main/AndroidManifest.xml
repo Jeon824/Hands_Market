@@ -2,10 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hands_market">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" >
+    </uses-permission>
 
     <application
         android:allowBackup="true"
@@ -19,11 +23,8 @@
         >
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="3dr066pa65" />
+            android:value="37d359c49b925138434271d6bffa1686" />
         <activity android:name=".PurchasedListActivity" />
-        <activity android:name= ".User" />
-        <activity android:name=".GoodsReview" />
-        <activity android:name= ".PurchasedListActivity" />
         <activity android:name=".MypageActivity" />
         <activity android:name=".StoreDetailActivity" />
         <activity android:name=".GoodsRegisterActivity" />
@@ -31,8 +32,6 @@
         <activity android:name=".RequestGoodsListActivity" />
         <activity android:name=".ReserveListActivity" />
         <activity android:name=".ManagerActivity" />
-
-
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".FavoriteStoreActivity" />
         <activity android:name=".FavoriteGoodsActivity" />
@@ -48,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="37d359c49b925138434271d6bffa1686"/>
     </application>
 
 </manifest>
