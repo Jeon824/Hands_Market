@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StoreDetailActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".StoreDetailActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -20,12 +20,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/store_detail_store_image"
-            android:src="@drawable/ic_baseline_storefront_24"/>
+            android:src="@drawable/ic_baseline_storefront_24" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/storeDetailNameText"
@@ -67,7 +67,7 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginEnd="10dp" />
 
             <Button
                 android:id="@+id/button_storeLayout"
@@ -93,11 +93,10 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_gravity="end"
-        android:visibility="invisible" />
+        android:layout_gravity="end" />
 
-        />
 <!--    android:visibility="invisible"-->
+
     <Button
         android:id="@+id/button_goodsAdd"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -108,8 +107,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:layout_marginEnd="10dp"
-        android:layout_gravity="end"
-        android:visibility="invisible" />
+        android:layout_gravity="end" />
 
     <fragment
         android:name="com.example.hands_market.GoodsListFragment"
@@ -119,8 +117,9 @@
         android:layout_height="0dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/storeDetail_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/navigation2"
-        android:id="@+id/storeDetail_navigation"/>
+        app:menu="@menu/navigation2" />
+
 </LinearLayout>

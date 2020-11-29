@@ -30,7 +30,7 @@
             android:layout_below="@+id/favoriteMainText"
             android:layout_weight="5"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/favoriteStoreBtn"
@@ -47,7 +47,7 @@
             android:layout_below="@+id/favoriteMainText"
             android:layout_weight="5"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/favoriteGoodsBtn"

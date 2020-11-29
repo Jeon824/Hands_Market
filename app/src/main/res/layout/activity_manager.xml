@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,13 +78,14 @@
                     tools:layout_editor_absoluteY="169dp" />
             </LinearLayout>
         </LinearLayout>
+
         <TextView
             android:id="@+id/managerMyListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="나의 마켓 리스트"
             android:textColor="#000000"
-            android:textSize="50px"
+            android:textSize="25dp"
             android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -93,14 +94,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.394" />
 
-
         <TextView
             android:id="@+id/addStoreBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="가게+"
             android:textColor="#000000"
-            android:textSize="50px"
+            android:textSize="14dp"
             android:layout_gravity="right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

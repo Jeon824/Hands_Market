@@ -44,6 +44,7 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-analytics-ktx'
 //    implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-database:19.5.1'
+    implementation 'com.google.firebase:firebase-storage:19.2.0'
 
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -64,6 +65,8 @@ dependencies {
     implementation files('src\\main\\jniLibs\\libDaumMapAndroid.jar')
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
+
+
 
 
     testImplementation 'junit:junit:4.+'

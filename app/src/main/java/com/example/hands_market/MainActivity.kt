@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseError
 //import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.net.URL
 //import com.google.firebase.database.ktx.database
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
 
+//        test = findViewById<TextView>(R.id.test)
+//        test.setOnClickListener(this)
+//
+//        var test22 = findViewById<TextView>(R.id.test22)
+//        test22.setOnClickListener(this)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -73,13 +79,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //        Stores.addValueEventListener(object : ValueEventListener {
 //            override fun onDataChange(dataSnapshot: DataSnapshot) {
 //                var i=0
+//                var storeN: String
+//                var storeImg :String
 //                for(data in dataSnapshot.children){
 //                    var map =data.value as Map<String,Any>
-//                    var storeN=map["storeName"].toString()
-//                    storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
-//                    if(storeList[i].storeLayout == null)
-//                        storeList[i].storeLayout = tmpLayout
-//                    i=i+1
+//                    storeN = map["storeName"].toString()
+//                    storeImg = map["storeImgurl"].toString()
+//                    var url = URL(storeImg)
 //                }
 //            }
 //            override fun onCancelled(error: DatabaseError) {
@@ -93,10 +99,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
-                R.id.store_detail -> {
-                    val intent = Intent(this, ManagerActivity::class.java)
-                    startActivity(intent)
-                }
+//                R.id.test22 -> {
+//                    val intent = Intent(this, ManagerActivity::class.java)
+//                    startActivity(intent)
+//                }
 
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {

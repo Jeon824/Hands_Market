@@ -11,70 +11,77 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/input_border"
-        android:layout_marginBottom="50px" >
-
-        <ImageView
-            android:id="@+id/goods_detail_image"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.236"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="59dp"
-            android:layout_marginRight="150px" />
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_width="380dp"
+            android:layout_height="148dp"
+            android:background="@drawable/input_border"
+            android:layout_marginBottom="50px" >
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/button_favorite" />
-
-            <Button
-                android:id="@+id/goods_request"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/goods_detail_image"
                 android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:background="@drawable/border_bottom"
-                android:text="입고요청"
-                android:textColor="#000000"
-                android:textSize="40px"
+                android:layout_height="150dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.236"
+                app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
-                android:layout_marginTop="50px"
-                android:orientation="vertical" />
+                tools:layout_editor_absoluteY="59dp"
+                android:layout_marginRight="150px" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/button_favorite" />
 
                 <Button
-                    android:id="@+id/button_modify"
+                    android:id="@+id/goods_request"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="70dp"
+                    android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:background="@drawable/border_bottom"
-                    android:text="수정"
+                    android:text="입고요청"
                     android:textColor="#000000"
-                    android:textSize="15sp" />
+                    android:textSize="40px"
+                    tools:ignore="MissingConstraints"
+                    android:layout_marginTop="50px"
+                    android:orientation="vertical" />
 
-                <Button
-                    android:id="@+id/button_delete"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/border_bottom"
-                    android:text="삭제"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    android:layout_marginStart="5dp"
-                    tools:ignore="MissingConstraints" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/button_modify"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/border_bottom"
+                        android:text="수정"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <Button
+                        android:id="@+id/button_delete"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/border_bottom"
+                        android:text="삭제"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:layout_marginStart="10dp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -147,23 +154,24 @@
 
         <TextView
             android:id="@+id/review"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="리뷰"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_weight="3"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="1dp"
-            android:textSize="25dp"/>
+            android:text="리뷰"
+            android:textSize="25dp" />
 
         <Button
             android:id="@+id/button_review_write"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="100dp"
             android:layout_height="43dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/border_bottom"
             android:text="리뷰쓰기"
             android:textColor="#000000"
-            android:textSize="15sp"
-            tools:ignore="MissingConstraints" />
+            android:textSize="15sp" />
     </LinearLayout>
 
     <fragment

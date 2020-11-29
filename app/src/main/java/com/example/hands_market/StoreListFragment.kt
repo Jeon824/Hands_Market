@@ -27,7 +27,6 @@ class StoreListFragment : Fragment() {
     private val storeList : MutableList<Store> = ArrayList()
     private lateinit var recyclerView : RecyclerView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -61,8 +60,6 @@ class StoreListFragment : Fragment() {
             e.printStackTrace()
         }
 
-
-
         // Store 목록 조회
         val database : FirebaseDatabase = FirebaseDatabase.getInstance() //데이터베이스 부르기
         val Stores = database.getReference().child("Stores") //Store 테이블에 접근
@@ -73,6 +70,7 @@ class StoreListFragment : Fragment() {
                 for(data in dataSnapshot.children){
                     var map =data.value as Map<String,Any>
                     storeN = map["storeName"].toString()
+//                    storeImg = map["storeImgurl"].toString()
                     storeList.add(i, Store("$i 번째 매니저", storeN, i * 0.1, i * 0.1, "$i 번째 주소", null, null))
                     if(storeList[i].storeLayout == null)
                         storeList[i].storeLayout = tmpLayout
