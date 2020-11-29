@@ -18,7 +18,6 @@ class FavoriteActivity : AppCompatActivity() {
         val bundle: Bundle = Bundle()
         bundle.putString("type","favorite")
 
-
         // 즐겨찾기 조회 (상점) 버튼
         val favoriteStoreBtn = findViewById<Button>(R.id.favoriteStoreBtn)
         favoriteStoreBtn.setOnClickListener{

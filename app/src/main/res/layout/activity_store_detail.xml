@@ -105,7 +105,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_gravity="end" />
+
 <!--    android:visibility="invisible"-->
+
     <Button
         android:id="@+id/button_GoodsAdd"
         style="@style/Widget.AppCompat.Button.Borderless"

@@ -64,6 +64,12 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         storeName.text = thisStore.storeName
         storeAddress = findViewById(R.id.store_detail_store_address)
         storeAddress.text = thisStore.storeAddress
+
+        // '배치도' 버튼 - 상점 배치도 조회
+        storeLayoutBtn = findViewById(R.id.button_storeLayout)
+        storeLayoutBtn.setOnClickListener(this)
+
+        // '가게 삭제' 버튼 - 상점 삭제
         buttonStoreDeleteBtn = findViewById<Button>(R.id.button_storeState_delete)
         buttonStoreDeleteBtn.setOnClickListener(this)
 
@@ -113,6 +119,7 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
 
                     puW.showAtLocation(v, Gravity.CENTER, 0, 0)
+                    puW.showAtLocation(v, Gravity.CENTER, 0 , 0)
 
                     /*val intent = Intent(this, StoreLayoutCallActivity::class.java)
                     val stream : ByteArrayOutputStream = ByteArrayOutputStream()
@@ -155,11 +162,11 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this, FavoriteActivity::class.java)
+                val intent = Intent(this,FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_mypage -> {
-                val intent = Intent(this, MypageActivity::class.java)
+                val intent = Intent(this,MypageActivity::class.java)
                 startActivity(intent)
             }
         }

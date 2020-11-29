@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LoginActivity"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    android:id="@+id/login_activity">
 
     <TextView
         android:id="@+id/loginMainText"
@@ -15,25 +16,20 @@
         android:textStyle="bold"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="120dp"
-        android:textSize="50dp" />
+        android:textSize="50dp"/>
 
-    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-        android:id="@+id/buttonOAuthLoginImg"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_google_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp" />
+        android:layout_marginTop="170dp">
+    </com.google.android.gms.common.SignInButton>
 
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/login_navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:orientation="horizontal" >
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/login_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/navigation1" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation1" />
 
 </LinearLayout>
