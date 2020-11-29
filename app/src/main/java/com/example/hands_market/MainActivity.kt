@@ -46,9 +46,37 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val store_detail = findViewById<TextView>(R.id.store_detail)
         store_detail.setOnClickListener(this)
 
+        val storeDetail = findViewById<TextView>(R.id.store_detail)
+        storeDetail.setOnClickListener(this)
+        /*
+        val myRef = database.getReference()
+        myRef.child("message").push().setValue("hi")
+
+        val msg = database.reference.child("Stores")
+
+        test = findViewById(R.id.test)
+        test.setOnClickListener(this)
+
+        msg.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(data in dataSnapshot.children){
+//                    var value = data.getValue()
+//                    test.text = value.toString()
+                    var value = data.value
+                    test.text = value.toString()
+
+                }
+//                test.text=test_array[0]
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })*/
 
 
         setAddress = findViewById<TextView>(R.id.setAddressMainText)
@@ -123,26 +151,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         goodslistFragment.arguments = bundle
                         supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
-                }
-                R.id.test -> {
-                    val msg= database.getReference().child("Stores")
-                    msg.addValueEventListener(object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            for(data in dataSnapshot.children){
-//                    var value = data.getValue()
-//                    test.text = value.toString()
-                                var value = data.getValue(Store::class.java)
-                                Log.d("firebase",value?.storeName)
-                                test.text = value?.storeName
-
-                            }
-//                test.text=test_array[0]
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
-                        }
-                    })
                 }
             }
         }

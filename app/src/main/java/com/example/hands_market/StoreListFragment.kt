@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -93,6 +94,8 @@ class StoreListFragment : Fragment() {
         viewAdapter = StoreListAdapter(context, storeList)
 
         recyclerView = view.findViewById(R.id.store_recycler_view)
+        recyclerView.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT/2
+        recyclerView.layoutParams.height = LinearLayout.LayoutParams.MATCH_PARENT/2
         recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = fragLayoutManager

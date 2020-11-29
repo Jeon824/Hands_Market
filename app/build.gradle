@@ -67,6 +67,7 @@ dependencies {
 
 
     implementation files('libs/libDaumMapAndroid.jar')
+    implementation files('libs\\commons-net-3.7.2.jar')
 
 
     testImplementation 'junit:junit:4.+'
