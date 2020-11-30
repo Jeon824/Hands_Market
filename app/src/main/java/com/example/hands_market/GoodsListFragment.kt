@@ -47,7 +47,7 @@ class GoodsListFragment : Fragment() {
 
 
         for (i in 0 until 10)
-            goodsList.add(i,Goods("$i 번째 관리자","$i 번째 가게","$i 번째 상품",null,10000 ,null,100,"RED",100,null,null,null))
+            goodsList.add(i,Goods("$i 번째 관리자","$i 번째 가게","$i 번째 상품",null,10000 ,null,100,"RED",100,"11",null,null))
 
         viewAdapter = GoodsListAdapter(context, goodsList)
 

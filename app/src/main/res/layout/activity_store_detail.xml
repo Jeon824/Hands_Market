@@ -20,8 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/store_detail_store_image"
-            android:src="@drawable/ic_baseline_storefront_24" />
-
+            android:layout_gravity="center"
+            />
+<!--        android:src="@drawable/ic_baseline_storefront_24"-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +82,17 @@
                 android:layout_marginEnd="10dp" />
         </LinearLayout>
    </LinearLayout>
-
+<!--    <Button-->
+<!--        android:id="@+id/test"-->
+<!--        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/border_bottom"-->
+<!--        android:text="물품++"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_gravity="end" />-->
     <Button
         android:id="@+id/button_storeState_delete"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -98,7 +109,7 @@
 <!--    android:visibility="invisible"-->
 
     <Button
-        android:id="@+id/button_goodsAdd"
+        android:id="@+id/button_GoodsAdd"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

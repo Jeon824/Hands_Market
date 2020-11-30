@@ -7,11 +7,12 @@ class Store(
     var storeName: String?="",
     var storeLat: Double?,
     var storeLng: Double?,
-    var storeAddress: String="",
+    var storeAddress: String?="",
     var storeImg: Bitmap? = null,
     var storeLayout :Bitmap? = null,
-    var favoriteStore: Array<String>?=null,
-    var storeImgurl:String? =""
+    var storeImgurl:String? ="",
+    var SID: String? ="",
+    var favoriteStore: Array<String>?=null
 ) {
 
 

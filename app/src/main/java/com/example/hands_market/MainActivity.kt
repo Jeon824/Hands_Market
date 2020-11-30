@@ -1,8 +1,13 @@
 package com.example.hands_market
 
-import android.content.ClipData
+//import com.google.firebase.ktx.Firebase
+//import com.google.firebase.database.ktx.database
+
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.AsyncTask
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.location.LocationManager
@@ -16,6 +21,7 @@ import android.util.Base64.NO_WRAP
 import android.util.Log
 import android.view.View
 import android.widget.*
+//import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
@@ -31,7 +37,10 @@ import com.google.firebase.database.DatabaseError
 //import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.io.BufferedInputStream
+import java.net.HttpURLConnection
 import java.net.URL
+
 //import com.google.firebase.database.ktx.database
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -49,6 +58,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var keyWordInput :EditText
     val database : FirebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var test : TextView
+    private lateinit var url : URL
+    private lateinit var connection: HttpURLConnection
+    private lateinit var input : BufferedInputStream
+    lateinit var setImage:ImageView
 
     companion object{
        const val PERMISION_REQUEST_CODE = 1001
@@ -120,11 +133,14 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         searchBtn.setOnClickListener(this)
         keyWordInput =findViewById(R.id.key_word)
 
+
+        setImage = findViewById<ImageView>(R.id.imagetest)
+
 //        test = findViewById<TextView>(R.id.test)
 //        test.setOnClickListener(this)
-//
-//        var test22 = findViewById<TextView>(R.id.test22)
-//        test22.setOnClickListener(this)
+
+        var test22 = findViewById<TextView>(R.id.test22)
+        test22.setOnClickListener(this)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -146,8 +162,16 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //                var storeImg :String
 //                for(data in dataSnapshot.children){
 //                    var map =data.value as Map<String,Any>
-//                    storeN = map["storeName"].toString()
 //                    storeImg = map["storeImgurl"].toString()
+//                    //이미지 확인
+//                    Log.d("MainActivity","$storeImg")
+//                    var image_task: URLtoBitmapTask = URLtoBitmapTask()
+//                    image_task = URLtoBitmapTask().apply {
+//                        url = URL("https://img.khan.co.kr/news/2019/11/29/l_2019112901003607500286631.jpg")
+//                    }
+//                    var bitmap: Bitmap = image_task.execute().get()
+//                    setImage.setImageBitmap(bitmap)
+//
 //                    var url = URL(storeImg)
 //                }
 //            }
@@ -155,18 +179,44 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //            }
 //        })
 
+//        //이미지 확인
+//        var image_task: URLtoBitmapTask = URLtoBitmapTask()
+//        image_task = URLtoBitmapTask().apply {
+//            url = URL("https://img.khan.co.kr/news/2019/11/29/l_2019112901003607500286631.jpg")
+//        }
+//        var bitmap: Bitmap = image_task.execute().get()
+//        setImage.setImageBitmap(bitmap)
 
     }
+
+//    class URLtoBitmapTask() : AsyncTask<Void, Void, Bitmap>() {
+//        //액티비티에서 설정해줌
+//        lateinit var url:URL
+//        override fun doInBackground(vararg params: Void?): Bitmap {
+//            val bitmap = BitmapFactory.decodeStream(url.openStream())
+//            return bitmap
+//        }
+//        override fun onPreExecute() {
+//            super.onPreExecute()
+//
+//        }
+//        override fun onPostExecute(result: Bitmap) {
+//            super.onPostExecute(result)
+//        }
+//    }
 
 
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
-//                R.id.test22 -> {
-//                    val intent = Intent(this, ManagerActivity::class.java)
+//                R.id.test->{
+//                    val intent = Intent(this, GoodsRegisterActivity::class.java)
 //                    startActivity(intent)
 //                }
-
+                R.id.test22->{
+                    val intent = Intent(this, GoodsRegisterActivity::class.java)
+                    startActivity(intent)
+                }
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
                     val intent = Intent(this, MapViewActivity::class.java)
@@ -174,7 +224,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 }
                 R.id.searchBtn -> {
                     keyWord = keyWordInput.text.toString()
-                    if(keyWord!=null) {
+                    if (keyWord != null) {
                         val bundle: Bundle = Bundle()
                         bundle.putString("keyword", keyWord)
                         //StoreFragment start
@@ -187,6 +237,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
                 }
+
             }
         }
 
