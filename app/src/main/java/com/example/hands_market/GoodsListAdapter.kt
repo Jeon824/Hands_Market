@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,10 @@ class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): Recycl
 
     }
 
-    override fun getItemCount() = goodsList.size
+    override fun getItemCount() : Int{
+        Log.d("GoodsListAdapter","0")
+        return goodsList.size
+    }
 
     inner class ViewHolder(view: View) :RecyclerView.ViewHolder(view){
         val goodsName: TextView = view.findViewById(R.id.goods_name)

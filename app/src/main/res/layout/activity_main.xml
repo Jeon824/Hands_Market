@@ -16,9 +16,14 @@
 <!--    <TextView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:text="매니저"-->
+<!--        android:text="Mypage"-->
+<!--        android:gravity="right"-->
 <!--        android:textSize="20sp"-->
 <!--        android:id="@+id/test22"/>-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/imagetest"/>
     <TextView
         android:id="@+id/setAddressMainText"
         android:layout_width="match_parent"
@@ -63,12 +68,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
-    <fragment
-        android:name="com.example.hands_market.GoodsListFragment"
-        android:id="@+id/main_goods_fragment"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
+<!--    <fragment-->
+<!--        android:name="com.example.hands_market.GoodsListFragment"-->
+<!--        android:id="@+id/main_goods_fragment"-->
+<!--        android:layout_weight="1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp" />-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_navigation"

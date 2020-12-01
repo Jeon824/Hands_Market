@@ -51,6 +51,9 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
         showImgInput = findViewById<ImageView>(R.id.showImg)
         showLayoutImg = findViewById<ImageView>(R.id.showLayoutImg)
 
+
+
+
         val storeRegSearchAddressBtn = findViewById<TextView>(R.id.storeRegSearchAddressBtn)
 
         val storeRegImgBtn : Button = findViewById(R.id.storeRegImgBtn)
@@ -78,6 +81,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                             storeLat = DEFAULT_LAT,
                             storeLng = DEFAULT_LNG,
                             storeImgurl=url,
+                            SID = "0"
                     )
                     myRef.child("Stores").push().setValue(StoreOne)
 
@@ -177,9 +181,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 //        Toast.makeText(this, "업로드 되었습니다.", Toast.LENGTH_SHORT).show()
     }
 
-//    private fun saveToFirebase(storeImgurl:String){
-//
-//    }
+
 
     // bottom navigation 버튼 출력 함수
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
