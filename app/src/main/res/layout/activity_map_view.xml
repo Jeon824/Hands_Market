@@ -17,12 +17,12 @@
             android:text="주소찾기"
             android:textSize="20sp"
             android:id="@+id/pop_up_addr_search"/>
-
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:id="@+id/map"/>
 <!--        android:name="com.naver.maps.map.MapFragment"/>-->
 
@@ -33,12 +33,5 @@
        android:layout_gravity="center_horizontal"
        android:text="설정"
        android:textSize="20sp" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/mapView_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/navigation2" />
 
 </LinearLayout>

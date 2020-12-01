@@ -3,16 +3,11 @@
     package="com.example.hands_market"
     android:targetSandboxVersion="2">
 
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
-    </uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION">
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -22,10 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hands_Market"
         android:usesCleartextTraffic="true">
-            <!--android:networkSecurityConfig="@xml/network_security_config"-->
+        <!-- android:networkSecurityConfig="@xml/network_security_config" -->
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="37d359c49b925138434271d6bffa1686" />
+
         <activity android:name=".PurchasedListActivity" />
         <activity android:name=".MypageActivity" />
         <activity android:name=".StoreDetailActivity" />
@@ -42,14 +38,17 @@
         <activity android:name=".GoodsDetailActivity" />
         <activity android:name=".ShoppingBasketActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="37d359c49b925138434271d6bffa1686"/>
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="37d359c49b925138434271d6bffa1686" />
     </application>
 
 </manifest>

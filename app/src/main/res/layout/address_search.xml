@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
         android:id="@+id/dismiss"
         android:src="@drawable/ic_baseline_cancel_presentation_24"
         android:background="@color/white"/>
@@ -15,4 +15,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/address_web"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/apply_address"/>
 </LinearLayout>
