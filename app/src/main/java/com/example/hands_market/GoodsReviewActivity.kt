@@ -10,9 +10,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
+import kotlinx.android.synthetic.main.activity_goods_review.*
+import org.w3c.dom.Text
 
 // '리뷰 작성하기' 화면
 class GoodsReviewActivity : AppCompatActivity(),View.OnClickListener {
@@ -22,6 +26,8 @@ class GoodsReviewActivity : AppCompatActivity(),View.OnClickListener {
     private lateinit var reviewBody : EditText
     var storeKey :String = ""
     var GoodsKey :String = ""
+
+    val items = arrayOf("1", "2", "3", "4", "5")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,8 @@ class GoodsReviewActivity : AppCompatActivity(),View.OnClickListener {
         // '등록하기' 버튼 - 상품 리뷰하기 등록
         val goodsRevCreateBtn = findViewById<Button>(R.id.goodsRevCreateBtn)
         goodsRevCreateBtn.setOnClickListener(this)
+
+        goodsRevSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.goodsReview_navigation)
