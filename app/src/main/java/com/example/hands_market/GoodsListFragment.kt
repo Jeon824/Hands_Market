@@ -52,28 +52,26 @@ class GoodsListFragment : Fragment() {
         val context : Context = view.context
 
 
-        Log.d("GoodsFragggg", "33")
         database = FirebaseDatabase.getInstance() //데이터베이스 부르기
         if(sId!=null){
-            Log.d("GoodsFragggg", "in!!!!!!")
             Goods = database.getReference().child("Stores").child(sId).child("Goods") //Store 테이블에 접근
-            Log.d("GoodsFragggg", " -----------------------")
             Goods.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    Log.d("GoodsFragggg", " Goods~~~~~~~~~~~~in!!!!!!")
                     var i = 0
+                    var StoreID: String
                     var goodsN: String
                     var goodsImgUrl: String
+                    var goodsPrice :Int
                     goodsList.clear()
-                    Log.d("GoodsFragggg", " 1")
+
                     for (data in dataSnapshot.children) {
-                        Log.d("GoodsFragggg", " 2")
                         var goodsKey = data.key
-                        Log.d("GoodsFragggg", "$goodsKey")
                         var map = data.value as Map<String, Any>
+                        StoreID = map["storeId"].toString()
                         goodsN = map["name"].toString()
-                        goodsImgUrl = map["image"].toString()
-                        goodsList.add(i, Goods("$i 번째 관리자", "$i 번째 가게", goodsN, null, 10000, null, "100", "RED", 100, goodsImgUrl, null, null))
+                        goodsImgUrl = map["imageUrl"].toString()
+                        goodsPrice = Integer.parseInt(map["price"].toString())
+                        goodsList.add(i, Goods("$i 번째 관리자", StoreID, goodsN, null, goodsPrice, null, "100", "RED", 100, goodsImgUrl, goodsKey, null))
                         i = i + 1
                     }
                     viewAdapter?.notifyDataSetChanged()
@@ -90,8 +88,6 @@ class GoodsListFragment : Fragment() {
         }
 
         Log.d("GoodsListFragment", "inadapter~~~~~~~~~~~~~~~~~~~~~~~~")
-
-        Log.d("GoodsListFragment", "iin Zero!")
         viewAdapter = GoodsListAdapter(context, goodsList)
 
         recyclerView = view.findViewById(R.id.goods_recycler_view)

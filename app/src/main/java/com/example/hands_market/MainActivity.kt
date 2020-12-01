@@ -3,49 +3,31 @@ package com.example.hands_market
 //import com.google.firebase.ktx.Firebase
 //import com.google.firebase.database.ktx.database
 
+//import androidx.appcompat.app.AppCompatActivity
+//import com.google.firebase.ktx.Firebase
+
+//import com.google.firebase.database.ktx.database
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.AsyncTask
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.location.LocationManager
-import android.media.Image
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Base64
-import android.util.Base64.NO_WRAP
-import android.util.Log
 import android.view.View
-import android.widget.*
-//import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
 import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
 import com.example.hands_market.MapViewActivity.Companion.userLat
 import com.example.hands_market.MapViewActivity.Companion.userLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-//import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import java.io.BufferedInputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-//import com.google.firebase.database.ktx.database
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
-import java.util.jar.Manifest
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var setAddress: TextView
@@ -73,9 +55,17 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
         setContentView(R.layout.activity_main)
         val lm = getSystemService(Context.LOCATION_SERVICE)as LocationManager
 
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("message")
+
+        myRef.push().setValue("Hello, World!")
+
         if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
         {
-            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),PERMISION_REQUEST_CODE)
+            requestPermissions(
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                PERMISION_REQUEST_CODE
+            )
             if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
             {
                 MapViewActivity.userLat = DEFAULT_LAT
@@ -253,11 +243,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_log -> {
-                val intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
         }

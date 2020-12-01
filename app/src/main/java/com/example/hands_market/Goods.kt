@@ -12,7 +12,8 @@ class Goods(var managerID: String, //관리자id
             var size : String,//사이즈
             var color : String?=null,//색
             var count : Int?=null,//개수,
-            var imageUrl:String,//가게 이미지 경로
+            var imageUrl:String?=null,//가게 이미지 경로
+            var gId:String?=null, //가게 id
             var favoriteGoods: Array<String>?=null,//즐겨찾기 한 사람의 목록
             var reserve:Array<String>?=null,//예약한 사람의 목록
             var request:Array<String>?=null//입고요청한 사람의 목록

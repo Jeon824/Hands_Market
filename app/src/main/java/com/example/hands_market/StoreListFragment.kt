@@ -73,10 +73,12 @@ class StoreListFragment : Fragment() {
                 storeList.clear()
                 for (data in dataSnapshot.children) {
                     var storeKey = data.key
+                    Log.d("StoreDetail------key","$storeKey")
                     var map = data.value as Map<String, Any>
                     storeN = map["storeName"].toString()
                     storeImgUrl = map["storeImgurl"].toString()
-                    storeList.add(i, Store("$i 번째 매니저", storeN, i * 0.1, i * 0.1, "$i 번째 주소", null, null, storeImgUrl, storeKey))
+//                    var urlLayout = map["urlLayout"].toString()
+                    storeList.add(i, Store("$i 번째 매니저", storeN, i * 0.1, i * 0.1, "$i 번째 주소", null, null, storeImgUrl, storeKey,"1"))
                     if (storeList[i].storeLayout == null)
                         storeList[i].storeLayout = tmpLayout
                     var aa = storeList[i]

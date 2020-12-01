@@ -22,7 +22,6 @@ import java.net.URL
 
 lateinit var storeImage : ImageView
 lateinit var storeUpdateBtn : Button
-
 lateinit var thisStore : Store
 lateinit var storeName : TextView
 lateinit var storeAddress : TextView
@@ -67,7 +66,8 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                 newIntent.getStringExtra("storeAddress"),
                 storeImg, storeLayout,
                 newIntent.getStringExtra("storeImgUrl"),
-                newIntent.getStringExtra("storeKey"))
+                newIntent.getStringExtra("storeKey"),
+                newIntent.getStringExtra("storeLayoutUrl"))
 
         storeName = findViewById(R.id.storeDetailNameText)
         storeName.text = thisStore.storeName
@@ -87,21 +87,29 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         storeLayoutBtn.setOnClickListener(this)
 
         var storeImageUrl = thisStore.storeImgurl
-        var image_task: StoreListAdapter.URLtoBitmapTask = StoreListAdapter.URLtoBitmapTask()
-        image_task = StoreListAdapter.URLtoBitmapTask().apply {
-            url = URL("$storeImageUrl")
+        if(storeImageUrl.toString()=="0"){
+//            storeImage.setImageResource(R.drawable.ic_baseline_storefront_24)
         }
-        Log.d("StoreDetailActivity", "4s")
-        var bitmap: Bitmap = image_task.execute().get()
-        bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
-        storeImage=findViewById<ImageView>(R.id.store_detail_store_image)
-        storeImage.setImageBitmap(bitmap)
+        else{
+            var image_task: StoreListAdapter.URLtoBitmapTask = StoreListAdapter.URLtoBitmapTask()
+            image_task = StoreListAdapter.URLtoBitmapTask().apply {
+                url = URL("$storeImageUrl")
+            }
+            Log.d("StoreDetailActivity", "4s")
+            var bitmap: Bitmap = image_task.execute().get()
+            bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+            storeImage=findViewById<ImageView>(R.id.store_detail_store_image)
+            storeImage.setImageBitmap(bitmap)
+        }
+
 
         sId= thisStore.SID.toString()
 //sid 값 보내기기
         var fragment : Fragment=GoodsListFragment()
         var bundle : Bundle = Bundle(1)
         bundle.putString("sId", sId)
+        Log.d("StoreDetail","$sId")
+
         //fragment로 번들 전달
         fragment.setArguments(bundle)
         val transaction: FragmentTransaction = getSupportFragmentManager().beginTransaction()
@@ -132,9 +140,19 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
                     val puW: PopupWindow = PopupWindow(pw, 800, 600, focusable)
                     puW.contentView = pw
+                    Log.d("StoreDetailActivity", "-----------")
 
+                    var storeLayoutUrl = thisStore.storeLayoutUrl
+                    Log.d("StoreDetailActivity", "$storeLayoutUrl")
+                    var image_task: StoreListAdapter.URLtoBitmapTask = StoreListAdapter.URLtoBitmapTask()
+                    image_task = StoreListAdapter.URLtoBitmapTask().apply {
+                        url = URL("$storeLayoutUrl")
+                    }
+                    Log.d("StoreDetailActivity", "$image_task")
+                    var bitmap: Bitmap = image_task.execute().get()
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, true);
                     val layout: ImageView = pw.findViewById(R.id.pop_up_layout_img)
-                    layout.setImageBitmap(thisStore.storeLayout)
+                    layout.setImageBitmap(bitmap)
 
 
                     puW.showAtLocation(v, Gravity.CENTER, 0, 0)
@@ -159,7 +177,9 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.button_GoodsAdd -> {
 //                    val a = sId.toString()
                     val intent = Intent(this, GoodsRegisterActivity::class.java)
-                    intent.putExtra("storeKey", sId)
+                    var storeKey= thisStore.SID.toString()
+                    intent.putExtra("storeKey", storeKey)
+                    Log.d("StoreDetail--goodsAdd","$storeKey")
                     startActivity(intent)
                 }
 //                R.id.test->{
