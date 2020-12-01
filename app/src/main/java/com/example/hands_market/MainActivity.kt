@@ -139,8 +139,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //        test = findViewById<TextView>(R.id.test)
 //        test.setOnClickListener(this)
 
-        var test22 = findViewById<TextView>(R.id.test22)
-        test22.setOnClickListener(this)
+//        var test22 = findViewById<TextView>(R.id.test22)
+//        test22.setOnClickListener(this)
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.main_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -213,10 +213,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 //                    val intent = Intent(this, GoodsRegisterActivity::class.java)
 //                    startActivity(intent)
 //                }
-                R.id.test22->{
-                    val intent = Intent(this, GoodsRegisterActivity::class.java)
-                    startActivity(intent)
-                }
+//                R.id.test22->{
+//                    val intent = Intent(this, GoodsRegisterActivity::class.java)
+//                    startActivity(intent)
+//                }
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
                     val intent = Intent(this, MapViewActivity::class.java)
@@ -232,9 +232,9 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         storeListFragment.arguments = bundle
                         supportFragmentManager.beginTransaction().replace(R.id.main_store_fragment, storeListFragment).commit();
                         //GoodsFragment start
-                        goodslistFragment = GoodsListFragment();
-                        goodslistFragment.arguments = bundle
-                        supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
+//                        goodslistFragment = GoodsListFragment();
+//                        goodslistFragment.arguments = bundle
+//                        supportFragmentManager.beginTransaction().replace(R.id.main_goods_fragment, goodslistFragment).commit();
                     }
                 }
 

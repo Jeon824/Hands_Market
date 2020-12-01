@@ -120,6 +120,12 @@
         android:layout_marginEnd="10dp"
         android:layout_gravity="end" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/no_goods"
+        />
+
     <fragment
         android:name="com.example.hands_market.GoodsListFragment"
         android:id="@+id/store_detail_goods_fragment"

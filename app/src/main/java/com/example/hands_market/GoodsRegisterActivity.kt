@@ -29,6 +29,8 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dataUri : Uri
     lateinit var GoodsUrl :String
     private lateinit var showGoodsImg :ImageView
+    var myData :String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_register)
@@ -54,9 +56,8 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
         showGoodsImg = findViewById<ImageView>(R.id.showGoodsImg)
 
 
-//        val intent = intent
-//        val myData = intent.getStringExtra("storeKey")
-//        Log.d("storedetail", "$myData")
+        val intent = intent
+        myData = intent.getStringExtra("storeKey")
     }
 
     override fun onClick(v: View?) {
@@ -67,16 +68,16 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
                     val database: FirebaseDatabase = FirebaseDatabase.getInstance()
                     val myRef = database.getReference()
                     val GoodsOne = Goods(
-                            storeName = "1",
+                            storeId = myData,
                             managerID = "1",
-                            name = "2",
+                            name = goodsNameInput.text.toString(),
                             imageUrl = "1",
-                            price = 1,
-                            location = "1",
-                            size = 1,
-                            count = 1
+                            price = Integer.parseInt(goodsPriceInput.text.toString()),
+                            location = "11",
+                            size = goodsSizeInput.text.toString(),
+                            count = Integer.parseInt(goodsPriceInput.text.toString())
                     )
-                    myRef.child("Stores").child("Goods").push().setValue(GoodsOne)
+                    myRef.child("Stores").child(myData).child("Goods").push().setValue(GoodsOne)
 
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
