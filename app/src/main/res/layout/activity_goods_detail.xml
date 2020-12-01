@@ -51,7 +51,6 @@
                     android:layout_height="40dp"
                     android:background="@drawable/border_bottom"
                     android:text="입고요청"
-                    android:textColor="#000000"
                     android:textSize="40px"
                     tools:ignore="MissingConstraints"
                     android:layout_marginTop="50px"
@@ -69,7 +68,6 @@
                         android:layout_height="40dp"
                         android:background="@drawable/border_bottom"
                         android:text="수정"
-                        android:textColor="#000000"
                         android:textSize="15sp" />
 
                     <Button
@@ -79,7 +77,6 @@
                         android:layout_height="40dp"
                         android:background="@drawable/border_bottom"
                         android:text="삭제"
-                        android:textColor="#000000"
                         android:textSize="15sp"
                         android:layout_marginStart="10dp" />
                 </LinearLayout>
@@ -171,7 +168,6 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/border_bottom"
             android:text="리뷰쓰기"
-            android:textColor="#000000"
             android:textSize="15sp" />
     </LinearLayout>
 

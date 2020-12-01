@@ -12,16 +12,18 @@
     <TextView
         android:id="@+id/storeRegistMainText"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="마켓 등록하기"
         android:textColor="#000000"
-        android:textSize="25dp" />
+        android:textSize="26dp" />
 
     <LinearLayout
-        android:layout_width="340dp"
-        android:layout_height="380dp"
         android:background="@drawable/input_border"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -29,8 +31,8 @@
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="36dp"
+            android:paddingBottom="18dp"
             android:paddingLeft="4dp"
             android:orientation="horizontal" >
 
@@ -38,40 +40,40 @@
                 android:id="@+id/storeRegNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:paddingRight="10dp"
+                android:clickable="true"
                 android:text="마켓 이름 "
                 android:textColor="#FF000000"
-                android:textSize="18dp" />
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/market_name"
+                android:background="@drawable/input_border"
                 android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:background="@drawable/input_border" />
+                android:layout_height="46dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
             android:paddingLeft="4dp"
             android:orientation="horizontal" >
 
             <EditText
                 android:id="@+id/address"
+                android:background="@drawable/input_border"
                 android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/input_border" />
+                android:layout_height="46dp"
+                android:layout_marginRight="10dp" />
 
             <Button
                 android:id="@+id/storeRegSearchAddressBtn"
-                android:layout_width="115dp"
-                android:layout_height="45dp"
                 android:background="@drawable/click_button"
+                android:layout_width="114dp"
+                android:layout_height="46dp"
                 android:clickable="true"
                 android:text="주소 검색"
                 android:textSize="18dp" />
@@ -81,8 +83,8 @@
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
             android:paddingLeft="4dp"
             android:orientation="horizontal" >
 
@@ -90,19 +92,18 @@
                 android:id="@+id/storeRegImgText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:paddingRight="10dp"
+                android:clickable="true"
                 android:text="매장 이미지 "
                 android:textColor="#FF000000"
-                android:textSize="18dp" />
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/storeRegImgBtn"
-                android:layout_width="115dp"
-                android:layout_height="45dp"
                 android:background="@drawable/click_button"
+                android:layout_width="114dp"
+                android:layout_height="46dp"
                 android:clickable="true"
-                android:paddingRight="10dp"
                 android:text="첨부 파일"
                 android:textSize="18dp" />
 
@@ -116,8 +117,8 @@
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="36dp"
             android:paddingLeft="4dp"
             android:orientation="horizontal" >
 
@@ -125,19 +126,18 @@
                 android:id="@+id/storeRegStoreLayoutText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:paddingRight="10dp"
+                android:clickable="true"
                 android:text="배치도 등록 "
                 android:textColor="#FF000000"
-                android:textSize="18dp" />
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/storeRegStoreLayoutImgBtn"
-                android:layout_width="115dp"
-                android:layout_height="45dp"
                 android:background="@drawable/click_button"
+                android:layout_width="114dp"
+                android:layout_height="46dp"
                 android:clickable="true"
-                android:paddingRight="10dp"
                 android:text="첨부 파일"
                 android:textSize="18dp" />
 
@@ -152,24 +152,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="26dp"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/storeCreateBtn"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
             android:background="@drawable/click_button"
+            android:layout_width="102dp"
+            android:layout_height="46dp"
             android:text="등록"
             android:textSize="18dp" />
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/storeRegist_navigation"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:menu="@menu/navigation2" />
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical" >
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/storeRegist_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/navigation2" />
+    </LinearLayout>
 
 </LinearLayout>

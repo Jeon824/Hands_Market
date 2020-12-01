@@ -23,9 +23,9 @@ class MypageActivity : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this, PurchasedListActivity::class.java)
             startActivity(intent)
         }
+
         var button_manager = findViewById<Button>(R.id.button_manager)
         button_manager.setOnClickListener(this)
-
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.mypage_navigation)

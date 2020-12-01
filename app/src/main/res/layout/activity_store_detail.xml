@@ -20,9 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/store_detail_store_image"
-            android:layout_gravity="center"
-            />
-<!--        android:src="@drawable/ic_baseline_storefront_24"-->
+            android:layout_gravity="center" />
+        <!--        android:src="@drawable/ic_baseline_storefront_24"-->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             <TextView
                 android:id="@+id/storeDetailNameText"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="150dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:text="가게명 :"
                 android:textColor="#000000"
@@ -43,56 +43,54 @@
             <TextView
                 android:id="@+id/store_detail_store_address"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="150dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:text="주소 :"
-                android:textColor="#000000"
-                android:textAlignment="textStart"
-                android:textSize="12sp"
                 android:layout_marginEnd="10dp"
-                android:orientation="vertical" />
+                android:orientation="vertical"
+                android:text="주소 :"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical" >
 
             <Button
                 android:id="@+id/button_call"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
+                android:layout_width="90dp"
+                android:layout_height="44dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/border_bottom"
                 android:text="CALL"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp" />
+                android:textSize="18dp" />
 
             <Button
                 android:id="@+id/button_storeLayout"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="100dp"
-                android:layout_height="43dp"
+                android:layout_width="90dp"
+                android:layout_height="44dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/border_bottom"
                 android:text="배치도"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_marginEnd="10dp" />
+                android:textSize="18dp" />
         </LinearLayout>
-   </LinearLayout>
-<!--    <Button-->
-<!--        android:id="@+id/test"-->
-<!--        style="@style/Widget.AppCompat.Button.Borderless"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/border_bottom"-->
-<!--        android:text="물품++"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="20sp"-->
-<!--        android:layout_marginEnd="10dp"-->
-<!--        android:layout_gravity="end" />-->
+    </LinearLayout>
+    <!--    <Button-->
+    <!--        android:id="@+id/test"-->
+    <!--        style="@style/Widget.AppCompat.Button.Borderless"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@drawable/border_bottom"-->
+    <!--        android:text="물품++"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:layout_marginEnd="10dp"-->
+    <!--        android:layout_gravity="end" />-->
     <Button
         android:id="@+id/button_storeState_delete"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -100,13 +98,12 @@
         android:layout_height="wrap_content"
         android:background="@drawable/border_bottom"
         android:text="가게 삭제"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_gravity="end" />
 
-<!--    android:visibility="invisible"-->
+    <!--    android:visibility="invisible"-->
 
     <Button
         android:id="@+id/button_GoodsAdd"
@@ -115,7 +112,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/border_bottom"
         android:text="물품+"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:layout_marginEnd="10dp"
         android:layout_gravity="end" />
