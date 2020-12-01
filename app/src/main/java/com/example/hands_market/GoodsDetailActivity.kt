@@ -134,7 +134,7 @@ class GoodsDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         //gid 값 보내기기
         gId= thisGoods.gId.toString()
-        Log.d("goodsetailActivity", "2")
+        Log.d("goodsetailActivity", "$gId")
         var reviewFragment : Fragment = ReivewFragment()
         var bundle : Bundle = Bundle(2)
         bundle.putString("gId", gId)
@@ -164,7 +164,9 @@ class GoodsDetailActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.button_delete ->{
                     val database: FirebaseDatabase = FirebaseDatabase.getInstance()
                     val myRef = database.getReference()
-                    myRef.child("Stores").child("$sId").child("Goods").child("$gId").removeValue()
+                    var sid=thisGoods.storeId.toString()
+                    var gid=thisGoods.gId.toString()
+                    myRef.child("Stores").child("$sid").child("Goods").child("$gId").removeValue()
                     finish()
                 }
             }

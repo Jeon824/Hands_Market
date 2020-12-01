@@ -159,7 +159,7 @@
 <!--                    android:textSize="18dp" />-->
 <!--            </LinearLayout>-->
         </LinearLayout>
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -187,3 +187,4 @@
         app:menu="@menu/navigation2" />
 
 </LinearLayout>
+
