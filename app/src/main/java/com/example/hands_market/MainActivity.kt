@@ -8,7 +8,7 @@ import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.media.Image
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
+//import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -239,9 +239,9 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                         val bundle: Bundle = Bundle()
                         bundle.putString("keyword", keyWord)
                         //StoreFragment start
-                        storeListFragment = StoreListFragment();
-                        storeListFragment.arguments = bundle
-                        supportFragmentManager.beginTransaction().replace(R.id.main_store_fragment, storeListFragment).commit();
+                        //storeListFragment = StoreListFragment();
+                        //storeListFragment.arguments = bundle
+                        //supportFragmentManager.beginTransaction().replace(R.id.main_store_fragment, storeListFragment).commit();
                         //GoodsFragment start
 //                        goodslistFragment = GoodsListFragment();
 //                        goodslistFragment.arguments = bundle
@@ -268,6 +268,9 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                     Log.d("main address:", addressString)
                     if (data != null)
                         mainAddrText.text = addressString
+
+                }
+                else if (resultCode == RESULT_CANCELED){
 
                 }
 

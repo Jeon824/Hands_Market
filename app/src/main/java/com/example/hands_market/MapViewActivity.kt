@@ -6,7 +6,6 @@ import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.net.http.SslError
-import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -24,20 +23,15 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hands_market.MainActivity.Companion.userLat
 import com.example.hands_market.MainActivity.Companion.userLng
-import com.google.android.gms.maps.model.LatLng
-import com.google.gson.JsonParser
 import com.naver.maps.map.util.FusedLocationSource
+import com.nhn.android.idp.common.connection.CommonConnection.cancel
+import net.daum.android.map.coord.MapCoord
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapReverseGeoCoder
 import net.daum.mf.map.api.MapView
-import org.json.JSONArray
-import org.json.JSONObject
-import java.io.BufferedReader
 import java.io.IOException
-import java.io.InputStreamReader
-import java.net.URL
-import javax.net.ssl.HttpsURLConnection
+import kotlin.properties.Delegates
 
 
 class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.OpenAPIKeyAuthenticationResultListener,MapView.MapViewEventListener,
@@ -56,65 +50,13 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
     private lateinit var finishBtn : Button
     private lateinit var puW: PopupWindow
     private lateinit var dismissPwBtn : ImageButton
+    private lateinit var originalAddress :String
+    private lateinit var gonnaDeliverAddress : String
+    private var mapViewLat by Delegates.notNull<Double>()
+    private var mapViewLng by Delegates.notNull<Double>()
+    private lateinit var applyBtn : Button
 
 
-
-
-    /*
-    inner class ConvertAddressToGeo : AsyncTask<String, Long, LatLng>() {
-        private val RESTAPIKEY : String = "7c3dc93f6709733258e735aacc25bffd"
-        private lateinit var latLng: com.google.android.gms.maps.model.LatLng
-        override fun doInBackground(vararg params: String?): LatLng {
-
-                var sendAddress : String = java.net.URLEncoder.encode(params[0], "UTF-8")
-                var url : String  = "https://dapi.kakao.com/v2/local/search/address.json?query=" + sendAddress
-                var jsonString : String = String()
-                var buf : String = ""
-                var Url : URL = URL(url)
-
-                val conn : HttpsURLConnection = Url.openConnection() as HttpsURLConnection;
-                val auth : String = "KakaoAK" + RESTAPIKEY
-                conn.requestMethod = "GET"
-                conn.setRequestProperty("X-Requested-With", "curl")
-                conn.setRequestProperty("Authorization", auth)
-
-                val br = BufferedReader(InputStreamReader(conn.inputStream, "UTF-8"))
-                while (br.readLine().also { buf = it } != null) {
-                    jsonString += buf
-                }
-                val paser = JsonParser()
-
-                val J: JSONObject = paser.parse(jsonString) as JSONObject
-                val meta: JSONObject = J.get("meta") as JSONObject
-
-                val data: JSONArray = J.get("documents") as JSONArray
-                val size = meta.get("total_count") as Long
-                Log.d("size확인:", "" + size)
-
-
-
-                if (size > 0) {
-                    val jsonX: JSONObject = data.get(0) as JSONObject
-                    Log.d("X좌표:", jsonX.get("x").toString())
-                    Log.d("Y좌표:", jsonX.get("y").toString())
-                    latLng = LatLng(jsonX.get("x") as Double, jsonX.get("y") as Double)
-                    Log.d("(x,y):", "" + jsonX.get("x").toString() + jsonX.get("y").toString())
-                }
-
-
-
-            return latLng
-            
-        }
-
-        override fun onPostExecute(result: LatLng?) {
-            super.onPostExecute(result)
-        }
-
-        override fun onProgressUpdate(vararg values: Long?) {
-            super.onProgressUpdate(*values)
-        }
-    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,17 +79,11 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
         finishBtn.setOnClickListener(this)
 
 
-        /*
-            val mGeocoder : Geocoder = Geocoder(applicationContext)
-            //geoCoder
-            try {
-                var resultLocation : List<Address> = mGeocoder.getFromLocationName("대전 동구 판교2길 7",1)
-                Log.d("converted X:","" +  resultLocation[0].latitude)
-                Log.d("converted Y:","" + resultLocation[0].longitude)
-            }
-            catch (e: IOException) {
-                Log.d("convert status :","fail")
-            }*/
+        setResult(RESULT_CANCELED, Intent())
+
+        mapViewLat = userLat
+        mapViewLng = userLng
+
 
     }
 
@@ -162,15 +98,13 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
             webView.settings.allowFileAccess = false
             webView.settings.setAppCacheEnabled(false)
             webView.settings.domStorageEnabled = true
-            webView.addJavascriptInterface(MyJavaScriptInterface(), "Android");
+            webView.addJavascriptInterface(MyJavaScriptInterface(), "Android")
             webView.webViewClient = object : WebViewClient() {
 
 
                 override fun onPageFinished(view: WebView, url: String) {
                     webView.loadUrl("javascript:sample2_execDaumPostcode();")
-
                 }
-
 
 
             }
@@ -183,12 +117,12 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
     inner class MyJavaScriptInterface {
         @JavascriptInterface
         fun processDATA(data: String) {
-            var extra: Bundle = Bundle();
-            var intent: Intent = Intent();
             Log.d("map address:", data)
-            extra.putString("data", data);
-            intent.putExtras(extra);
-            setResult(RESULT_OK, intent);
+            //extra.putString("data", data);
+            //intent.putExtras(extra);
+            //setResult(RESULT_OK, intent);
+            originalAddress = data
+
 
             /*
             val mGeocoder : Geocoder = Geocoder(applicationContext)
@@ -215,12 +149,18 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
                         val inflater: LayoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                         val pw: View = inflater.inflate(R.layout.address_search, null)
                         webView = pw.findViewById<WebView>(R.id.address_web)
+                        applyBtn = pw.findViewById(R.id.apply_address)
+                        applyBtn.setOnClickListener(this)
                         initWebView()
                         var width: Int = LinearLayout.LayoutParams.MATCH_PARENT
                         var height: Int = LinearLayout.LayoutParams.MATCH_PARENT
                         var focusable: Boolean = true
 
                         puW = PopupWindow(pw, width, height, focusable)
+
+                        puW.setOnDismissListener {
+
+                        }
 
                         dismissPwBtn = pw.findViewById<ImageButton>(R.id.dismiss)
                         dismissPwBtn.setOnClickListener(this)
@@ -230,9 +170,39 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
 
 
                     }
+
+                    R.id.apply_address -> {
+                        val firstFormedList = originalAddress.split(",")
+                        val secondFormedList = (firstFormedList[1] as String).split("(")
+                        val firstAddress = secondFormedList[0]
+                        val length = firstAddress.length
+                        val slice = IntRange(1, length - 1)
+                        val secondAddress = firstAddress.slice(slice)
+                        Log.d("FormedAddress:", secondAddress)
+                        gonnaDeliverAddress = secondAddress
+
+                        val mGeocoder : Geocoder = Geocoder(applicationContext)
+                        //geoCoder
+                        try {
+                            var resultLocation : List<Address> = mGeocoder.getFromLocationName(gonnaDeliverAddress,1)
+                            Log.d("converted X:","" +  resultLocation[0].latitude)
+                            Log.d("converted Y:","" + resultLocation[0].longitude)
+                            map.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(resultLocation[0].latitude, resultLocation[0].longitude),true)
+                        }
+                        catch (e: IOException) {
+                            Log.d("convert status :","fail")
+                        }
+
+                        //map.setMapCenterPoint()
+                        puW.dismiss()
+                    }
+
                     R.id.lat_lng_set_btn -> {
-                        //val task = ConvertAddressToGeo()
-                        //task.execute()
+                        var extra: Bundle = Bundle();
+                        var intent: Intent = Intent();
+                        extra.putString("data", gonnaDeliverAddress);
+                        intent.putExtras(extra);
+                        setResult(RESULT_OK, intent);
                         finish()
                     }
                     R.id.dismiss -> {

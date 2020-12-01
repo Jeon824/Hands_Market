@@ -1,13 +1,21 @@
 package com.example.hands_market
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.webkit.JavascriptInterface
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hands_market.MainActivity.Companion.DEFAULT_LAT
 import com.example.hands_market.MainActivity.Companion.DEFAULT_LNG
@@ -30,6 +38,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 
     val Gallery = 0
 
+    private val queryUrl :String = "http://www.inspond.com/daum.html"
     private lateinit var marketNameInput :EditText
     private lateinit var showImgInput :ImageView
     private lateinit var showLayoutImg :ImageView
@@ -38,6 +47,11 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dataImgUri : Uri
     private lateinit var dataLayoutUri : Uri
     lateinit var url :String
+    private lateinit var mainAddress:String
+    private lateinit var addressDetail:String
+    private lateinit var webView : WebView
+    private lateinit var puW: PopupWindow
+    private lateinit var dismissPwBtn : ImageButton
 
     //private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +69,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 
 
         val storeRegSearchAddressBtn = findViewById<TextView>(R.id.storeRegSearchAddressBtn)
+        storeRegSearchAddressBtn.setOnClickListener(this)
 
         val storeRegImgBtn : Button = findViewById(R.id.storeRegImgBtn)
         storeRegImgBtn.setOnClickListener{storeRegImg(showImgInput)}
@@ -67,6 +82,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
         storeRegist_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
@@ -92,7 +108,77 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 //                    showInput=showImgInput
 //                    storeRegImg()
 //                }
+                R.id.storeRegSearchAddressBtn->{
+                    val inflater: LayoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val pw: View = inflater.inflate(R.layout.address_search, null)
+                    webView = pw.findViewById<WebView>(R.id.address_web)
+                    initWebView()
+                    var width: Int = LinearLayout.LayoutParams.MATCH_PARENT
+                    var height: Int = LinearLayout.LayoutParams.MATCH_PARENT
+                    var focusable: Boolean = true
+
+                    puW = PopupWindow(pw, width, height, focusable)
+
+                    dismissPwBtn = pw.findViewById<ImageButton>(R.id.dismiss)
+                    dismissPwBtn.setOnClickListener(this)
+                    puW.isTouchable = true
+                    puW.contentView = pw
+                    puW.showAtLocation(v, Gravity.CENTER, 0, 0)
+
+                }
             }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun initWebView() {
+        // JavaScript 허용
+
+
+        webView.settings.javaScriptEnabled = true
+        webView.settings.javaScriptCanOpenWindowsAutomatically = true
+        webView.settings.allowFileAccess = false
+        webView.settings.setAppCacheEnabled(false)
+        webView.settings.domStorageEnabled = true
+        webView.addJavascriptInterface(MyJavaScriptInterface(), "Android");
+        webView.webViewClient = object : WebViewClient() {
+
+
+            override fun onPageFinished(view: WebView, url: String) {
+                webView.loadUrl("javascript:sample2_execDaumPostcode();")
+
+            }
+
+
+
+        }
+
+
+        webView.loadUrl(queryUrl);
+    }
+
+    inner class MyJavaScriptInterface {
+        @JavascriptInterface
+        fun processDATA(data: String) {
+            var extra: Bundle = Bundle();
+            var intent: Intent = Intent();
+            Log.d("map address:", data)
+            extra.putString("data", data);
+            intent.putExtras(extra);
+            setResult(RESULT_OK, intent);
+
+            /*
+            val mGeocoder : Geocoder = Geocoder(applicationContext)
+            //geoCoder
+            try {
+                var resultLocation : List<Address> = mGeocoder.getFromLocationName("대전 동구 판교2길 7",1)
+                Log.d("converted X:",resultLocation.get(0).latitude as String)
+                Log.d("converted Y:",resultLocation.get(0).longitude as String)
+            }
+            catch (e: IOException) {
+                Log.d("convert status :","fail")
+            }*/
+
         }
     }
 

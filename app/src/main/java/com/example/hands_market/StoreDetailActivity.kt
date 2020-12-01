@@ -6,21 +6,19 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.Image
-import androidx.appcompat.app.AppCompatActivity
+//import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import com.example.hands_market.MainActivity.Companion.DEFAULT_LAT
-import com.example.hands_market.MainActivity.Companion.DEFAULT_LNG
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
+import com.example.hands_market.MainActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MainActivity.Companion.DEFAULT_LNG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.FirebaseDatabase
 import java.net.URL
@@ -35,6 +33,7 @@ lateinit var buttonStoreDeleteBtn : Button
 lateinit var addGoodsBtn : Button
 lateinit var storeLayoutBtn : Button
 lateinit var sId : String
+
 
 
 
@@ -67,8 +66,8 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
         //선정된 정보 받기
         thisStore = Store(newIntent.getStringExtra("managerID"),
                 newIntent.getStringExtra("storeName"),
-                newIntent.getDoubleExtra("storeLat", DEFAULT_LAT),
-                newIntent.getDoubleExtra("storeLng", DEFAULT_LNG),
+                newIntent.getDoubleExtra("storeLat", MainActivity.DEFAULT_LAT),
+                newIntent.getDoubleExtra("storeLng", MainActivity.DEFAULT_LNG),
                 newIntent.getStringExtra("storeAddress"),
                 storeImg, storeLayout,
                 newIntent.getStringExtra("storeImgUrl"),
