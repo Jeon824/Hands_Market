@@ -24,8 +24,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.hands_market.MainActivity.Companion.userLat
 import com.example.hands_market.MainActivity.Companion.userLng
 import com.naver.maps.map.util.FusedLocationSource
-import com.nhn.android.idp.common.connection.CommonConnection.cancel
-import net.daum.android.map.coord.MapCoord
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapReverseGeoCoder
@@ -55,6 +53,7 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
     private var mapViewLat by Delegates.notNull<Double>()
     private var mapViewLng by Delegates.notNull<Double>()
     private lateinit var applyBtn : Button
+    private val KaKaoAPIKey = "37d359c49b925138434271d6bffa1686"
 
 
 
@@ -181,16 +180,15 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
                         Log.d("FormedAddress:", secondAddress)
                         gonnaDeliverAddress = secondAddress
 
-                        val mGeocoder : Geocoder = Geocoder(applicationContext)
+                        val mGeocoder: Geocoder = Geocoder(applicationContext)
                         //geoCoder
                         try {
-                            var resultLocation : List<Address> = mGeocoder.getFromLocationName(gonnaDeliverAddress,1)
-                            Log.d("converted X:","" +  resultLocation[0].latitude)
-                            Log.d("converted Y:","" + resultLocation[0].longitude)
-                            map.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(resultLocation[0].latitude, resultLocation[0].longitude),true)
-                        }
-                        catch (e: IOException) {
-                            Log.d("convert status :","fail")
+                            var resultLocation: List<Address> = mGeocoder.getFromLocationName(gonnaDeliverAddress, 1)
+                            Log.d("converted X:", "" + resultLocation[0].latitude)
+                            Log.d("converted Y:", "" + resultLocation[0].longitude)
+                            map.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(resultLocation[0].latitude, resultLocation[0].longitude), true)
+                        } catch (e: IOException) {
+                            Log.d("convert status :", "fail")
                         }
 
                         //map.setMapCenterPoint()
@@ -218,7 +216,8 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
     }
 
     override fun onReverseGeoCoderFoundAddress(p0: MapReverseGeoCoder?, p1: String?) {
-        TODO("Not yet implemented")
+        //p0.findAddressForMapPointSync()
+        //map.setMapCenterPoint()
     }
 
     override fun onReverseGeoCoderFailedToFindAddress(p0: MapReverseGeoCoder?) {
@@ -242,7 +241,13 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
 
     override fun onMapViewCenterPointMoved(p0: MapView?, p1: MapPoint?) {
 
+         val mp = map.mapCenterPoint
+        val reverseGeoCoder = MapReverseGeoCoder(KaKaoAPIKey, mp, this, this);
+        reverseGeoCoder.startFindingAddress()
+
     }
+
+
 
     override fun onMapViewZoomLevelChanged(p0: MapView?, p1: Int) {
 

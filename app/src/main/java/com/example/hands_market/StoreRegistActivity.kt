@@ -47,11 +47,14 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dataImgUri : Uri
     private lateinit var dataLayoutUri : Uri
     lateinit var url :String
+    private lateinit var addressMainEditText: EditText
     private lateinit var mainAddress:String
     private lateinit var addressDetail:String
     private lateinit var webView : WebView
     private lateinit var puW: PopupWindow
     private lateinit var dismissPwBtn : ImageButton
+    private lateinit var applyBtn : Button
+
 
     //private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,6 +71,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+        addressMainEditText = findViewById(R.id.register_main_address)
         val storeRegSearchAddressBtn = findViewById<TextView>(R.id.storeRegSearchAddressBtn)
         storeRegSearchAddressBtn.setOnClickListener(this)
 
@@ -120,11 +124,19 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                     puW = PopupWindow(pw, width, height, focusable)
 
                     dismissPwBtn = pw.findViewById<ImageButton>(R.id.dismiss)
+                    applyBtn = pw.findViewById(R.id.apply_address)
+                    applyBtn.setOnClickListener(this)
                     dismissPwBtn.setOnClickListener(this)
                     puW.isTouchable = true
                     puW.contentView = pw
                     puW.showAtLocation(v, Gravity.CENTER, 0, 0)
 
+                }
+                R.id.apply_address->{
+                    addressMainEditText.setText(mainAddress)
+                }
+                R.id.dismiss->{
+                    puW.dismiss()
                 }
             }
         }
@@ -160,12 +172,16 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
     inner class MyJavaScriptInterface {
         @JavascriptInterface
         fun processDATA(data: String) {
-            var extra: Bundle = Bundle();
+
+            mainAddress = data
+
+            /*var extra: Bundle = Bundle();
             var intent: Intent = Intent();
             Log.d("map address:", data)
             extra.putString("data", data);
             intent.putExtras(extra);
-            setResult(RESULT_OK, intent);
+            setResult(RESULT_OK, intent);*/
+
 
             /*
             val mGeocoder : Geocoder = Geocoder(applicationContext)
