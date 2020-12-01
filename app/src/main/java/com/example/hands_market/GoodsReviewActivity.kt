@@ -5,16 +5,27 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import android.view.View
 import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.FirebaseDatabase
+import java.util.*
 import kotlinx.android.synthetic.main.activity_goods_review.*
 import org.w3c.dom.Text
 
 // '리뷰 작성하기' 화면
-class GoodsReviewActivity : AppCompatActivity() {
+class GoodsReviewActivity : AppCompatActivity(),View.OnClickListener {
 
     val Gallery = 0
+    private lateinit var reviewTitle : EditText
+    private lateinit var reviewBody : EditText
+    var storeKey :String = ""
+    var GoodsKey :String = ""
 
     val items = arrayOf("1", "2", "3", "4", "5")
 
@@ -22,22 +33,59 @@ class GoodsReviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_review)
 
-        // '첨부하기' 버튼 - 상품 이미지 업로드
-        val goodsRevImgBtn : Button = findViewById(R.id.goodsRevImgBtn)
-        goodsRevImgBtn.setOnClickListener{goodsRevAttachmentFileBtn()}
+        //Input 값을 받을 Edit
+        reviewTitle=findViewById<EditText>(R.id.reviewTitle)
+        reviewBody=findViewById<EditText>(R.id.reviewBody)
+
+//        // '첨부하기' 버튼 - 상품 이미지 업로드
+//        val goodsRevImgBtn : Button = findViewById(R.id.goodsRevImgBtn)
+//        goodsRevImgBtn.setOnClickListener{goodsRevAttachmentFileBtn()}
 
         // '등록하기' 버튼 - 상품 리뷰하기 등록
         val goodsRevCreateBtn = findViewById<Button>(R.id.goodsRevCreateBtn)
-        goodsRevCreateBtn.setOnClickListener{
-            val intent = Intent(this, GoodsDetailActivity::class.java)
-            startActivity(intent)
-        }
+        goodsRevCreateBtn.setOnClickListener(this)
 
         goodsRevSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.goodsReview_navigation)
         navigationBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val intent = intent
+        Log.d("review","------------------------------------")
+        Log.d("review","1")
+        storeKey = intent.getStringExtra("storeKey")
+        Log.d("review","$storeKey")
+        Log.d("review","2")
+        GoodsKey = intent.getStringExtra("GoodsKey")
+        Log.d("review","$GoodsKey")
+
+    }
+    override fun onClick(v: View?) {
+        if (v != null) {
+            when (v.id) {
+                //R.id.searchBtn
+                R.id.goodsRevCreateBtn -> {
+                    val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+                    val myRef = database.getReference()
+                    val ReviewOne = Review(
+                            storeId = "0",
+                            userID = "1",
+                            goodsId = "0",
+                            rId = "000",
+                            reviewTitle = reviewTitle.text.toString(),
+                            reviewBody = reviewBody.text.toString(),
+//                            reviewDate = Date(),
+                            reviewStar = "0"
+                    )
+                    myRef.child("Stores").child(storeKey).child("Goods").child(GoodsKey).child("Review").push().setValue(ReviewOne)
+
+//                    val intent = Intent(this, GoodsDetailActivity::class.java)
+//                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
     }
 
     // 리뷰하기 - 상품 이미지 첨부 경로 설정

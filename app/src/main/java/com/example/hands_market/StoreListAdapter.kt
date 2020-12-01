@@ -24,28 +24,27 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
-        Log.d("StoreListAdapter", "1")
         val view = LayoutInflater.from(viewGroup.context)
                 .inflate(R.layout.store_recycler_view, viewGroup, false)
-        Log.d("StoreListAdapter", "$view")
-        Log.d("StoreListAdapter", "2")
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        Log.d("StoreListAdapter", "3")
         viewHolder.storeName.text = storeList[position].storeName
         viewHolder.storeAddress.text = storeList[position].storeAddress
 
-        if(storeList[position].storeImgurl == null)
+        if(storeList[position].storeImgurl == "0")
             viewHolder.storeImage.setImageResource(R.drawable.ic_baseline_storefront_24)
         else{
+            Log.d("StoreListAdapter-", "-----------------------------")
             var storeImg = storeList[position].storeImgurl
+            Log.d("StoreListAdapter-", "$storeImg")
             var image_task: URLtoBitmapTask = URLtoBitmapTask()
             image_task = URLtoBitmapTask().apply {
                 url = URL("$storeImg")
             }
-            Log.d("StoreListAdapter", "10")
+            Log.d("StoreListAdapter-", "$image_task")
+            Log.d("StoreListAdapter----", "10")
             var bitmap: Bitmap = image_task.execute().get()
             bitmap = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
             viewHolder.storeImage.setImageBitmap(bitmap)
@@ -69,7 +68,6 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
     }
 
     override fun getItemCount():Int {
-
       Log.d("StoreListAdapter", "0")
       return storeList.size
     }
@@ -104,6 +102,7 @@ class StoreListAdapter(val context: Context, val storeList: List<Store>): Recycl
 //                val storeImgUrl = stream.toByteArray()
 //                intent.putExtra("storeImgUrl", storeImgUrl)
                 intent.putExtra("storeImgUrl", storeList[adapterPosition].storeImgurl)
+                intent.putExtra("storeLayoutUrl", storeList[adapterPosition].storeLayoutUrl)
                 intent.putExtra("storeKey", storeList[adapterPosition].SID)
 
 

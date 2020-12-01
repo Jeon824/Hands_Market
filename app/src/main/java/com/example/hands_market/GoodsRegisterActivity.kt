@@ -27,7 +27,7 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var goodsColorInput :EditText
     private lateinit var goodsCountInput :EditText
     private lateinit var dataUri : Uri
-    lateinit var GoodsUrl :String
+    var GoodsUrl :String ="0"
     private lateinit var showGoodsImg :ImageView
     var myData :String = ""
 
@@ -58,6 +58,7 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         val intent = intent
         myData = intent.getStringExtra("storeKey")
+        Log.d("GoodsRegis","$myData")
     }
 
     override fun onClick(v: View?) {
@@ -71,16 +72,18 @@ class GoodsRegisterActivity : AppCompatActivity(), View.OnClickListener {
                             storeId = myData,
                             managerID = "1",
                             name = goodsNameInput.text.toString(),
-                            imageUrl = "1",
+                            imageUrl = GoodsUrl,
                             price = Integer.parseInt(goodsPriceInput.text.toString()),
                             location = "11",
                             size = goodsSizeInput.text.toString(),
-                            count = Integer.parseInt(goodsPriceInput.text.toString())
+                            count = Integer.parseInt(goodsPriceInput.text.toString()),
+                            gId="00"
                     )
                     myRef.child("Stores").child(myData).child("Goods").push().setValue(GoodsOne)
 
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+//                    val intent = Intent(this, MainActivity::class.java)
+//                    startActivity(intent)
+                    finish()
                 }
             }
         }

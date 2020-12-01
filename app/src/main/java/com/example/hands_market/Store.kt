@@ -12,6 +12,7 @@ class Store(
     var storeLayout :Bitmap? = null,
     var storeImgurl:String? ="",
     var SID: String? ="",
+    var storeLayoutUrl:String? ="",
     var favoriteStore: Array<String>?=null
 ) {
 

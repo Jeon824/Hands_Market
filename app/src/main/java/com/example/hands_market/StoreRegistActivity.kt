@@ -46,6 +46,10 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dataUri : Uri
     private lateinit var dataImgUri : Uri
     private lateinit var dataLayoutUri : Uri
+//    lateinit var url :String
+    var url:String ="0"
+    var urlLayout:String ="0"
+    lateinit var whatBtn :String //url과 layout중 어떤 것을 선택?
     lateinit var url :String
     private lateinit var addressMainEditText: EditText
     private lateinit var mainAddress:String
@@ -92,8 +96,11 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
             when(v.id) {
                 //R.id.searchBtn
                 R.id.storeCreateBtn -> {
-                    val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-                    val myRef = database.getReference()
+                    Log.d("StoreDetailActivity", "-----------")
+                    var database: FirebaseDatabase = FirebaseDatabase.getInstance()
+                    Log.d("StoreDetailActivity", "0000----")
+                    var myRef = database.getReference()
+                    Log.d("StoreDetailActivity", "1---------")
                     val StoreOne = Store(
                             storeName = marketNameInput.text.toString(),
                             managerID = "1",
@@ -101,10 +108,12 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                             storeLat = DEFAULT_LAT,
                             storeLng = DEFAULT_LNG,
                             storeImgurl=url,
-                            SID = "0"
+                            SID = "0",
+                            storeLayoutUrl="0"
                     )
+                    Log.d("StoreDetailActivity", "2---------")
                     myRef.child("Stores").push().setValue(StoreOne)
-
+                    Log.d("StoreDetailActivity", "3---------")
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
@@ -200,6 +209,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun storeRegImg(showImgInput: ImageView) {
         showInput=showImgInput
+        whatBtn="Img"
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
@@ -209,6 +219,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun storeRegStoreLayoutImg(showLayoutImg: ImageView) {
         showInput=showLayoutImg
+        whatBtn="Layout"
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
@@ -261,7 +272,13 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                         .addOnSuccessListener {
                             storeRef!!.downloadUrl.addOnSuccessListener{
                                 Log.d("StoreRegistActivity","$it")
+//                                if( whatBtn=="Img"){
                                 url=it.toString()
+//                                }
+//                                else{
+//                                    urlLayout=it.toString()
+//                                }
+
                             }.addOnFailureListener {
 //
                             }
