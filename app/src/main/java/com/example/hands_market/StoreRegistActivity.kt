@@ -96,6 +96,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
             when(v.id) {
                 //R.id.searchBtn
                 R.id.storeCreateBtn -> {
+                    Log.d("StoreDetailActivity", "-----------")
                     var database: FirebaseDatabase = FirebaseDatabase.getInstance()
                     Log.d("StoreDetailActivity", "0000----")
                     var myRef = database.getReference()
@@ -250,17 +251,34 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                 //storage 주소와 폴더 파일명을 지정해 준다.
                 val storeRef: StorageReference = Storage.getReference().child("storeImages").child(filename)
 
+//                    //메모리에서 업로드
+//                showImgInput.isDrawingCacheEnabled = true
+//                showImgInput.buildDrawingCache()
+//                val bitmap = (showImgInput.drawable as BitmapDrawable).bitmap
+//                val baos = ByteArrayOutputStream()
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+//                val data = baos.toByteArray()
+//                storeRef!!.putBytes(data).addOnSuccessListener {
+//                            url=storeRef.downloadUrl.toString()
+//                            Toast.makeText(this, "업로드 되었습니다.", Toast.LENGTH_SHORT).show()
+//                    }
+//                    .addOnFailureListener {
+//                            // Handle unsuccessful uploads
+//                            // ...
+//                            Toast.makeText(this, "저장 실패.", Toast.LENGTH_SHORT).show()
+//                        }
                 //로컬 파일에서 업로드
                     storeRef!!.putFile(dataUri!!)
                         .addOnSuccessListener {
                             storeRef!!.downloadUrl.addOnSuccessListener{
+                                Log.d("StoreRegistActivity","$it")
 //                                if( whatBtn=="Img"){
                                 url=it.toString()
-                                Log.d("StoreRegistActivity","$url")
 //                                }
 //                                else{
 //                                    urlLayout=it.toString()
 //                                }
+
                             }.addOnFailureListener {
 //
                             }
