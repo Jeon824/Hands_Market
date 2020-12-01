@@ -50,7 +50,6 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
     var url:String ="0"
     var urlLayout:String ="0"
     lateinit var whatBtn :String //url과 layout중 어떤 것을 선택?
-    lateinit var url :String
     private lateinit var addressMainEditText: EditText
     private lateinit var mainAddress:String
     private lateinit var addressDetail:String
@@ -145,6 +144,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                     addressMainEditText.setText(mainAddress)
                 }
                 R.id.dismiss->{
+                    addressMainEditText.setText(mainAddress)
                     puW.dismiss()
                 }
             }

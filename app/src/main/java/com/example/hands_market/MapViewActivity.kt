@@ -48,8 +48,8 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
     private lateinit var finishBtn : Button
     private lateinit var puW: PopupWindow
     private lateinit var dismissPwBtn : ImageButton
-    private lateinit var originalAddress :String
-    private lateinit var gonnaDeliverAddress : String
+    private var originalAddress :String = ""
+    private var gonnaDeliverAddress : String = ""
     private var mapViewLat by Delegates.notNull<Double>()
     private var mapViewLng by Delegates.notNull<Double>()
     private lateinit var applyBtn : Button
@@ -116,6 +116,8 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
     inner class MyJavaScriptInterface {
         @JavascriptInterface
         fun processDATA(data: String) {
+            originalAddress = String()
+            gonnaDeliverAddress = String()
             Log.d("map address:", data)
             //extra.putString("data", data);
             //intent.putExtras(extra);
@@ -157,9 +159,6 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
 
                         puW = PopupWindow(pw, width, height, focusable)
 
-                        puW.setOnDismissListener {
-
-                        }
 
                         dismissPwBtn = pw.findViewById<ImageButton>(R.id.dismiss)
                         dismissPwBtn.setOnClickListener(this)
@@ -176,7 +175,7 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
                         val firstAddress = secondFormedList[0]
                         val length = firstAddress.length
                         val slice = IntRange(1, length - 1)
-                        val secondAddress = firstAddress.slice(slice)
+                        val secondAddress : String = firstAddress.slice(slice)
                         Log.d("FormedAddress:", secondAddress)
                         gonnaDeliverAddress = secondAddress
 
@@ -204,6 +203,27 @@ class MapViewActivity() : AppCompatActivity(),/*OnMapReadyCallback*/MapView.Open
                         finish()
                     }
                     R.id.dismiss -> {
+                        val firstFormedList = originalAddress.split(",")
+                        val secondFormedList = (firstFormedList[1] as String).split("(")
+                        val firstAddress = secondFormedList[0]
+                        val length = firstAddress.length
+                        val slice = IntRange(1, length - 1)
+                        val secondAddress : String = firstAddress.slice(slice)
+                        Log.d("FormedAddress:", secondAddress)
+                        gonnaDeliverAddress = secondAddress
+
+                        val mGeocoder: Geocoder = Geocoder(applicationContext)
+                        //geoCoder
+                        try {
+                            var resultLocation: List<Address> = mGeocoder.getFromLocationName(gonnaDeliverAddress, 1)
+                            Log.d("converted X:", "" + resultLocation[0].latitude)
+                            Log.d("converted Y:", "" + resultLocation[0].longitude)
+                            map.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(resultLocation[0].latitude, resultLocation[0].longitude), true)
+                        } catch (e: IOException) {
+                            Log.d("convert status :", "fail")
+                        }
+
+                        //map.setMapCenterPoint()
                         puW.dismiss()
                     }
                 }
