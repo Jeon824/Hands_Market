@@ -50,7 +50,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
     var url:String ="0"
     var urlLayout:String ="0"
     lateinit var whatBtn :String //url과 layout중 어떤 것을 선택?
-    lateinit var url :String
+//    lateinit var url :String
     private lateinit var addressMainEditText: EditText
     private lateinit var mainAddress:String
     private lateinit var addressDetail:String
@@ -99,7 +99,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                     var database: FirebaseDatabase = FirebaseDatabase.getInstance()
                     Log.d("StoreDetailActivity", "0000----")
                     var myRef = database.getReference()
-                    Log.d("StoreDetailActivity", "1---------")
+                    Log.d("StoreDetailActivity~~~~~", "$url")
                     val StoreOne = Store(
                             storeName = marketNameInput.text.toString(),
                             managerID = "1",
@@ -254,9 +254,9 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                     storeRef!!.putFile(dataUri!!)
                         .addOnSuccessListener {
                             storeRef!!.downloadUrl.addOnSuccessListener{
-                                Log.d("StoreRegistActivity","$it")
 //                                if( whatBtn=="Img"){
                                 url=it.toString()
+                                Log.d("StoreRegistActivity","$url")
 //                                }
 //                                else{
 //                                    urlLayout=it.toString()

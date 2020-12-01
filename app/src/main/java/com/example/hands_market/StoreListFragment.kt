@@ -78,7 +78,7 @@ class StoreListFragment : Fragment() {
                     storeN = map["storeName"].toString()
                     storeImgUrl = map["storeImgurl"].toString()
 //                    var urlLayout = map["urlLayout"].toString()
-                    storeList.add(i, Store("$i 번째 매니저", storeN, i * 0.1, i * 0.1, "$i 번째 주소", null, null, storeImgUrl, storeKey,"1"))
+                    storeList.add(i, Store("$i 번째 매니저", storeN, i * 0.1, i * 0.1, "$i 번째 마켓", null, null, storeImgUrl, storeKey,"1"))
                     if (storeList[i].storeLayout == null)
                         storeList[i].storeLayout = tmpLayout
                     var aa = storeList[i]
