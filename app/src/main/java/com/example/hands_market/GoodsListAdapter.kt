@@ -7,10 +7,7 @@ import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ImageView
-import android.widget.ListAdapter
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import java.io.ByteArrayOutputStream
@@ -45,7 +42,9 @@ class GoodsListAdapter(val context: Context, val goodsList: List<Goods>): Recycl
         val stream : ByteArrayOutputStream = ByteArrayOutputStream()
         private val intent: Intent =Intent(context,GoodsDetailActivity::class.java)
 
-        init {/*
+
+        init {
+            /*
             intent.putExtra("managerID",goodsList[adapterPosition].managerID)
             intent.putExtra("storeName",goodsList[adapterPosition].storeName)
             intent.putExtra("name",goodsList[adapterPosition].name)

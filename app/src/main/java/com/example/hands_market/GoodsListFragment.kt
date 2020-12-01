@@ -46,7 +46,7 @@ class GoodsListFragment : Fragment() {
         val context : Context = view.context
 
 
-        for (i in 0 until 10)
+        for (i in 0 until 10)//테스트용 더미 데이터
             goodsList.add(i,Goods("$i 번째 관리자","$i 번째 가게","$i 번째 상품",null,10000 ,null,100,"RED",100,null,null,null))
 
         viewAdapter = GoodsListAdapter(context, goodsList)

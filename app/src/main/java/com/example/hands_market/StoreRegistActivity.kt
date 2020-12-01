@@ -9,8 +9,8 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
+import com.example.hands_market.MainActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MainActivity.Companion.DEFAULT_LNG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage

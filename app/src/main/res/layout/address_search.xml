@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
         android:id="@+id/dismiss"
         android:src="@drawable/ic_baseline_cancel_presentation_24"
         android:background="@color/white"/>

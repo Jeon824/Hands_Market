@@ -66,14 +66,14 @@ class StoreListFragment : Fragment() {
         // Store 목록 조회
         val database : FirebaseDatabase = FirebaseDatabase.getInstance() //데이터베이스 부르기
         val Stores = database.getReference().child("Stores") //Store 테이블에 접근
-        Stores.addValueEventListener(object : ValueEventListener {
+       /* Stores.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var i=0
                 var storeN: String
                 for(data in dataSnapshot.children){
                     var map =data.value as Map<String,Any>
                     storeN = map["storeName"].toString()
-//                    storeImg = map["storeImgurl"].toString()
+    //                 storeImg = map["storeImgurl"].toString()
                     storeList.add(i, Store("$i 번째 매니저", storeN, i * 0.1, i * 0.1, "$i 번째 주소", null, null))
                     if(storeList[i].storeLayout == null)
                         storeList[i].storeLayout = tmpLayout
@@ -82,14 +82,13 @@ class StoreListFragment : Fragment() {
             }
             override fun onCancelled(error: DatabaseError) {
             }
-        })
+        })*/
 
-
-//        for (i in 0 until 10) {
-//            storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
-//            if(storeList[i].storeLayout == null)
-//                storeList[i].storeLayout = tmpLayout
-//        }
+       for (i in 0 until 10) {//테스트용 더미 데이터
+            storeList.add(i, Store("$i 번째 매니저", "$i 번째 매장", i * 0.1, i * 0.1, "$i 번째 주소", null, null))
+            if(storeList[i].storeLayout == null)
+                storeList[i].storeLayout = tmpLayout
+       }
 
         viewAdapter = StoreListAdapter(context, storeList)
 

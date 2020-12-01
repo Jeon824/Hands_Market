@@ -1,42 +1,25 @@
 package com.example.hands_market
 
-import android.content.ClipData
+//import com.google.firebase.ktx.Firebase
+//import com.google.firebase.database.ktx.database
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.location.LocationManager
-import android.media.Image
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Base64
-import android.util.Base64.NO_WRAP
+import android.os.Handler
+import android.os.Message
 import android.util.Log
 import android.view.View
-import android.widget.*
-import androidx.appcompat.app.ActionBar
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
-import com.example.hands_market.MapViewActivity.Companion.userLat
-import com.example.hands_market.MapViewActivity.Companion.userLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-//import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import java.net.URL
-//import com.google.firebase.database.ktx.database
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
-import java.util.jar.Manifest
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var setAddress: TextView
@@ -49,36 +32,51 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var keyWordInput :EditText
     val database : FirebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var test : TextView
+    private val searchAddressCode = 10000
+    private lateinit var addressString : String
+    private val KakaoAPIKey = ""
 
     companion object{
        const val PERMISION_REQUEST_CODE = 1001
+
+            const val DEFAULT_LAT :Double = 37.5740381
+            const val DEFAULT_LNG :Double = 126.97458
+
+            var userLat : Double = DEFAULT_LAT
+            var userLng : Double = DEFAULT_LNG
+
+
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val lm = getSystemService(Context.LOCATION_SERVICE)as LocationManager
 
-        if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
-        {
-            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),PERMISION_REQUEST_CODE)
-            if(!(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED))
-            {
-                MapViewActivity.userLat = DEFAULT_LAT
-                MapViewActivity.userLng = DEFAULT_LNG
+        val lm = getSystemService(Context.LOCATION_SERVICE)as LocationManager
+        val isGPSEnabled: Boolean = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        val isNetWorkEnabled : Boolean = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        if(Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 0)
+        }else{
+            when{
+                isNetWorkEnabled -> {
+                    val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                    userLat = location?.latitude!!
+                    userLng = location?.longitude!!
+                }
             }
-            else
-            {
-                val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+        }
+
+
+        if(checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+        {
+
+            val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            if( location!=null ) {
                 userLat = location.latitude
                 userLng = location.longitude
             }
-        }
-        else{
-            val location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-            userLat = location.latitude
-            userLng = location.longitude
         }
 
 
@@ -169,12 +167,12 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
                 //R.id.searchBtn
                 R.id.setAddressMainText -> {
-                    val intent = Intent(this, MapViewActivity::class.java)
-                    startActivity(intent)
+                    val intent = Intent(this@MainActivity, MapViewActivity::class.java)
+                    startActivityForResult(intent, searchAddressCode)
                 }
                 R.id.searchBtn -> {
                     keyWord = keyWordInput.text.toString()
-                    if(keyWord!=null) {
+                    if (keyWord != null) {
                         val bundle: Bundle = Bundle()
                         bundle.putString("keyword", keyWord)
                         //StoreFragment start
@@ -193,7 +191,25 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        when(requestCode){
+            searchAddressCode -> {
+                if (resultCode == RESULT_OK) {
+                    if (data != null) {
+                        addressString = data.extras?.getString("data").toString()
+                    }
+                    var mainAddrText: TextView = findViewById(R.id.setAddressMainText)
+                    Log.d("main address:", addressString)
+                    if (data != null)
+                        mainAddrText.text = addressString
+
+                }
+
+            }
+        }
+    }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
         when (menuItem.itemId) {
@@ -202,11 +218,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_log -> {
-                val intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
         }

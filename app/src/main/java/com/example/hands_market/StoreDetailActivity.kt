@@ -12,8 +12,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
-import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
+import com.example.hands_market.MainActivity.Companion.DEFAULT_LAT
+import com.example.hands_market.MainActivity.Companion.DEFAULT_LNG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var storeImage : ImageView
