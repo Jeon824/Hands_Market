@@ -47,7 +47,7 @@ import java.security.NoSuchAlgorithmException
 import java.util.jar.Manifest
 import kotlin.math.log
 
-class MainActivity : AppCompatActivity() , View.OnClickListener{
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var setAddress: TextView
     private lateinit var searchBtn: ImageButton
     private lateinit var storeList: ArrayList<Store>
@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     companion object{
        const val PERMISION_REQUEST_CODE = 1001
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,12 +93,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
             userLng = location.longitude
         }
 
-
-        val store_detail = findViewById<TextView>(R.id.store_detail)
-        store_detail.setOnClickListener(this)
-
-        val storeDetail = findViewById<TextView>(R.id.store_detail)
-        storeDetail.setOnClickListener(this)
         /*
         val myRef = database.getReference()
         myRef.child("message").push().setValue("hi")
@@ -243,8 +236,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
 
     }
-
-
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
         when (menuItem.itemId) {

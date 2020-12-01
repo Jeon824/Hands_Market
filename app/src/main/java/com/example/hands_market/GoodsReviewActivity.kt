@@ -5,14 +5,18 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_goods_review.*
+import org.w3c.dom.Text
 
 // '리뷰 작성하기' 화면
 class GoodsReviewActivity : AppCompatActivity() {
 
     val Gallery = 0
+
+    val items = arrayOf("1", "2", "3", "4", "5")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,8 @@ class GoodsReviewActivity : AppCompatActivity() {
             val intent = Intent(this, GoodsDetailActivity::class.java)
             startActivity(intent)
         }
+
+        goodsRevSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
 
         // bottom navigation 선언
         val navigationBar = findViewById<BottomNavigationView>(R.id.goodsReview_navigation)
