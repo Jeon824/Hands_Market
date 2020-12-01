@@ -145,6 +145,7 @@ class StoreRegistActivity : AppCompatActivity(), View.OnClickListener {
                     addressMainEditText.setText(mainAddress)
                 }
                 R.id.dismiss->{
+                    addressMainEditText.setText(mainAddress)
                     puW.dismiss()
                 }
             }

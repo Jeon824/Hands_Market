@@ -36,10 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+
                 <TextView
                     android:id="@+id/goods_detail_name"
                     android:layout_width="match_parent"
@@ -74,15 +71,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
-<!--                    <Button-->
-<!--                        android:id="@+id/button_modify"-->
-<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
-<!--                        android:layout_width="70dp"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:background="@drawable/border_bottom"-->
-<!--                        android:text="수정"-->
-<!--                        android:textColor="#000000"-->
-<!--                        android:textSize="15sp" />-->
+                    <!--                    <Button-->
+                    <!--                        android:id="@+id/button_modify"-->
+                    <!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+                    <!--                        android:layout_width="70dp"-->
+                    <!--                        android:layout_height="40dp"-->
+                    <!--                        android:background="@drawable/border_bottom"-->
+                    <!--                        android:text="수정"-->
+                    <!--                        android:textColor="#000000"-->
+                    <!--                        android:textSize="15sp" />-->
 
                     <Button
                         android:id="@+id/button_delete"
@@ -95,14 +92,14 @@
                         android:textSize="15sp"
                         android:layout_marginStart="10dp" />
                 </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -114,90 +111,91 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/button_shopping_basket"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:background="@drawable/border_bottom"
-        android:text="장바구니"
-        android:textColor="#000000"
-        android:textSize="40px"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:layout_marginTop="50px"
-        android:layout_weight="1" />
+            <TextView
+                android:id="@+id/button_shopping_basket"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
+                android:background="@drawable/border_bottom"
+                android:text="장바구니"
+                android:textColor="#000000"
+                android:textSize="40px"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="248dp"
+                tools:layout_editor_absoluteY="83dp"
+                android:layout_marginTop="50px"
+                android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/button_purchase"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:background="@drawable/border_bottom"
-        android:text="결제서비스"
-        android:textColor="#000000"
-        android:textSize="40px"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:layout_marginTop="50px"
-        android:layout_weight="1" />
+            <TextView
+                android:id="@+id/button_purchase"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
+                android:background="@drawable/border_bottom"
+                android:text="결제서비스"
+                android:textColor="#000000"
+                android:textSize="40px"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="248dp"
+                tools:layout_editor_absoluteY="83dp"
+                android:layout_marginTop="50px"
+                android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/button_reserve"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:background="@drawable/border_bottom"
-        android:text="예약"
-        android:textColor="#000000"
-        android:textSize="40px"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:layout_marginTop="50px"
-        android:layout_weight="1" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/button_reserve"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
+                android:background="@drawable/border_bottom"
+                android:text="예약"
+                android:textColor="#000000"
+                android:textSize="40px"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="248dp"
+                tools:layout_editor_absoluteY="83dp"
+                android:layout_marginTop="50px"
+                android:layout_weight="1" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/review"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_weight="3"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="1dp"
-            android:text="리뷰"
-            android:textSize="25dp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/button_review_write"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="100dp"
-            android:layout_height="43dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/border_bottom"
-            android:text="리뷰쓰기"
-            android:textColor="#000000"
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/review"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_weight="3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:text="리뷰"
+                android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/button_review_write"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="100dp"
+                android:layout_height="43dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_bottom"
+                android:text="리뷰쓰기"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/goods_review_fragment"
+            android:name="com.example.hands_market.ReivewFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/goodsDetail_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/navigation2" />
+
     </LinearLayout>
-
-    <fragment
-        android:id="@+id/goods_review_fragment"
-        android:name="com.example.hands_market.ReivewFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/goodsDetail_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/navigation2" />
-
 </LinearLayout>

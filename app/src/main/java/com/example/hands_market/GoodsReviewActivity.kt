@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_goods_review.*
 import org.w3c.dom.Text
 
 // '리뷰 작성하기' 화면
-class GoodsReviewActivity : AppCompatActivity(),View.OnClickListener {
+class GoodsReviewActivity : AppCompatActivity(), View.OnClickListener {
 
     val Gallery = 0
     private lateinit var reviewTitle : EditText
