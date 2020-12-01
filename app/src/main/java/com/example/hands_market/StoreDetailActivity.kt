@@ -11,6 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LAT
 import com.example.hands_market.MapViewActivity.Companion.DEFAULT_LNG
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -53,6 +56,10 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
             storeLayout = BitmapFactory.decodeByteArray(imgArray, 0, imgArray.size)
         }
 
+
+
+
+        //선정된 정보 받기
         thisStore = Store(newIntent.getStringExtra("managerID"),
                 newIntent.getStringExtra("storeName"),
                 newIntent.getDoubleExtra("storeLat", DEFAULT_LAT),
@@ -78,18 +85,28 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         storeLayoutBtn = findViewById(R.id.button_storeLayout)
         storeLayoutBtn.setOnClickListener(this)
-//        var storeImageUrl = thisStore.storeImgurl
-//        var image_task: StoreListAdapter.URLtoBitmapTask = StoreListAdapter.URLtoBitmapTask()
-//        image_task = StoreListAdapter.URLtoBitmapTask().apply {
-//            url = URL("$storeImageUrl")
-//        }
-//        Log.d("StoreDetailActivity", "4s")
-//        var bitmap: Bitmap = image_task.execute().get()
-//        bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
-//        storeImage=findViewById<ImageView>(R.id.store_detail_store_image)
-//        storeImage.setImageBitmap(bitmap)
+
+        var storeImageUrl = thisStore.storeImgurl
+        var image_task: StoreListAdapter.URLtoBitmapTask = StoreListAdapter.URLtoBitmapTask()
+        image_task = StoreListAdapter.URLtoBitmapTask().apply {
+            url = URL("$storeImageUrl")
+        }
+        Log.d("StoreDetailActivity", "4s")
+        var bitmap: Bitmap = image_task.execute().get()
+        bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+        storeImage=findViewById<ImageView>(R.id.store_detail_store_image)
+        storeImage.setImageBitmap(bitmap)
 
         sId= thisStore.SID.toString()
+//sid 값 보내기기
+        var fragment : Fragment=GoodsListFragment()
+        var bundle : Bundle = Bundle(1)
+        bundle.putString("sId", sId)
+        //fragment로 번들 전달
+        fragment.setArguments(bundle)
+        val transaction: FragmentTransaction = getSupportFragmentManager().beginTransaction()
+        transaction.replace(R.id.store_detail_goods_fragment, fragment).commit();
+
 
         var buttonGoodsAdd = findViewById<Button>(R.id.button_GoodsAdd)
         buttonGoodsAdd.setOnClickListener(this)
@@ -142,10 +159,8 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.button_GoodsAdd -> {
 //                    val a = sId.toString()
                     val intent = Intent(this, GoodsRegisterActivity::class.java)
-                    Log.d("storeDe","1111111111")
                     intent.putExtra("storeKey", sId)
                     startActivity(intent)
-                    Log.d("storeDe","1111111111")
                 }
 //                R.id.test->{
 //                    val intent = Intent(this, GoodsRegisterActivity::class.java)
@@ -164,11 +179,11 @@ class StoreDetailActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.navigation_favorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_mypage -> {
-                val intent = Intent(this,MypageActivity::class.java)
+                val intent = Intent(this, MypageActivity::class.java)
                 startActivity(intent)
             }
         }
